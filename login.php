@@ -1,7 +1,12 @@
 <?php 
 	
-	@session_start();
-	include "config.php";
+	session_start();
+$configPath = $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
+if (file_exists($configPath)) {
+    include $configPath;
+} else {
+    die("Config file not found: " . $configPath);
+}
 
 	$user = @$_POST['username'];
 	$pass = @$_POST['password'];

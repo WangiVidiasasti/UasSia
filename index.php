@@ -1,18 +1,16 @@
 <?php
 
-
 ?>
 
 <?php
-// penambahan judul pada tiap page inti
-// if (isset($_GET['link'])) {
-//     if (($_GET['link']) == 'dashboard') {
-//         $title = "Dashboard | ";
-//     } elseif (($_GET['link']) == 'login') {
-//         $title = "Form Login | ";
-//     }
+if (isset($_GET['link'])) {
+    if (($_GET['link']) == 'dashboard') {
+        $title = "Dashboard | ";
+    } elseif (($_GET['link']) == 'login') {
+        $title = "Form Login | ";
+    }
     
-// }
+}
 
 
 ?>
@@ -102,6 +100,9 @@
         } elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
+        } elseif (($_GET['link']) == 'data_karyawan') {
+            include "datakaryawan.php";
+            header("Location: " . $baseURL . "/index.php?link=data_karyawan");
         }
     } else {
         include 'login.php';

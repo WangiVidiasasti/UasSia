@@ -1,5 +1,4 @@
 <div class="vertical-menu">
-
                 <div data-simplebar class="h-100">
 
                     <!--- Sidemenu -->
@@ -16,9 +15,9 @@
                             </li>
 
                             <li>
-                                <a href="index.php?link=karyawan">
+                                <a href="index.php?link=data_karyawan">
                                     <i data-feather="grid"></i>
-                                    <span data-key="t-dashboard">Karyawan</span>
+                                    <span data-key="t-dashboard">Data Karyawan</span>
                                 </a>
                             </li>
 
@@ -30,6 +29,18 @@
                             </li>
                             
                             
+                        </ul>
+
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" data-key="t-menu">Mastering</li>
+
+                            <li>
+                                <a href="index.php?link=karyawan">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Karyawan</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>
