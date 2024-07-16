@@ -23,6 +23,19 @@ if (isset($_POST['insert_karyawan'])) {
     header("Location: " . $baseURL . "/index.php?link=karyawan");
     exit();
 }
+if (isset($_POST['insert_customer'])) {
+    $data = array(
+        'nama_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
+        'no_telp' => mysqli_real_escape_string($koneksi, $_POST['no_telp']),
+        'alamat' => mysqli_real_escape_string($koneksi, $_POST['alamat']),
+        'password' => mysqli_real_escape_string($koneksi, $_POST['password']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_customer", $data);
+    header("Location: " . $baseURL . "/index.php?link=customer");
+    exit();
+}
 if (isset($_POST['insert_jabatan'])) {
     $data = array(
         'nama_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),

@@ -20,6 +20,12 @@
                                     <span data-key="t-dashboard">Data Karyawan</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=data_customer">
+                                    <i data-feather="grid"></i>
+                                    <span data-key="t-dashboard">Data Customer</span>
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="index.php?link=laporan">
@@ -38,6 +44,12 @@
                                 <a href="index.php?link=karyawan">
                                     <i data-feather="home"></i>
                                     <span data-key="t-dashboard">Karyawan</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?link=customer">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Customer</span>
                                 </a>
                             </li>
 

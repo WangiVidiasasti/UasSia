@@ -107,17 +107,22 @@ if (isset($_GET['link'])) {
             include "dashboard.php";
             header("Location: " . $baseURL . "/index.php?link=dashboard");
             // menampilkan page data penambahan penduduk
-        } 
-        elseif (($_GET['link']) == 'karyawan') {
+        } elseif (($_GET['link']) == 'karyawan') {
             include "pages/add/master/karyawan.php";
             header("Location: " . $baseURL . "/index.php?link=karyawan");
+        } elseif (($_GET['link']) == 'customer') {
+            include "pages/add/master/customer.php";
+            header("Location: " . $baseURL . "/index.php?link=customer");
         } elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
         } elseif (($_GET['link']) == 'data_karyawan') {
             include "datakaryawan.php";
             header("Location: " . $baseURL . "/index.php?link=data_karyawan");
-        }elseif (($_GET['link']) == 'data_jabatan') {
+        } elseif (($_GET['link']) == 'data_customer') {
+            include "datacustomer.php";
+            header("Location: " . $baseURL . "/index.php?link=data_customer");
+        } elseif (($_GET['link']) == 'data_jabatan') {
             include "pages/add/master/jabatan.php";
             header("Location: " . $baseURL . "/index.php?link=data_jabatan");
         }elseif (($_GET['link']) == 'data_barang') {
