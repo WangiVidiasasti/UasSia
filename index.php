@@ -118,6 +118,9 @@ if (isset($_GET['link'])) {
         }elseif (($_GET['link']) == 'data_status') {
             include "pages/add/master/status.php";
             header("Location: " . $baseURL . "/index.php?link=data_status");
+        }elseif (($_GET['link']) == 'data_supplier') {
+            include "pages/add/master/supplier.php";
+            header("Location: " . $baseURL . "/index.php?link=data_supplier");
         }
     } else {
         include 'login.php';

@@ -79,4 +79,17 @@ if (isset($_POST['insert_status'])) {
     header("Location: " . $baseURL . "/index.php?link=data_status");
     exit();
 }
+if (isset($_POST['insert_supplier'])) {
+    $data = array(
+        'nama_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+        'nama_toko' => mysqli_real_escape_string($koneksi, $_POST['nama_toko']),
+        'no_telp' => mysqli_real_escape_string($koneksi, $_POST['no_telp']),
+        'alamat' => mysqli_real_escape_string($koneksi, $_POST['alamat']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_supplier", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_supplier");
+    exit();
+}
 ?>

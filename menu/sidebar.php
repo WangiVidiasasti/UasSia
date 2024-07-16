@@ -76,6 +76,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="index.php?link=data_supplier">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Supplier</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>
