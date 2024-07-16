@@ -54,6 +54,21 @@
                                     <span data-key="t-dashboard">Barang</span>
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="index.php?link=data_katalog">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Katalog</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="index.php?link=data_pengiriman">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Pengiriman</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

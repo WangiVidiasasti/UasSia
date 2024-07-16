@@ -109,6 +109,12 @@ if (isset($_GET['link'])) {
         }elseif (($_GET['link']) == 'data_barang') {
             include "pages/add/master/barang.php";
             header("Location: " . $baseURL . "/index.php?link=data_barang");
+        }elseif (($_GET['link']) == 'data_katalog') {
+            include "pages/add/master/katalog.php";
+            header("Location: " . $baseURL . "/index.php?link=data_katalog");
+        }elseif (($_GET['link']) == 'data_pengiriman') {
+            include "pages/add/master/pengiriman.php";
+            header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
         }
     } else {
         include 'login.php';

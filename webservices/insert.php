@@ -47,4 +47,26 @@ if (isset($_POST['insert_barang'])) {
     header("Location: " . $baseURL . "/index.php?link=data_barang");
     exit();
 }
+if (isset($_POST['insert_katalog'])) {
+    $data = array(
+        'nama_katalog' => mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_katalog_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_katalog");
+    exit();
+}
+if (isset($_POST['insert_pengiriman'])) {
+    $data = array(
+        'nama_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_prngiriman']),
+        'jarak' => mysqli_real_escape_string($koneksi, $_POST['jarak']),
+        'harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_pengiriman", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
+    exit();
+}
 ?>
