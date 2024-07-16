@@ -105,3 +105,7 @@ $data = Tampil_Data('karyawan');
         </div> <!-- container-fluid -->
     </div>
 </div>
+<script>
+    var data = <?php Tampil_Data("datakaryawan") ?>
+    console.log(data);
+</script>

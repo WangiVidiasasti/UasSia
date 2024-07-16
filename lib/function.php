@@ -1,5 +1,4 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 
 function Insert_Data($table, $data) {
     global $koneksi;
@@ -30,8 +29,14 @@ function Tampil_Data($namaApi)
         ),
     );
     // URL API internal
-    $apiURL = $baseURL . '/webservices/api/' . $namaApi . '.php';
+    $apiURL = 'http://localhost/UASSIA/webservices/api/' . $namaApi . '.php';
 
+    // Panggil API menggunakan file_get_contents
+    $response = file_get_contents($apiURL, false, stream_context_create($arrContextOptions));
+
+    // Lakukan sesuatu dengan respons dari API (misalnya: tampilkan atau olah data)
+
+    return json_decode($response);
   
 }
 ?>

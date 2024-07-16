@@ -1,5 +1,6 @@
 <?php
 // definisikan koneksi ke database
+$baseURL = "http://localhost";
 $server = "localhost";
 $username = "root";
 $password = "";
