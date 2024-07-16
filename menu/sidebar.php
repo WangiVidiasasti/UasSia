@@ -69,6 +69,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="index.php?link=data_status">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Status</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

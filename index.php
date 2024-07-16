@@ -115,6 +115,9 @@ if (isset($_GET['link'])) {
         }elseif (($_GET['link']) == 'data_pengiriman') {
             include "pages/add/master/pengiriman.php";
             header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
+        }elseif (($_GET['link']) == 'data_status') {
+            include "pages/add/master/status.php";
+            header("Location: " . $baseURL . "/index.php?link=data_status");
         }
     } else {
         include 'login.php';
