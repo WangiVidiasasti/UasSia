@@ -95,7 +95,7 @@ if (isset($_GET['link'])) {
             // menampilkan page data penambahan penduduk
         } 
         elseif (($_GET['link']) == 'karyawan') {
-            include "karyawan.php";
+            include "pages/add/master/karyawan.php";
             header("Location: " . $baseURL . "/index.php?link=karyawan");
         } elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
