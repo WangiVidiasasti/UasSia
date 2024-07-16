@@ -103,7 +103,10 @@ if (isset($_GET['link'])) {
         } elseif (($_GET['link']) == 'data_karyawan') {
             include "datakaryawan.php";
             header("Location: " . $baseURL . "/index.php?link=data_karyawan");
-        }
+        }elseif (($_GET['link']) == 'data_jabatan') {
+            include "pages/add/master/jabatan.php";
+            header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+        }  
     } else {
         include 'login.php';
         header("Location: " . $baseURL . "/index.php?link=login");

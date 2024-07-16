@@ -23,4 +23,17 @@ if (isset($_POST['insert_karyawan'])) {
     header("Location: " . $baseURL . "/index.php?link=karyawan");
     exit();
 }
+if (isset($_POST['insert_jabatan'])) {
+    $data = array(
+        'nama_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
+        'gaji_pokok' => mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
+        'Gaji_lembur' => mysqli_real_escape_string($koneksi, $_POST['Gaji_lembur']),
+        'potongan' => mysqli_real_escape_string($koneksi, $_POST['potongan']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_jabatan", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+    exit();
+}
 ?>

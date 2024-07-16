@@ -41,6 +41,13 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="index.php?link=data_jabatan">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Jabatan</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                     </div>

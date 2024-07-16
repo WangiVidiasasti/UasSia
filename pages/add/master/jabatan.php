@@ -25,6 +25,9 @@
                             <label for="nama" class="form-label">Potongan</label>
                             <input type="text" class="form-control" name="potongan" id="nama">
                         </div>
+                        <div class="mb-3 d-flex flex-column">
+                            <button name="insert_jabatan" type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
 
                 </div>
             </div>
