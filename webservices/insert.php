@@ -105,4 +105,30 @@ if (isset($_POST['insert_supplier'])) {
     header("Location: " . $baseURL . "/index.php?link=data_supplier");
     exit();
 }
+if (isset($_POST['insert_harga'])) {
+    $data = array(
+        'kilogram' => mysqli_real_escape_string($koneksi, $_POST['kilogram']),
+        'harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
+       
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_harga_berat", $data);
+    header("Location: " . $baseURL . "/index.php?link=harga_berat");
+    exit();
+}
+if (isset($_POST['insert_akun'])) {
+    $data = array(
+        'no_akun' => mysqli_real_escape_string($koneksi, $_POST['no_akun']),
+        'nama_akun' => mysqli_real_escape_string($koneksi, $_POST['nama_akun']),
+        'saldo' => mysqli_real_escape_string($koneksi, $_POST['saldo']),
+       
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_akun", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_akun");
+    exit();
+}
+
 ?>

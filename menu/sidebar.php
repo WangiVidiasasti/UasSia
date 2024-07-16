@@ -94,6 +94,18 @@
                                     <span data-key="t-dashboard">Supplier</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=harga_berat">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Harga</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?link=data_akun">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Akun</span>
+                                </a>
+                            </li>
 
                         </ul>
 

@@ -22,7 +22,10 @@ if (isset($_GET['link'])) {
         $title = "Master Status | ";
     } elseif (($_GET['link']) == 'data_supplier') {
         $title = "Master Supplier | ";
+    } elseif (($_GET['link']) == 'harga_berat') {
+        $title = "Master Berat | ";
     }
+
     
 }
 
@@ -119,27 +122,36 @@ if (isset($_GET['link'])) {
         } elseif (($_GET['link']) == 'data_karyawan') {
             include "datakaryawan.php";
             header("Location: " . $baseURL . "/index.php?link=data_karyawan");
+<<<<<<< Updated upstream
         } elseif (($_GET['link']) == 'data_customer') {
             include "datacustomer.php";
             header("Location: " . $baseURL . "/index.php?link=data_customer");
+=======
+>>>>>>> Stashed changes
         } elseif (($_GET['link']) == 'data_jabatan') {
             include "pages/add/master/jabatan.php";
             header("Location: " . $baseURL . "/index.php?link=data_jabatan");
-        }elseif (($_GET['link']) == 'data_barang') {
+        } elseif (($_GET['link']) == 'data_barang') {
             include "pages/add/master/barang.php";
             header("Location: " . $baseURL . "/index.php?link=data_barang");
-        }elseif (($_GET['link']) == 'data_katalog') {
+        } elseif (($_GET['link']) == 'data_katalog') {
             include "pages/add/master/katalog.php";
             header("Location: " . $baseURL . "/index.php?link=data_katalog");
-        }elseif (($_GET['link']) == 'data_pengiriman') {
+        } elseif (($_GET['link']) == 'data_pengiriman') {
             include "pages/add/master/pengiriman.php";
             header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
-        }elseif (($_GET['link']) == 'data_status') {
+        } elseif (($_GET['link']) == 'data_status') {
             include "pages/add/master/status.php";
             header("Location: " . $baseURL . "/index.php?link=data_status");
-        }elseif (($_GET['link']) == 'data_supplier') {
+        } elseif (($_GET['link']) == 'data_supplier') {
             include "pages/add/master/supplier.php";
             header("Location: " . $baseURL . "/index.php?link=data_supplier");
+        } elseif (($_GET['link']) == 'harga_berat') {
+            include "pages/add/master/hargaberat.php";
+            header("Location: " . $baseURL . "/index.php?link=harga_berat");
+        } elseif (($_GET['link']) == 'data_akun') {
+            include "pages/add/master/akun.php";
+            header("Location: " . $baseURL . "/index.php?link=data_akun");
         }
     } else {
         include 'login.php';
