@@ -48,6 +48,12 @@
                                 </a>
                             </li>
 
+                            <li>
+                                <a href="index.php?link=data_barang">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Barang</span>
+                                </a>
+                            </li>
                         </ul>
 
                     </div>

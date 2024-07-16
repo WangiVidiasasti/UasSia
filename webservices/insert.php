@@ -36,4 +36,15 @@ if (isset($_POST['insert_jabatan'])) {
     header("Location: " . $baseURL . "/index.php?link=data_jabatan");
     exit();
 }
+if (isset($_POST['insert_barang'])) {
+    $data = array(
+        'nama' => mysqli_real_escape_string($koneksi, $_POST['nama']),
+        'harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("master_barang", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_barang");
+    exit();
+}
 ?>
