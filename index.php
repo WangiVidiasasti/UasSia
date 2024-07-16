@@ -8,6 +8,20 @@ if (isset($_GET['link'])) {
         $title = "Dashboard | ";
     } elseif (($_GET['link']) == 'login') {
         $title = "Form Login | ";
+    } elseif (($_GET['link']) == 'karyawan') {
+        $title = "Master Karyawan | ";   
+    } elseif (($_GET['link']) == 'data_jabatan') {
+        $title = "Master Jabatan | ";
+    } elseif (($_GET['link']) == 'data_barang') {
+        $title = "Master Barang | ";
+    } elseif (($_GET['link']) == 'data_katalog') {
+        $title = "Master Katalog | ";
+    } elseif (($_GET['link']) == 'data_pengiriman') {
+        $title = "Master Pengiriman | ";
+    } elseif (($_GET['link']) == 'data_status') {
+        $title = "Master Status | ";
+    } elseif (($_GET['link']) == 'data_supplier') {
+        $title = "Master Supplier | ";
     }
     
 }
