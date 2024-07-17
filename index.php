@@ -1,4 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+include "webservices/config.php";
+include "lib/function.php";
+
 
 ?>
 
@@ -8,8 +15,6 @@ if (isset($_GET['link'])) {
         $title = "Dashboard | ";
     } elseif (($_GET['link']) == 'login') {
         $title = "Form Login | ";
-    } elseif (($_GET['link']) == 'karyawan') {
-        $title = "Master Karyawan | ";   
     } elseif (($_GET['link']) == 'data_jabatan') {
         $title = "Master Jabatan | ";
     } elseif (($_GET['link']) == 'data_barang') {
@@ -26,7 +31,6 @@ if (isset($_GET['link'])) {
         $title = "Master Berat | ";
     }
 
-    
 }
 
 
@@ -101,33 +105,36 @@ if (isset($_GET['link'])) {
 <body>
     <?php
     // $link=($_GET['link'])
+    include 'menu/sidebar.php';
+    include 'menu/header.php';
     
     if (isset($_GET['link'])) {
-        include 'menu/sidebar.php';
-        include 'menu/header.php';
-        // menampilkan page dashboard
-        if (($_GET['link']) == 'dashboard') {
-            include "dashboard.php";
-            header("Location: " . $baseURL . "/index.php?link=dashboard");
-            // menampilkan page data penambahan penduduk
-        } elseif (($_GET['link']) == 'karyawan') {
-            include "pages/add/master/karyawan.php";
-            header("Location: " . $baseURL . "/index.php?link=karyawan");
-        } elseif (($_GET['link']) == 'customer') {
+    // menampilkan page dashboard
+    if ($_GET['link'] == 'dashboard') {
+        include "dashboard.php";
+        // Tidak perlu pengalihan setelah include
+    } elseif ($_GET['link'] == 'karyawan') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') {
+                Delete_Data('master_karyawan');
+                header("Location: " . $baseURL . "/index.php?link=karyawan");
+                exit;
+            }
+        } else {
+            include "datakaryawan.php";
+        }
+        // Tidak perlu pengalihan setelah include
+    }
+    // Menampilkan halaman data surat masuk
+ elseif (($_GET['link']) == 'customer') {
             include "pages/add/master/customer.php";
             header("Location: " . $baseURL . "/index.php?link=customer");
         } elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
-        } elseif (($_GET['link']) == 'data_karyawan') {
-            include "datakaryawan.php";
-            header("Location: " . $baseURL . "/index.php?link=data_karyawan");
-<<<<<<< Updated upstream
         } elseif (($_GET['link']) == 'data_customer') {
             include "datacustomer.php";
             header("Location: " . $baseURL . "/index.php?link=data_customer");
-=======
->>>>>>> Stashed changes
         } elseif (($_GET['link']) == 'data_jabatan') {
             include "pages/add/master/jabatan.php";
             header("Location: " . $baseURL . "/index.php?link=data_jabatan");
@@ -152,17 +159,20 @@ if (isset($_GET['link'])) {
         } elseif (($_GET['link']) == 'data_akun') {
             include "pages/add/master/akun.php";
             header("Location: " . $baseURL . "/index.php?link=data_akun");
-        }
+        } 
+
+        
     } else {
+    
         include 'login.php';
         header("Location: " . $baseURL . "/index.php?link=login");
     }
 
-    // include 'menu/footer.php';
     ?>
 </body>
 
 </html>
+
 
 <!-- JaVASCRIPT -->
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>

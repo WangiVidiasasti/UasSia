@@ -4,6 +4,8 @@
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/karyawan.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/karyawan.php";
 
 // Debugging untuk memastikan file di-include dengan benar
 if (function_exists('Tampil_Data')) {
@@ -25,12 +27,12 @@ $data = Tampil_Data('karyawan');
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Data Desa Kucur</h4>
+                        <h4 class="mb-sm-0 font-size-18">Data Laundry</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Desa Kucur</a></li>
-                                <li class="breadcrumb-item active">Data Agama</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Karyawan</a></li>
+                                <li class="breadcrumb-item active">Data Karyawan</li>
                             </ol>
                         </div>
 
@@ -47,10 +49,10 @@ $data = Tampil_Data('karyawan');
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#modalagama">Tambah Data</button>
+                                data-bs-target="#insertModal">Tambah Data</button>
                             
                             <table id="datatable-buttons"
-                                class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
+                                    class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
@@ -62,6 +64,7 @@ $data = Tampil_Data('karyawan');
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Tanggal Masuk</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,6 +93,15 @@ $data = Tampil_Data('karyawan');
                                                     <td><?= $tempatlahir ?></td>
                                                     <td><?= $tgllahir ?></td>
                                                     <td><?= $tglmasuk ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" id="updateModal"
+                                                        data-bs-toggle="modal" data-bs-target="#modalkaryawanupdate"
+                                                        data-idkaryawan="<?= $idkaryawan ?>" data-nmkaryawan="<?= $namakaryawan ?>"
+                                                        data-alamat="<?= $alamat ?>"
+                                                        data-notelp="<?= $notelp ?>" data-email="<?= $email ?>"
+                                                        data-status="<?= $status ?>" data-tmptlahir="<?= $tempatlahir ?>"
+                                                        data-tgllahir="<?= $tgllahir ?>" data-tglmasuk="<?= $tglmasuk ?>">Update</button>
+                                                    </td>
                                                 </tr>
                                                 <?php
                                             }
@@ -106,6 +118,28 @@ $data = Tampil_Data('karyawan');
     </div>
 </div>
 <script>
-    var data = <?php Tampil_Data("datakaryawan") ?>
-    console.log(data);
-</script>
+        $(document).ready(function () {
+            $(document).on('click', '#updateModal', function () {
+                var varidkaryawan = $(this).data('idkaryawan');
+                var varkaryawan = $(this).data('nmkaryawan');
+                var varalamat = $(this).data('alamat');
+                var varnotelp = $(this).data('notelp');
+                var varemail = $(this).data('email');
+                var varstatus = $(this).data('status');
+                var vartmptlahir = $(this).data('tmptlahir');
+                var vartgllahir = $(this).data('tgllahir');
+                var vartglmasuk = $(this).data('tglmasuk');
+
+                $('#id_karyawan').val(varidkaryawan);
+                $('#nama_karyawan').val(varkaryawan);
+                $('#alamat').val(varalamat);
+                $('#notelp').val(varnotelp);
+                $('#email').val(varemail);
+                $('#status').val(varstatus);
+                $('#tmptlahir').val(vartmptlahir);
+                $('#tgllahir').val(vartgllahir);
+                $('#tglmasuk').val(vartglmasuk);
+                
+            })
+        })
+    </script>

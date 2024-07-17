@@ -39,4 +39,75 @@ function Tampil_Data($namaApi)
     return json_decode($response);
   
 }
+function Delete_Data($table)
+{
+    global $koneksi;
+    $pk = Decrypt_Data($_GET['id']);
+    $queryStruktur = "DESC $table";
+    $getStruktur = mysqli_query($koneksi, $queryStruktur);
+    $fetchStruktur = mysqli_fetch_assoc($getStruktur);
+    $primaryColumn = $fetchStruktur['Field'];
+
+    $queryDelete = "DELETE FROM $table WHERE $primaryColumn = '$pk'";
+    $delete = mysqli_query($koneksi, $queryDelete);
+
+    if ($delete) {
+        $_SESSION['hasil'] = "Data berhasil dihapus";
+
+        // ACTIVITY LOG-- insert into <tabel yang relevan>: activity, (timestamp -default), username, role WIP
+        // Uncomment below when finished
+        // $namaLayanan = ltrim($table, "transaksi_");
+        // $tabelLog = "log_activity_" . $namaLayanan;
+        // $username = $_SESSION['user']['username'];
+        // $role = $_SESSION['user']['role'];
+        // $queryActivity = mysqli_query($koneksi, "INSERT INTO $tabelLog (activity, username, role) VALUES ('Hapus data $namaLayanan dengan Nomor $pk', $username, $role)");
+    } else {
+        $_SESSION['warning'] = "Data gagal dihapus: " . mysqli_error($koneksi);
+    }
+}
+function Update_Data($table, $data, ...$custom)
+{
+
+    global $koneksi;
+
+    // mendapatkan struktur tabel dalam bentuk array variabel array ada 2 karena variabel arrstruktur tidak akan diganti menjadi kolom + value
+    $queryStruktur = "DESC $table";
+    $getStruktur = mysqli_query($koneksi, $queryStruktur);
+    while ($fetchStruktur = mysqli_fetch_assoc($getStruktur)) {
+        $arrStruktur[] = $fetchStruktur['Field'];
+        $columnName[] = $fetchStruktur['Field'];
+    }
+
+    // fungsi if untuk menjalankan query apakah diupdate sesuai default kolom tabel / custom kolom
+    if (is_array($custom) && empty($custom)) {
+        $kolomfix = $columnName;
+    } else {
+        $kolomfix = $custom[0];
+    }
+    // print_r($kolomfix);
+
+    // merubah variabel kolomfix dengan menambahkan value
+    foreach ($kolomfix as $index => $value) {
+        $kolomfix[$index] = $value . " = " . "'" . $data[$index] . "'";
+    }
+    // echo json_encode($kolomfix);
+
+    // mengubah menjadi string dan menambahkan pemisah koma
+    $kolomUpdate = implode(", ", $kolomfix);
+
+    // mendefinisikan primary key untuk kondisi
+    $PKColumn = $arrStruktur[0];
+    $PKValue = "'" . $data[0] . "'";
+    $kondisi = $PKColumn . " = " . $PKValue;
+
+
+    // memberlakukan query update
+    $queryUpdate = "UPDATE $table SET $kolomUpdate WHERE $kondisi";
+    $updateData = mysqli_query($koneksi, $queryUpdate);
+    if ($updateData) {
+        $_SESSION['hasil'] = "Data berhasil diupdate";
+    } else {
+        $_SESSION['warning'] = "Data gagal diupdate: " . mysqli_error($koneksi);
+    }
+}
 ?>

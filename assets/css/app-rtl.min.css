@@ -1594,7 +1594,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .container-fluid, body[data
 .waves-circle {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+
 }
 
 .waves-button,
@@ -1650,7 +1650,6 @@ body[data-layout=horizontal][data-layout-size=boxed] .container-fluid, body[data
 }
 
 .waves-float {
-  -webkit-mask-image: none;
   -webkit-box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
   box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.12);
   -webkit-transition: all 300ms;
@@ -3662,7 +3661,7 @@ div.dataTables_wrapper div.dataTables_info {
   border: 1px solid #74788d;
 }
 .table-rep-plugin .btn-group .btn-default.btn-primary {
-  background-color: #5156be;
+  background-color: #898ba9;
   border-color: #5156be;
   color: #fff;
   -webkit-box-shadow: 0 0 0 2px rgba(81, 86, 190, 0.5);

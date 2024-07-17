@@ -31,7 +31,7 @@
                                 <option selected disabled>Pilih Jenis Kelamin</option>
                                 <?php
                                 $queryGetKelamin = "SELECT * FROM master_jenis_kelamin";
-                                $getKelamin = mysqli_query($conn, $queryGetKelamin);
+                                $getKelamin = mysqli_query($koneksi, $queryGetKelamin);
                                 while ($kelamin = mysqli_fetch_assoc($getKelamin)) {
                                     ?>
                                     <option value="<?= $kelamin['id_jenis_kelamin'] ?>">
@@ -58,7 +58,7 @@
                                         <option selected disabled>Pilih Dusun</option>
                                         <?php
                                         $queryGetDusun = "SELECT * FROM master_dusun";
-                                        $getDusun = mysqli_query($conn, $queryGetDusun);
+                                        $getDusun = mysqli_query($koneksi, $queryGetDusun);
                                         while ($dusun = mysqli_fetch_assoc($getDusun)) {
                                             ?>
                                             <option value="<?= $dusun['id_dusun'] ?>">
@@ -96,7 +96,7 @@
                                 <option selected disabled>Pilih Kewarganegaraan</option>
                                 <?php
                                 $queryGetKwn = "SELECT * FROM master_kewarganegaraan";
-                                $getKwn = mysqli_query($conn, $queryGetKwn);
+                                $getKwn = mysqli_query($koneksi, $queryGetKwn);
                                 while ($kwn = mysqli_fetch_assoc($getKwn)) {
                                     ?>
                                     <option value="<?= $kwn['id_kwn'] ?>">
@@ -117,7 +117,7 @@
                                 <option disabled selected>Pilih Agama</option>
                                 <?php
                                 $queryGetagama = "SELECT * FROM master_agama";
-                                $getagama = mysqli_query($conn, $queryGetagama);
+                                $getagama = mysqli_query($koneksi, $queryGetagama);
                                 while ($agama = mysqli_fetch_assoc($getagama)) {
                                     ?>
                                     <option value="<?= $agama['id_agama'] ?>">
@@ -134,7 +134,7 @@
                                 <option selected disabled>Pilih Status Kawin</option>
                                 <?php
                                 $queryGetstatus_kawin = "SELECT * FROM master_status_kawin";
-                                $getstatus_kawin = mysqli_query($conn, $queryGetstatus_kawin);
+                                $getstatus_kawin = mysqli_query($koneksi, $queryGetstatus_kawin);
                                 while ($status_kawin = mysqli_fetch_assoc($getstatus_kawin)) {
                                     ?>
                                     <option value="<?= $status_kawin['id_status_kawin'] ?>">
@@ -151,7 +151,7 @@
                                 <option selected disabled>Pilih Golongan Darah</option>
                                 <?php
                                 $queryGetgolongandarah = "SELECT * FROM master_golongandarah";
-                                $getgolongandarah = mysqli_query($conn, $queryGetgolongandarah);
+                                $getgolongandarah = mysqli_query($koneksi, $queryGetgolongandarah);
                                 while ($golongandarah = mysqli_fetch_assoc($getgolongandarah)) {
                                     ?>
                                     <option value="<?= $golongandarah['id_golongandarah'] ?>">
@@ -168,7 +168,7 @@
                                 <option selected disabled>Pilih SHDRT</option>
                                 <?php
                                 $queryGetshdrt = "SELECT * FROM master_shdrt";
-                                $getshdrt = mysqli_query($conn, $queryGetshdrt);
+                                $getshdrt = mysqli_query($koneksi, $queryGetshdrt);
                                 while ($shdrt = mysqli_fetch_assoc($getshdrt)) {
                                     ?>
                                     <option value="<?= $shdrt['id_shdrt'] ?>">
@@ -185,7 +185,7 @@
                                 <option selected disabled>Pilih Pendidikan</option>
                                 <?php
                                 $queryGetpendidikan = "SELECT * FROM master_pendidikan";
-                                $getpendidikan = mysqli_query($conn, $queryGetpendidikan);
+                                $getpendidikan = mysqli_query($koneksi, $queryGetpendidikan);
                                 while ($pendidikan = mysqli_fetch_assoc($getpendidikan)) {
                                     ?>
                                     <option value="<?= $pendidikan['id_pendidikan'] ?>">
@@ -198,7 +198,7 @@
                         </div>
                         <?php
                         $queryGetJenisData = "SELECT * FROM master_jenis_data_penduduk";
-                        $getJenisData = mysqli_query($conn, $queryGetJenisData);
+                        $getJenisData = mysqli_query($koneksi, $queryGetJenisData);
                         while ($jenisData = mysqli_fetch_assoc($getJenisData)) {
                             ?>
                             <div class="mb-3">
@@ -212,7 +212,7 @@
                             <?php
                         }
                         $queryGetJenisBerkas = "SELECT * FROM master_jenis_berkas_penduduk ORDER BY status_required";
-                        $getJenisBerkas = mysqli_query($conn, $queryGetJenisBerkas);
+                        $getJenisBerkas = mysqli_query($koneksi, $queryGetJenisBerkas);
                         while ($jenisBerkas = mysqli_fetch_assoc($getJenisBerkas)) {
                             if ($jenisBerkas['status_required'] == 1) {
                                 ?>
