@@ -12,35 +12,35 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="nama_karyawan" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_karyawan" id="nama_karyawan">
+                                    <input type="text" class="form-control" name="nama_karyawan" id="nama_karyawan" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id="alamat">
+                                    <input type="text" class="form-control" name="alamat" id="alamat" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="notelp" class="form-label">No Telpon</label>
-                                    <input type="number" class="form-control" name="no_telp" id="notelp">
+                                    <input type="number" class="form-control" name="no_telp" id="notelp" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email">
+                                    <input type="email" class="form-control" name="email" id="email" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir">
+                                    <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir">
+                                    <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="status_pekerjaan" class="form-label">Status pekerjaan</label>
-                                    <input type="text" class="form-control" name="status_pekerjaan" id="status_pekerjaan">
+                                    <input type="text" class="form-control" name="status_pekerjaan" id="status_pekerjaan" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tanggal_masuk" class="form-label">Tanggal Masuk</label>
-                                    <input type="date" class="form-control" name="tanggal_masuk" id="tanggal_masuk">
+                                    <input type="date" class="form-control" name="tanggal_masuk" id="tanggal_masuk" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_karyawan" type="submit" class="btn btn-primary">Simpan Data</button>
