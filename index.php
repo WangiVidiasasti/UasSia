@@ -144,6 +144,16 @@ if (isset($_GET['link'])) {
         } else {
             include "jabatan.php";
         
+    }  elseif ($_GET['link'] == 'data_pengiriman') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') {
+                Delete_Data('master_pengiriman');
+                header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
+                exit;
+            }
+        } else {
+            include "pengiriman.php";
+        }
         // Tidak perlu pengalihan setelah include
     }
 }
@@ -160,9 +170,6 @@ if (isset($_GET['link'])) {
         } elseif (($_GET['link']) == 'data_katalog') {
             include "pages/add/master/katalog.php";
             header("Location: " . $baseURL . "/index.php?link=data_katalog");
-        } elseif (($_GET['link']) == 'data_pengiriman') {
-            include "pages/add/master/pengiriman.php";
-            header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
         } elseif (($_GET['link']) == 'data_status') {
             include "pages/add/master/status.php";
             header("Location: " . $baseURL . "/index.php?link=data_status");
