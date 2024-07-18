@@ -1,7 +1,11 @@
+
+
 <?php
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/jabatan.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/jabatan.php";
 
 // Debugging untuk memastikan file di-include dengan benar
 if (function_exists('Tampil_Data')) {
@@ -11,7 +15,7 @@ if (function_exists('Tampil_Data')) {
 }
 
 // Panggilan ke fungsi Tampil_Data
-$data = Tampil_Data('karyawan');
+$data = Tampil_Data('jabatan');
 ?>
 
 
@@ -27,7 +31,7 @@ $data = Tampil_Data('karyawan');
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Laundry</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Jabatan</a></li>
                                 <li class="breadcrumb-item active">Data Jabatan</li>
                             </ol>
                         </div>
@@ -45,17 +49,18 @@ $data = Tampil_Data('karyawan');
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#modalagama">Tambah Data</button>
+                                data-bs-target="#insertModal">Tambah Data</button>
                             
                             <table id="datatable-buttons"
-                                class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
+                                    class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Jabatan</th>
+                                        <th>Nama Karyawan</th>
                                         <th>Gaji Pokok</th>
                                         <th>Gaji Lembur</th>
                                         <th>Potongan</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,6 +81,14 @@ $data = Tampil_Data('karyawan');
                                                     <td><?= $gajipokok ?></td>
                                                     <td><?= $gajilembur ?></td>
                                                     <td><?= $potongan ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" id="updateModal"
+                                                        data-bs-toggle="modal" data-bs-target="#updateModal"
+                                                        data-idjabatan="<?= $idjabatan ?>" data-nmjabatan="<?= $namajabatan ?>"
+                                                        data-gjpokok="<?= $gajipokok ?>"
+                                                        data-gjlembur="<?= $gajilembur ?>" data-potongan="<?= $potongan ?>"
+                                                        >Update</button>
+                                                    </td>
                                                 </tr>
                                                 <?php
                                             }
@@ -92,6 +105,21 @@ $data = Tampil_Data('karyawan');
     </div>
 </div>
 <script>
-    var data = <?php Tampil_Data("jabatan") ?>
-    console.log(data);
-</script>
+        $(document).ready(function () {
+            $(document).on('click', '#updateModal', function () {
+                var varidjabatan = $(this).data('idjabatan');
+                var varjabatan = $(this).data('nmjabatan');
+                var vargajipokok = $(this).data('gjpokok');
+                var vargajilembur = $(this).data('gjlembur');
+                var varpotongan = $(this).data('potongan');
+
+                $('#id_jabatan').val(varidjabatan);
+                $('#nama_jabatan').val(varjabatan);
+                $('#gaji_pokok').val(vargajipokok);
+                $('#gaji_lembur').val(vargajilembur);
+                $('#potongan').val(varpotongan);
+               
+                
+            })
+        })
+    </script>

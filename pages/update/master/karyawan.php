@@ -11,7 +11,6 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="md-3">
-                                    
                                     <input name="id_karyawan" type="hidden" class="form-control" id="id_karyawan" readonly>
                                 </div>
                                 <div class="mb-3">

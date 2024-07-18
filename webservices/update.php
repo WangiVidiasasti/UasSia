@@ -37,5 +37,19 @@ if (isset($_POST['update_barang'])) {
     Update_Data("master_barang", $data);
     header("Location: " . $baseURL . "/index.php?link=data_barang");
 }
+if (isset($_POST['update_jabatan'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_jabatan']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
+        mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
+        mysqli_real_escape_string($koneksi, $_POST['gaji_lembur']),
+        mysqli_real_escape_string($koneksi, $_POST['potongan']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_jabatan", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+}
 
 ?>
