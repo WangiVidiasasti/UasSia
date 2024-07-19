@@ -4,8 +4,8 @@
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/supplier.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/supplier.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/akun.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/akun.php";
 
 // Debugging untuk memastikan file di-include dengan benar
 if (function_exists('Tampil_Data')) {
@@ -15,7 +15,7 @@ if (function_exists('Tampil_Data')) {
 }
 
 // Panggilan ke fungsi Tampil_Data
-$data = Tampil_Data('supplier');
+$data = Tampil_Data('akun');
 ?>
 
 
@@ -31,8 +31,8 @@ $data = Tampil_Data('supplier');
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Karyawan</a></li>
-                                <li class="breadcrumb-item active">Data Karyawan</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Akun</a></li>
+                                <li class="breadcrumb-item active">Data Akun</li>
                             </ol>
                         </div>
 
@@ -45,52 +45,46 @@ $data = Tampil_Data('supplier');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Supplier</h4>
+                            <h4 class="card-title">Data Akun</h4>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#insertsupplierModal">Tambah Data</button>
+                                data-bs-target="#insertModal">Tambah Data</button>
                             
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Supplier</th>
-                                        <th>Nama Toko</th>
-                                        <th>No Telp</th>
-                                        <th>Alamat</th>
+                                        <th>Nomor Akun</th>
+                                        <th>Nama Akun</th>
+                                        <th>Saldo</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                         <?php
-                                        $data = Tampil_Data("supplier");
+                                        $data = Tampil_Data("akun");
                                         $no = 1;
                                         if ($data !== null) {
                                             foreach ($data as $j) {
-                                                $idsupplier = $j->id_supplier;
-                                                $namasupplier = $j->nama_supplier;
-                                                $namatoko = $j->nama_toko;
-                                                $notelp = $j->no_telp;
-                                                $alamat = $j->alamat;
+                                                $noakun = $j->no_akun;
+                                                $namaakun= $j->nama_akun;
+                                                $saldo = $j->saldo;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
-                                                    <td><?= $namasupplier?></td>
-                                                    <td><?= $namatoko ?></td>
-                                                    <td><?= $notelp ?></td>
-                                                    <td><?= $alamat ?></td>
+                                                    <td><?= $noakun ?></td>
+                                                    <td><?= $namaakun ?></td>
+                                                    <td><?= $saldo ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
-                                                        data-bs-toggle="modal" data-bs-target="#updatesupplierModal"
-                                                        data-idsupplier="<?= $idsupplier ?>" 
-                                                        data-nmsupplier="<?=$namasupplier ?>"
-                                                        data-nmtoko="<?=$namatoko ?>"
-                                                        data-notelp="<?= $notelp ?>"
-                                                        data-alamat="<?= $alamat ?>">Update</button>
+                                                        data-bs-toggle="modal" data-bs-target="#updateakunModal"
+                                                        data-nakun="<?= $noakun ?>" 
+                                                        data-nmakun="<?= $namaakun?>"
+                                                        data-sald="<?= $saldo?>">Update</button>
                                                     </td>
-                                                </tr>
+                                                </tr>                                      
                                                 <?php
                                             }
                                         }
@@ -108,17 +102,13 @@ $data = Tampil_Data('supplier');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidsupplier = $(this).data('idsupplier');
-                var varnamasupplier = $(this).data('nmsupplier');
-                var vartoko= $(this).data('nmtoko');
-                var varnotelp = $(this).data('notelp');
-                var varpalamat= $(this).data('alamat');
+                var varnoakun = $(this).data('nakun');
+                var varnamaakun = $(this).data('nmakun');
+                var varsaldo = $(this).data('sald');
 
-                $('#id_supplier').val(varidsupplier);
-                $('#nama_supplier').val(varnamasupplier);
-                $('#nama_toko').val(vartoko);
-                $('#no_telp').val(varnotelp);
-                $('#alamat').val(varalamat);
+                $('#noakn').val(varnoakun);
+                $('#nmaakun').val(varnamaakun);
+                $('#sld').val(varsaldo);
                 
             })
         })

@@ -4,8 +4,8 @@
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/supplier.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/supplier.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/hargaberat.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/hargaberat.php";
 
 // Debugging untuk memastikan file di-include dengan benar
 if (function_exists('Tampil_Data')) {
@@ -15,7 +15,7 @@ if (function_exists('Tampil_Data')) {
 }
 
 // Panggilan ke fungsi Tampil_Data
-$data = Tampil_Data('supplier');
+$data = Tampil_Data('hargaberat');
 ?>
 
 
@@ -45,50 +45,42 @@ $data = Tampil_Data('supplier');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Supplier</h4>
+                            <h4 class="card-title">Data Harga Berat</h4>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#insertsupplierModal">Tambah Data</button>
+                                data-bs-target="#insertModal">Tambah Data</button>
                             
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Supplier</th>
-                                        <th>Nama Toko</th>
-                                        <th>No Telp</th>
-                                        <th>Alamat</th>
+                                        <th>Kilogram</th>
+                                        <th>Harga</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                         <?php
-                                        $data = Tampil_Data("supplier");
+                                        $data = Tampil_Data("hargaberat");
                                         $no = 1;
                                         if ($data !== null) {
                                             foreach ($data as $j) {
-                                                $idsupplier = $j->id_supplier;
-                                                $namasupplier = $j->nama_supplier;
-                                                $namatoko = $j->nama_toko;
-                                                $notelp = $j->no_telp;
-                                                $alamat = $j->alamat;
+                                                $idberat = $j->id_berat;
+                                                $kilogram= $j->kilogram;
+                                                $harga = $j->harga;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
-                                                    <td><?= $namasupplier?></td>
-                                                    <td><?= $namatoko ?></td>
-                                                    <td><?= $notelp ?></td>
-                                                    <td><?= $alamat ?></td>
+                                                    <td><?= $kilogram ?></td>
+                                                    <td><?= $harga ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
-                                                        data-bs-toggle="modal" data-bs-target="#updatesupplierModal"
-                                                        data-idsupplier="<?= $idsupplier ?>" 
-                                                        data-nmsupplier="<?=$namasupplier ?>"
-                                                        data-nmtoko="<?=$namatoko ?>"
-                                                        data-notelp="<?= $notelp ?>"
-                                                        data-alamat="<?= $alamat ?>">Update</button>
+                                                        data-bs-toggle="modal" data-bs-target="#modalharganupdate"
+                                                        data-idbrat="<?= $idberat ?>" 
+                                                        data-kilgram="<?= $kilogram ?>"
+                                                        data-hrga="<?= $harga ?>">Update</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -108,17 +100,13 @@ $data = Tampil_Data('supplier');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidsupplier = $(this).data('idsupplier');
-                var varnamasupplier = $(this).data('nmsupplier');
-                var vartoko= $(this).data('nmtoko');
-                var varnotelp = $(this).data('notelp');
-                var varpalamat= $(this).data('alamat');
+                var varidbert = $(this).data('idbrat');
+                var varkilogrm = $(this).data('kilgram');
+                var varharg = $(this).data('hrga');
 
-                $('#id_supplier').val(varidsupplier);
-                $('#nama_supplier').val(varnamasupplier);
-                $('#nama_toko').val(vartoko);
-                $('#no_telp').val(varnotelp);
-                $('#alamat').val(varalamat);
+                $('#idbrt').val(varidbert);
+                $('#kg').val(varkilogrm);
+                $('#hrg').val(varharg);
                 
             })
         })

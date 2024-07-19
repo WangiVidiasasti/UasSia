@@ -12,15 +12,15 @@
                             <div class="col-lg-6">
                             <div class="mb-3">
                             <label for="namasupplier" class="form-label">Nama supplier</label>
-                            <input type="text" class="form-control" name="nama_supplier" id="nama" required>
+                            <input type="text" class="form-control" name="nama_supplier" id="nama_toko" required>
                         </div>
                         <div class="mb-3">
                             <label for="namatoko" class="form-label">Nama toko</label>
-                            <input type="text" class="form-control" name="nama_toko" id="nama" required>
+                            <input type="text" class="form-control" name="nama_toko" id="nama_toko" required>
                         </div>
                         <div class="mb-3">
                             <label for="notelp" class="form-label">Nomor Telepon</label>
-                            <input type="number" class="form-control" name="no_telp" id="notelp" required>
+                            <input type="number" class="form-control" name="no_telp" id="no_telp" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>

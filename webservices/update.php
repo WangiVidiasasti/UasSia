@@ -115,4 +115,30 @@ if (isset($_POST['update_katalog'])) {
     Update_Data("master_katalog_laundry", $data);
     header("Location: " . $baseURL . "/index.php?link=data_katalog");
 }
+
+if (isset($_POST['update_harga_berat'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_berat']),
+        mysqli_real_escape_string($koneksi, $_POST['kilogram']),
+        mysqli_real_escape_string($koneksi, $_POST['harga']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_harga_berat", $data);
+    header("Location: " . $baseURL . "/index.php?link=harga_berat");
+}
+if (isset($_POST['update_akun'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['no_akun']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun']),
+        mysqli_real_escape_string($koneksi, $_POST['saldo']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_akun", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_akun");
+}
+
 ?>

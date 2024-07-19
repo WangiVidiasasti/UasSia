@@ -14,16 +14,16 @@
                                     <input name="id_supplier" type="hidden" class="form-control" id="id_supplier" readonly>
                                 </div>
                             <div class="mb-3">
-                            <label for="nama" class="form-label">nama_supplier</label>
+                            <label for="namasupplier" class="form-label">nama_supplier</label>
                             <input type="text" class="form-control" name="nama_supplier" id="nama_supplier" required>
                         </div>
                         <div class="mb-3">
-                            <label for="nama" class="form-label">Nama_toko</label>
+                            <label for="namatoko" class="form-label">Nama_toko</label>
                             <input type="text" class="form-control" name="nama_toko" id="nama_toko" required>
                         </div>
                         <div class="mb-3">
                             <label for="notelp" class="form-label">Nomor_telepon</label>
-                            <input type="number" class="form-control" name="no_telp" id="notelp" required>
+                            <input type="number" class="form-control" name="no_telp" id="no_telp" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
