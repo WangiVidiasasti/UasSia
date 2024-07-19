@@ -1,7 +1,7 @@
 <?php
 include "../config.php";
 
-$hasil = mysqli_query($koneksi, "SELECT * FROM master_katalog");
+$hasil = mysqli_query($koneksi, "SELECT * FROM master_katalog_laundry");
 
 $jsonRespon = array();
 if (mysqli_num_rows($hasil) > 0) {

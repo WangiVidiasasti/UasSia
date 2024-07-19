@@ -53,5 +53,26 @@ if (isset($_POST['update_supplier'])) {
     Update_Data("master_supplier", $data);
     header("Location: " . $baseURL . "/index.php?link=data_supplier");
 }
+if (isset($_POST['update_status'])) {
 
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_status']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_status']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_status", $data);
+    header("Location: " . $baseURL . "/index.php?link=status");
+}
+if (isset($_POST['update_katalog'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_katalog']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_katalog_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_katalog");
+}
 ?>

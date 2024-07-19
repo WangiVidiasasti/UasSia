@@ -1,11 +1,10 @@
 
-
 <?php
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/barang.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/barang.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/master/status.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/master/status.php";
 
 // Debugging untuk memastikan file di-include dengan benar
 if (function_exists('Tampil_Data')) {
@@ -15,7 +14,7 @@ if (function_exists('Tampil_Data')) {
 }
 
 // Panggilan ke fungsi Tampil_Data
-$data = Tampil_Data('barang');
+$data = Tampil_Data('status');
 ?>
 
 
@@ -31,8 +30,8 @@ $data = Tampil_Data('barang');
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Barang</a></li>
-                                <li class="breadcrumb-item active">Data Barang</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Status</a></li>
+                                <li class="breadcrumb-item active">Data Status</li>
                             </ol>
                         </div>
 
@@ -45,7 +44,7 @@ $data = Tampil_Data('barang');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Barang</h4>
+                            <h4 class="card-title">Data Status</h4>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
@@ -56,31 +55,26 @@ $data = Tampil_Data('barang');
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Barang</th>
-                                        <th>Harga</th>
+                                        <th>Nama</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                         <?php
-                                        $data = Tampil_Data("barang");
+                                        $data = Tampil_Data("status");
                                         $no = 1;
                                         if ($data !== null) {
                                             foreach ($data as $j) {
-                                                $idbarang = $j->id_barang;
-                                                $namabarang = $j->nama;
-                                                $hargabarang = $j->harga;
+                                                $idstatus = $j->id_status;
+                                                $namastatus = $j->nama_status;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
-                                                    <td><?= $namabarang ?></td>
-                                                    <td><?= $hargabarang ?></td>
+                                                    <td><?= $namastatus ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" id="updateModal"
-                                                        data-bs-toggle="modal" data-bs-target="#Modalbarangupdate"
-                                                        data-idbarang="<?= $idbarang ?>" 
-                                                        data-namabarang="<?= $namabarang ?>"
-                                                        data-hargabarang="<?= $hargabarang ?>">Update</button>
+                                                        <button type="button" class="btn btn-primary" id="modalstatusupdate"
+                                                        data-bs-toggle="modal" data-bs-target="#modalstatusupdate"
+                                                        data-idstatus="<?= $idstatus ?>" data-namastatus="<?= $namastatus ?>">Update</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -100,13 +94,11 @@ $data = Tampil_Data('barang');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidbarang = $(this).data('idkatalog');
-                var varbarang = $(this).data('namabarang');
-                var varharga = $(this).data('hargabarang');
+                var varidbarang = $(this).data('idstatus');
+                var varstatus = $(this).data('namastatus');
 
-                $('#id_barang').val(varidbarang);
-                $('#nama_barang').val(varnamabarang);
-                $('#harga_barang').val(varhargabarang);
+                $('#id_status').val(varidbarang);
+                $('#nama_status').val(varstatus);
                 
             })
         })

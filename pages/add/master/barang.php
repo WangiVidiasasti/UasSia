@@ -10,17 +10,17 @@
                     <form method="POST" action="webservices/insert.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-lg-6">
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="nama" class="form-control" name="nama" id="nama" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="harga" class="form-label">Harga</label>
-                                    <input type="number" class="form-control" name="harga" id="harga" required>
-                                </div>
-                                <div class="mb-3 d-flex flex-column">
-                                    <button name="insert_barang" type="submit" class="btn btn-primary">Simpan Data</button>
-                                </div>
+                            <div class="mb-3">
+                            <label for="nama" class="form-label">Nama</label>
+                            <input type="text" class="form-control" name="nama" id="nama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga" class="form-label">Harga</label>
+                            <input type="number" class="form-control" name="harga" id="harga" required>
+                        </div>
+                        <div class="mb-3 d-flex flex-column">
+                            <button name="insert_barang" type="submit" class="btn btn-primary">Simpan Data</button>
+                        </div>
                             </div>
                         </div>
                     </form>

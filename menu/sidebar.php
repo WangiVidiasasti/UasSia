@@ -76,7 +76,7 @@
                             </li>
 
                             <li>
-                                <a href="index.php?link=data_status">
+                                <a href="index.php?link=status">
                                     <i data-feather="home"></i>
                                     <span data-key="t-dashboard">Status</span>
                                 </a>
