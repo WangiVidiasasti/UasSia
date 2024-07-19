@@ -11,11 +11,11 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="md-3">
-                                    <input name="id_status" type="hidden" class="form-control" id="id_status" readonly>
+                                    <input name="id_status" type="hidden" class="form-control" id="idstatusid" readonly>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Status</label>
-                                    <input type="text" class="form-control" name="nama_status" id="nama_status" required>
+                                    <input type="text" class="form-control" name="nama_status" id="nmstatussnm" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_status" type="submit" class="btn btn-primary">Simpan Data</button>

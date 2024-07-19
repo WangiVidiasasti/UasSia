@@ -89,7 +89,7 @@ if (isset($_POST['insert_status'])) {
 
     // Call the Insert_Data function to insert data
     Insert_Data("master_status", $data);
-    header("Location: " . $baseURL . "/index.php?link=data_status");
+    header("Location: " . $baseURL . "/index.php?link=status");
     exit();
 }
 if (isset($_POST['insert_supplier'])) {

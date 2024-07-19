@@ -72,9 +72,9 @@ $data = Tampil_Data('status');
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $namastatus ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" id="modalstatusupdate"
+                                                        <button type="button" class="btn btn-primary" id="idmodalstatusupdate"
                                                         data-bs-toggle="modal" data-bs-target="#modalstatusupdate"
-                                                        data-idstatus="<?= $idstatus ?>" data-namastatus="<?= $namastatus ?>">Update</button>
+                                                        data-statusid="<?= $idstatus ?>" data-statusnm="<?= $namastatus ?>">Update</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -93,12 +93,12 @@ $data = Tampil_Data('status');
 </div>
 <script>
         $(document).ready(function () {
-            $(document).on('click', '#updateModal', function () {
-                var varidbarang = $(this).data('idstatus');
-                var varstatus = $(this).data('namastatus');
+            $(document).on('click', '#idmodalstatusupdate', function () {
+                var varidsts = $(this).data('statusid');
+                var varstsnm = $(this).data('statusnm');
 
-                $('#id_status').val(varidbarang);
-                $('#nama_status').val(varstatus);
+                $('#idstatusid').val(varidsts);
+                $('#nmstatussnm').val(varstsnm);
                 
             })
         })

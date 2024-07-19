@@ -12,7 +12,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="nama_status" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_status" id="nama_status" required>
+                                    <input type="text" class="form-control" name="nama_status" id="nm_status" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_status" type="submit" class="btn btn-primary">Simpan Data</button>
