@@ -25,6 +25,46 @@ if (isset($_POST['update_karyawan'])) {
     Update_Data("master_karyawan", $data);
     header("Location: " . $baseURL . "/index.php?link=karyawan");
 }
+if (isset($_POST['update_customer'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_customer']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
+        mysqli_real_escape_string($koneksi, $_POST['no_telp']),
+        mysqli_real_escape_string($koneksi, $_POST['alamat']),
+        mysqli_real_escape_string($koneksi, $_POST['password']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_customer", $data);
+    header("Location: " . $baseURL . "/index.php?link=customer");
+}
+if (isset($_POST['update_barang'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_barang']),
+        mysqli_real_escape_string($koneksi, $_POST['nama']),
+        mysqli_real_escape_string($koneksi, $_POST['harga']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_barang", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_barang");
+}
+if (isset($_POST['update_jabatan'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_jabatan']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
+        mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
+        mysqli_real_escape_string($koneksi, $_POST['gaji_lembur']),
+        mysqli_real_escape_string($koneksi, $_POST['potongan']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_jabatan", $data);
+    header("Location: " . $baseURL . "/index.php?link=jabatan");
+}
 
 if (isset($_POST['update_pengiriman'])) {
 

@@ -46,7 +46,7 @@ if (isset($_POST['insert_jabatan'])) {
 
     // Call the Insert_Data function to insert data
     Insert_Data("master_jabatan", $data);
-    header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+    header("Location: " . $baseURL . "/index.php?link=jabatan");
     exit();
 }
 if (isset($_POST['insert_barang'])) {

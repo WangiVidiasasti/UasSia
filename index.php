@@ -15,7 +15,7 @@ if (isset($_GET['link'])) {
         $title = "Dashboard | ";
     } elseif (($_GET['link']) == 'login') {
         $title = "Form Login | ";
-    } elseif (($_GET['link']) == 'data_jabatan') {
+    } elseif (($_GET['link']) == 'jabatan') {
         $title = "Master Jabatan | ";
     } elseif (($_GET['link']) == 'data_barang') {
         $title = "Master Barang | ";
@@ -134,11 +134,11 @@ if (isset($_GET['link'])) {
             } else {
                 include "barang.php";
             } 
-        } elseif ($_GET['link'] == 'data_jabatan') {
+        } elseif ($_GET['link'] == 'jabatan') {
             if (isset($_GET['aksi'])) {
                 if ($_GET['aksi'] == 'delete') {
                 Delete_Data('master_karyawan');
-                header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+                header("Location: " . $baseURL . "/index.php?link=jabatan");
                 exit;
             }
             } else {
@@ -165,13 +165,7 @@ if (isset($_GET['link'])) {
         } else {
             include "supplier.php";
         }
-        // Tidak perlu pengalihan setelah include
-    }
-    // Menampilkan halaman data surat masuk
- elseif (($_GET['link']) == 'customer') {
-            } else {
-                include "pengiriman.php";
-            } 
+    
         } elseif ($_GET['link'] == 'status') {
             if (isset($_GET['aksi'])) {
                 if ($_GET['aksi'] == 'delete') {
@@ -192,21 +186,19 @@ if (isset($_GET['link'])) {
             } else {
                 include "katalog.php";
             }     
-        } elseif (($_GET['link']) == 'customer') {
-            include "pages/add/master/customer.php";
-            header("Location: " . $baseURL . "/index.php?link=customer");
-        } elseif (($_GET['link']) == 'laporan') {
+        } elseif ($_GET['link'] == 'customer') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') {
+                Delete_Data('master_karyawan');
+                header("Location: " . $baseURL . "/index.php?link=customer");
+                exit;
+            }
+        } else {
+            include "datacustomer.php";
+        }
+    } elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
-        } elseif (($_GET['link']) == 'data_customer') {
-            include "datacustomer.php";
-            header("Location: " . $baseURL . "/index.php?link=data_customer");
-        } elseif (($_GET['link']) == 'data_jabatan') {
-            include "pages/add/master/jabatan.php";
-            header("Location: " . $baseURL . "/index.php?link=data_jabatan");
-        } elseif (($_GET['link']) == 'data_barang') {
-            include "pages/add/master/barang.php";
-            header("Location: " . $baseURL . "/index.php?link=data_barang");
         } elseif (($_GET['link']) == 'data_katalog') {
             include "pages/add/master/katalog.php";
             header("Location: " . $baseURL . "/index.php?link=data_katalog");
@@ -221,8 +213,7 @@ if (isset($_GET['link'])) {
             header("Location: " . $baseURL . "/index.php?link=data_akun");
         } 
 
-        
-    else {
+    } else {
     
         include 'login.php';
         header("Location: " . $baseURL . "/index.php?link=login");

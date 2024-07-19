@@ -83,10 +83,10 @@ $data = Tampil_Data('jabatan');
                                                     <td><?= $potongan ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
-                                                        data-bs-toggle="modal" data-bs-target="#updateModal"
-                                                        data-idjabatan="<?= $idjabatan ?>" data-nmjabatan="<?= $namajabatan ?>"
+                                                        data-bs-toggle="modal" data-bs-target="#modaljabatanupdate"
+                                                        data-idjbtn="<?= $idjabatan ?>" data-nmjabatan="<?= $namajabatan ?>"
                                                         data-gjpokok="<?= $gajipokok ?>"
-                                                        data-gjlembur="<?= $gajilembur ?>" data-potongan="<?= $potongan ?>"
+                                                        data-gjlembur="<?= $gajilembur ?>" data-ptngan="<?= $potongan ?>"
                                                         >Update</button>
                                                     </td>
                                                 </tr>
@@ -107,17 +107,17 @@ $data = Tampil_Data('jabatan');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidjabatan = $(this).data('idjabatan');
+                var varidjabatan = $(this).data('idjbtn');
                 var varjabatan = $(this).data('nmjabatan');
-                var vargajipokok = $(this).data('gjpokok');
-                var vargajilembur = $(this).data('gjlembur');
-                var varpotongan = $(this).data('potongan');
+                var vargajipokokjb = $(this).data('gjpokok');
+                var vargajilemburjb = $(this).data('gjlembur');
+                var varpotonganjb = $(this).data('ptngan');
 
                 $('#id_jabatan').val(varidjabatan);
                 $('#nama_jabatan').val(varjabatan);
-                $('#gaji_pokok').val(vargajipokok);
-                $('#gaji_lembur').val(vargajilembur);
-                $('#potongan').val(varpotongan);
+                $('#gaji_pokok').val(vargajipokokjb);
+                $('#gaji_lembur').val(vargajilemburjb);
+                $('#potongan').val(varpotonganjb);
                
                 
             })

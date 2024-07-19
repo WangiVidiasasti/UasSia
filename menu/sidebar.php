@@ -21,7 +21,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php?link=data_customer">
+                                <a href="index.php?link=customer">
                                     <i data-feather="grid"></i>
                                     <span data-key="t-dashboard">Data Customer</span>
                                 </a>
@@ -48,7 +48,7 @@
                             </li>
 
                             <li>
-                                <a href="index.php?link=data_jabatan">
+                                <a href="index.php?link=jabatan">
                                     <i data-feather="home"></i>
                                     <span data-key="t-dashboard">Jabatan</span>
                                 </a>

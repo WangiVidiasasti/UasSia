@@ -1,5 +1,5 @@
 <div>
-    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modaljabatanupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
@@ -11,23 +11,23 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="md-3">
-                                    <input name="id_jabatan" type="hidden" class="form-control" id="id_jabatan" readonly>
+                                    <input name="id_jabatan" type="hidden" class="form-control" id="" readonly>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_jabatan" id="nama_jabatan" required>
+                                    <label for="nama_jabatan" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" name="nama_jabatan" id="" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Gaji Pokok</label>
-                                    <input type="text" class="form-control" name="gaji_pokok" id="gaji_pokok" required>
+                                    <label for="gaji_pokok" class="form-label">Gaji Pokok</label>
+                                    <input type="number" class="form-control" name="gaji_pokok" id="" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="notelp" class="form-label">Gaji Lembur</label>
-                                    <input type="number" class="form-control" name="gaji_lembur" id="gaji_lembur" required>
+                                    <input type="number" class="form-control" name="gaji_lembur" id="" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Potongan</label>
-                                    <input type="text" class="form-control" name="potongan" id="potongan" required>
+                                    <input type="number" class="form-control" name="potongan" id="" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_jabatan" type="submit" class="btn btn-primary">Simpan Data</button>
