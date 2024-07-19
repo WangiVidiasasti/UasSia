@@ -87,8 +87,11 @@ $data = Tampil_Data('jabatan');
                                                         data-idjbtn="<?= $idjabatan ?>" data-nmjabatan="<?= $namajabatan ?>"
                                                         data-gjpokok="<?= $gajipokok ?>"
                                                         data-gjlembur="<?= $gajilembur ?>" data-ptngan="<?= $potongan ?>"
-                                                        >Update</button>
+                                                        >Update</button> 
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" >Hapus</button>
                                                     </td>
+                                                    
                                                 </tr>
                                                 <?php
                                             }
@@ -122,4 +125,23 @@ $data = Tampil_Data('jabatan');
                 
             })
         })
+        $(document).on('click', '#deleteConfirmation', function() {
+                var idjabatan = $(this).data('idjbtn');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "File yang dihapus akan hilang",
+                    icon: "warning",
+                    showCancelButton: !0,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan"
+                }).then(function(res) {
+                    if (res.isConfirmed) {
+                        Swal.fire("Terhapus!", "Data telah dihapus.", "success");
+                        location.assign("<?= $baseURL ?>/index.php?link=jabatan&aksi=delete&id=" + idjabatan);
+                        //Bagian untuk delete\\    
+                    }
+                })
+            })
     </script>
