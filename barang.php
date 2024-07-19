@@ -100,13 +100,13 @@ $data = Tampil_Data('barang');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidbarang = $(this).data('idkatalog');
+                var varidbarang = $(this).data('idbarang');
                 var varbarang = $(this).data('namabarang');
                 var varharga = $(this).data('hargabarang');
 
                 $('#id_barang').val(varidbarang);
-                $('#nama_barang').val(varnamabarang);
-                $('#harga_barang').val(varhargabarang);
+                $('#nama').val(varbarang);
+                $('#harga').val(varharga);
                 
             })
         })

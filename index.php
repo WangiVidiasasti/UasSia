@@ -1,4 +1,3 @@
-@ -1,287 +1,284 @@
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -126,7 +125,6 @@ if (isset($_GET['link'])) {
         }
         // Tidak perlu pengalihan setelah include
     } elseif ($_GET['link'] == 'data_barang') {
-    }  elseif ($_GET['link'] == 'data_pengiriman') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') {
                 Delete_Data('master_barang');
@@ -156,12 +154,7 @@ if (isset($_GET['link'])) {
             } else {
                 include "pengiriman.php";
             } 
-        } elseif (($_GET['link']) == 'customer') {
-        } else {
-            include "customer.php";
-        }
-        // Tidak perlu pengalihan setelah include
-    } elseif ($_GET['link'] == 'data_supplier') {
+        }  elseif ($_GET['link'] == 'data_supplier') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') {
                 Delete_Data('master_supplier');
@@ -228,31 +221,21 @@ if (isset($_GET['link'])) {
         // Tidak perlu pengalihan setelah include
     }
     // Menampilkan halaman data surat masuk
- elseif (($_GET['link']) == 'customer') {
-            include "pages/add/master/customer.php";
-            header("Location: " . $baseURL . "/index.php?link=customer");
-        } elseif (($_GET['link']) == 'laporan') {
+  elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
-        } elseif (($_GET['link']) == 'data_katalog') {
-            include "pages/add/master/katalog.php";
-            header("Location: " . $baseURL . "/index.php?link=data_katalog");
-        } elseif (($_GET['link']) == 'data_status') {
-            include "pages/add/master/status.php";
-            header("Location: " . $baseURL . "/index.php?link=data_status");
         }  
         
-     else {
+    } else {
     
         include 'login.php';
         header("Location: " . $baseURL . "/index.php?link=login");
     }
-
+    
     ?>
 </body>
 
 </html>
-
 
 <!-- JaVASCRIPT -->
 <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
