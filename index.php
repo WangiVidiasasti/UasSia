@@ -124,37 +124,31 @@ if (isset($_GET['link'])) {
             include "datakaryawan.php";
         }
         // Tidak perlu pengalihan setelah include
-    } elseif ($_GET['link'] == 'data_barang') {
+    }  elseif ($_GET['link'] == 'data_pengiriman') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') {
-                Delete_Data('barang');
-                header("Location: " . $baseURL . "/index.php?link=data_barang");
-                exit;
-            }
-            } else {
-                include "barang.php";
-            } 
-        } elseif ($_GET['link'] == 'data_jabatan') {
-            if (isset($_GET['aksi'])) {
-                if ($_GET['aksi'] == 'delete') {
-                Delete_Data('master_karyawan');
-                header("Location: " . $baseURL . "/index.php?link=data_jabatan");
-                exit;
-            }
-            } else {
-                include "jabatan.php";
-            } 
-        } elseif ($_GET['link'] == 'data_pengiriman') {
-            if (isset($_GET['aksi'])) {
-                if ($_GET['aksi'] == 'delete') {
                 Delete_Data('master_pengiriman');
                 header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
                 exit;
             }
-            } else {
-                include "pengiriman.php";
-            } 
-        } elseif (($_GET['link']) == 'customer') {
+        } else {
+            include "pengiriman.php";
+        }
+        // Tidak perlu pengalihan setelah include
+    } elseif ($_GET['link'] == 'data_supplier') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') {
+                Delete_Data('master_supplier');
+                header("Location: " . $baseURL . "/index.php?link=data_supplier");
+                exit;
+            }
+        } else {
+            include "supplier.php";
+        }
+        // Tidak perlu pengalihan setelah include
+    }
+    // Menampilkan halaman data surat masuk
+ elseif (($_GET['link']) == 'customer') {
             include "pages/add/master/customer.php";
             header("Location: " . $baseURL . "/index.php?link=customer");
         } elseif (($_GET['link']) == 'laporan') {
@@ -163,15 +157,18 @@ if (isset($_GET['link'])) {
         } elseif (($_GET['link']) == 'data_customer') {
             include "datacustomer.php";
             header("Location: " . $baseURL . "/index.php?link=data_customer");
+        } elseif (($_GET['link']) == 'data_jabatan') {
+            include "pages/add/master/jabatan.php";
+            header("Location: " . $baseURL . "/index.php?link=data_jabatan");
+        } elseif (($_GET['link']) == 'data_barang') {
+            include "pages/add/master/barang.php";
+            header("Location: " . $baseURL . "/index.php?link=data_barang");
         } elseif (($_GET['link']) == 'data_katalog') {
             include "pages/add/master/katalog.php";
             header("Location: " . $baseURL . "/index.php?link=data_katalog");
         } elseif (($_GET['link']) == 'data_status') {
             include "pages/add/master/status.php";
             header("Location: " . $baseURL . "/index.php?link=data_status");
-        } elseif (($_GET['link']) == 'data_supplier') {
-            include "pages/add/master/supplier.php";
-            header("Location: " . $baseURL . "/index.php?link=data_supplier");
         } elseif (($_GET['link']) == 'harga_berat') {
             include "pages/add/master/hargaberat.php";
             header("Location: " . $baseURL . "/index.php?link=harga_berat");

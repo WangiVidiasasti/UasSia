@@ -25,32 +25,6 @@ if (isset($_POST['update_karyawan'])) {
     Update_Data("master_karyawan", $data);
     header("Location: " . $baseURL . "/index.php?link=karyawan");
 }
-if (isset($_POST['update_barang'])) {
-
-    $data = array(
-        mysqli_real_escape_string($koneksi, $_POST['id_barang']),
-        mysqli_real_escape_string($koneksi, $_POST['nama']),
-        mysqli_real_escape_string($koneksi, $_POST['harga']),
-    );
-
-    // Call the Insert_Data function to insert data
-    Update_Data("master_barang", $data);
-    header("Location: " . $baseURL . "/index.php?link=data_barang");
-}
-if (isset($_POST['update_jabatan'])) {
-
-    $data = array(
-        mysqli_real_escape_string($koneksi, $_POST['id_jabatan']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
-        mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
-        mysqli_real_escape_string($koneksi, $_POST['gaji_lembur']),
-        mysqli_real_escape_string($koneksi, $_POST['potongan']),
-    );
-
-    // Call the Insert_Data function to insert data
-    Update_Data("master_jabatan", $data);
-    header("Location: " . $baseURL . "/index.php?link=data_jabatan");
-}
 
 if (isset($_POST['update_pengiriman'])) {
 
@@ -64,6 +38,20 @@ if (isset($_POST['update_pengiriman'])) {
     // Call the Insert_Data function to insert data
     Update_Data("master_pengiriman", $data);
     header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
+}
+if (isset($_POST['update_supplier'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['id_supplier']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_toko']),
+        mysqli_real_escape_string($koneksi, $_POST['no_telp']),
+        mysqli_real_escape_string($koneksi, $_POST['alamat']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("master_supplier", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_supplier");
 }
 
 ?>
