@@ -96,11 +96,11 @@ $data = Tampil_Data('karyawan');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modalkaryawanupdate"
-                                                        data-idkaryawan="<?= $idkaryawan ?>" data-nmkaryawan="<?= $namakaryawan ?>"
-                                                        data-alamat="<?= $alamat ?>"
-                                                        data-notelp="<?= $notelp ?>" data-email="<?= $email ?>"
-                                                        data-status="<?= $status ?>" data-tmptlahir="<?= $tempatlahir ?>"
-                                                        data-tgllahir="<?= $tgllahir ?>" data-tglmasuk="<?= $tglmasuk ?>">Update</button>
+                                                        data-idkar="<?= $idkaryawan ?>" data-nmkaryawan="<?= $namakaryawan ?>"
+                                                        data-alamatky="<?= $alamat ?>"
+                                                        data-notelpky="<?= $notelp ?>" data-emailky="<?= $email ?>"
+                                                        data-statusky="<?= $status ?>" data-tmptlahirky="<?= $tempatlahir ?>"
+                                                        data-tgllahirky="<?= $tgllahir ?>" data-tglmasukky="<?= $tglmasuk ?>">Update</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -120,25 +120,25 @@ $data = Tampil_Data('karyawan');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidkaryawan = $(this).data('idkaryawan');
+                var varidkaryawan = $(this).data('idkar');
                 var varkaryawan = $(this).data('nmkaryawan');
-                var varalamat = $(this).data('alamat');
-                var varnotelp = $(this).data('notelp');
-                var varemail = $(this).data('email');
-                var varstatus = $(this).data('status');
-                var vartmptlahir = $(this).data('tmptlahir');
-                var vartgllahir = $(this).data('tgllahir');
-                var vartglmasuk = $(this).data('tglmasuk');
+                var varalamat = $(this).data('alamatky');
+                var varnotelp = $(this).data('notelpky');
+                var varemail = $(this).data('emailky');
+                var varstatus = $(this).data('statusky');
+                var vartmptlahir = $(this).data('tmptlahirky');
+                var vartgllahir = $(this).data('tgllahirky');
+                var vartglmasuk = $(this).data('tglmasukky');
 
                 $('#id_karyawan').val(varidkaryawan);
-                $('#nama_karyawan').val(varkaryawan);
-                $('#alamat').val(varalamat);
-                $('#notelp').val(varnotelp);
-                $('#email').val(varemail);
-                $('#status').val(varstatus);
-                $('#tmptlahir').val(vartmptlahir);
-                $('#tgllahir').val(vartgllahir);
-                $('#tglmasuk').val(vartglmasuk);
+                $('#nama_karyawan_ky').val(varkaryawan);
+                $('#alamat_ky').val(varalamat);
+                $('#no_telp').val(varnotelp);
+                $('#email_ky').val(varemail);
+                $('#tempat_lahir_ky').val(vartmptlahir);
+                $('#tanggal_lahir_ky').val(vartgllahir);
+                $('#status_pekerjaan_ky').val(varstatus);
+                $('#tanggal_masuk_ky').val(vartglmasuk);
                 
             })
         })

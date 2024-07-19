@@ -15,19 +15,19 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama_customer" id="nama" required>
+                                    <input type="text" class="form-control" name="nama_customer" id="nama_customer" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">No Telpon</label>
-                                    <input type="text" class="form-control" name="no_telp" id="nama" required>
+                                    <input type="text" class="form-control" name="no_telp" id="no_telp" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="notelp" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" id="notelp" required>
+                                    <input type="text" class="form-control" name="alamat" id="alamat" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Password</label>
-                                    <input type="number" class="form-control" name="password" id="nama" required>
+                                    <input type="number" class="form-control" name="password" id="password" required>
                                 </div>
                                 
                                 <div class="mb-3 d-flex flex-column">

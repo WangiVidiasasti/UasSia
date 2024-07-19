@@ -113,11 +113,11 @@ $data = Tampil_Data('jabatan');
                 var vargajilemburjb = $(this).data('gjlembur');
                 var varpotonganjb = $(this).data('ptngan');
 
-                $('#id_jabatan').val(varidjabatan);
-                $('#nama_jabatan').val(varjabatan);
-                $('#gaji_pokok').val(vargajipokokjb);
-                $('#gaji_lembur').val(vargajilemburjb);
-                $('#potongan').val(varpotonganjb);
+                $('#idjbtn').val(varidjabatan);
+                $('#nmjbtn').val(varjabatan);
+                $('#gjpokok').val(vargajipokokjb);
+                $('#gjlembur').val(vargajilemburjb);
+                $('#ptngn').val(varpotonganjb);
                
                 
             })
