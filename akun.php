@@ -83,6 +83,8 @@ $data = Tampil_Data('akun');
                                                         data-nakun="<?= $noakun ?>" 
                                                         data-nmakun="<?= $namaakun?>"
                                                         data-sald="<?= $saldo?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-nakun="<?= $noakun ?>">Hapus</button>
                                                     </td>
                                                 </tr>                                      
                                                 <?php
@@ -110,6 +112,23 @@ $data = Tampil_Data('akun');
                 $('#nmaakun').val(varnamaakun);
                 $('#sld').val(varsaldo);
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var noakun = $(this).data('nakun');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=data_akun&aksi=delete&id=" + noakun);
+                    }
+                });
+            });  
+        });
     </script>

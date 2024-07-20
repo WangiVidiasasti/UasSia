@@ -87,6 +87,8 @@ $data = Tampil_Data('karyawan');
                                                         data-idcs="<?= $idcustomer ?>" data-nmcustomer="<?= $namacustomer ?>"
                                                         data-notelpcs="<?= $notelp ?>" data-alamatcs="<?= $alamat ?>"
                                                         data-passwordcs="<?= $password ?>"  >Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-idcs="<?= $idcustomer ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -120,6 +122,23 @@ $data = Tampil_Data('karyawan');
                 $('#password').val(varpassword);
                 
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idcustomer = $(this).data('idcs');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=customer&aksi=delete&id=" + idcustomer);
+                    }
+                });
+            });  
+        });
     </script>

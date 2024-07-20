@@ -188,15 +188,30 @@ if (isset($_GET['link'])) {
         // ... existing code ...
         } elseif ($_GET['link'] == 'data_pengiriman') {
             if (isset($_GET['aksi'])) {
-                if ($_GET['aksi'] == 'delete') {
-                Delete_Data('master_pengiriman');
-                header("Location: " . $baseURL . "/index.php?link=data_pengiriman");
-                exit;
-            }
-            } else {
-                include "pengiriman.php";
-            } 
-        } elseif ($_GET['link'] == 'data_supplier') {
+            if ($_GET['aksi'] == 'delete') { 
+           $id = $_GET['id'];
+           if (!empty($id)) {
+                 // Debugging: Check the ID
+           echo "ID to delete: " . $id . "<br>";
+               $query = mysqli_query($koneksi, "DELETE FROM master_pengiriman WHERE id_pengiriman = '$id'");
+               if ($query) {
+                    // Debugging: Check the URL before redirecting
+                   echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=data_pengiriman<br>";
+                   header("Location: " .$baseURL . "/index.php?link=data_pengiriman");
+                   exit;
+               } else {
+                   echo "Error deleting record: " . mysqli_error($koneksi);
+               }
+           } else {
+               echo "ID is missing.";
+           }
+       }
+    } else {
+       include "pengiriman.php";
+    }
+       // ... existing code ...
+    
+    } elseif ($_GET['link'] == 'data_supplier') {
             if (isset($_GET['aksi'])) {
                 if ($_GET['aksi'] == 'delete') { 
                     $id = $_GET['id'];
@@ -266,17 +281,32 @@ if (isset($_GET['link'])) {
             include "katalog.php";
         }
     // ... existing code ...
-    } elseif ($_GET['link'] == 'customer') {
+    }  elseif ($_GET['link'] == 'customer') {
         if (isset($_GET['aksi'])) {
-            if ($_GET['aksi'] == 'delete') {
-                Delete_Data('master_karyawan');
-                header("Location: " . $baseURL . "/index.php?link=customer");
-                exit;
-            }
-        } else {
-            include "datacustomer.php";
-        }
-    } elseif ($_GET['link'] == 'harga_berat') {
+        if ($_GET['aksi'] == 'delete') { 
+       $id = $_GET['id'];
+       if (!empty($id)) {
+             // Debugging: Check the ID
+       echo "ID to delete: " . $id . "<br>";
+           $query = mysqli_query($koneksi, "DELETE FROM master_customer WHERE id_customer = '$id'");
+           if ($query) {
+                // Debugging: Check the URL before redirecting
+               echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=customer<br>";
+               header("Location: " .$baseURL . "/index.php?link=customer");
+               exit;
+           } else {
+               echo "Error deleting record: " . mysqli_error($koneksi);
+           }
+       } else {
+           echo "ID is missing.";
+       }
+   }
+} else {
+   include "datacustomer.php";
+}
+   // ... existing code ...
+
+} elseif ($_GET['link'] == 'harga_berat') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') { 
                 $id = $_GET['id'];
@@ -327,16 +357,30 @@ if (isset($_GET['link'])) {
 
     } elseif ($_GET['link'] == 'data_akun') {
         if (isset($_GET['aksi'])) {
-            if ($_GET['aksi'] == 'delete') {
-                Delete_Data('master_akun');
-                header("Location: " . $baseURL . "/index.php?link=data_akun");
-                exit;
-            }
-        } else {
-            include "akun.php";
-        }
-        // Tidak perlu pengalihan setelah include
-    }
+        if ($_GET['aksi'] == 'delete') { 
+       $id = $_GET['id'];
+       if (!empty($id)) {
+             // Debugging: Check the ID
+       echo "ID to delete: " . $id . "<br>";
+           $query = mysqli_query($koneksi, "DELETE FROM master_akun WHERE no_akun= '$id'");
+           if ($query) {
+                // Debugging: Check the URL before redirecting
+               echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=data_akun<br>";
+               header("Location: " .$baseURL . "/index.php?link=data_akun");
+               exit;
+           } else {
+               echo "Error deleting record: " . mysqli_error($koneksi);
+           }
+       } else {
+           echo "ID is missing.";
+       }
+   }
+} else {
+   include "akun.php";
+}
+   // ... existing code ...
+
+} 
     // Menampilkan halaman data surat masuk
   elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
