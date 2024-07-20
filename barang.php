@@ -78,9 +78,11 @@ $data = Tampil_Data('barang');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#Modalbarangupdate"
-                                                        data-idbarang="<?= $idbarang ?>" 
+                                                        data-id_barang="<?= $idbarang ?>" 
                                                         data-namabarang="<?= $namabarang ?>"
                                                         data-hargabarang="<?= $hargabarang ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-id_barang="<?= $idbarang ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -100,7 +102,7 @@ $data = Tampil_Data('barang');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidbarang = $(this).data('idbarang');
+                var varidbarang = $(this).data('id_barang');
                 var varbarang = $(this).data('namabarang');
                 var varharga = $(this).data('hargabarang');
 
@@ -108,6 +110,23 @@ $data = Tampil_Data('barang');
                 $('#nama').val(varbarang);
                 $('#harga').val(varharga);
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idbarang = $(this).data('id_barang');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=data_barang&aksi=delete&id=" + idbarang);
+                    }
+                });
+            });
+        });
     </script>

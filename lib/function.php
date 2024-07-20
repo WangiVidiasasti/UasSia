@@ -110,4 +110,5 @@ function Update_Data($table, $data, ...$custom)
         $_SESSION['warning'] = "Data gagal diupdate: " . mysqli_error($koneksi);
     }
 }
+
 ?>

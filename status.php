@@ -74,7 +74,9 @@ $data = Tampil_Data('status');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="idmodalstatusupdate"
                                                         data-bs-toggle="modal" data-bs-target="#modalstatusupdate"
-                                                        data-statusid="<?= $idstatus ?>" data-statusnm="<?= $namastatus ?>">Update</button>
+                                                        data-idstatusid="<?= $idstatus ?>" data-statusnm="<?= $namastatus ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-idstatusid ="<?= $idstatus ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -94,12 +96,29 @@ $data = Tampil_Data('status');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#idmodalstatusupdate', function () {
-                var varidsts = $(this).data('statusid');
+                var varidsts = $(this).data('idstatusid');
                 var varstsnm = $(this).data('statusnm');
 
                 $('#idstatusid').val(varidsts);
                 $('#nmstatussnm').val(varstsnm);
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idstatus = $(this).data('idstatusid');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=status&aksi=delete&id=" + idstatus);
+                    }
+                });
+            });
+        });
     </script>

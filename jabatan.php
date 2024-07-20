@@ -115,12 +115,12 @@ echo "End of jabatan.php<br>";
 </div>
 <script>
         $(document).ready(function () {
-            $(document).on('click', '#updateModal', function () {
-                var varidjabatan = $(this).data('idjbtn');
-                var varjabatan = $(this).data('nmjabatan');
-                var vargajipokokjb = $(this).data('gjpokok');
-                var vargajilemburjb = $(this).data('gjlembur');
-                var varpotonganjb = $(this).data('ptngan');
+    $(document).on('click', '#updateModal', function () {
+        var varidjabatan = $(this).data('idjbtn');
+        var varjabatan = $(this).data('nmjabatan');
+        var vargajipokokjb = $(this).data('gjpokok');
+        var vargajilemburjb = $(this).data('gjlembur');
+        var varpotonganjb = $(this).data('ptngan');
 
                 $('#idjbtn').val(varidjabatan);
                 $('#nmjbtn').val(varjabatan);

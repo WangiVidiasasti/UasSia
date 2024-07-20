@@ -78,9 +78,11 @@ $data = Tampil_Data('hargaberat');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modalharganupdate"
-                                                        data-idbrat="<?= $idberat ?>" 
+                                                        data-idbrt="<?= $idberat ?>" 
                                                         data-kilgram="<?= $kilogram ?>"
                                                         data-hrga="<?= $harga ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-idbrt="<?= $idberat ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -108,6 +110,23 @@ $data = Tampil_Data('hargaberat');
                 $('#kg').val(varkilogrm);
                 $('#hrg').val(varharg);
                 
-            })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idbert = $(this).data('idbrt');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=harga_berat&aksi=delete&id=" + idbert);
+                    }
+                });
+            });
         })
     </script>

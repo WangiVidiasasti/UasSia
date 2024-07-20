@@ -101,6 +101,8 @@ $data = Tampil_Data('karyawan');
                                                         data-notelpky="<?= $notelp ?>" data-emailky="<?= $email ?>"
                                                         data-statusky="<?= $status ?>" data-tmptlahirky="<?= $tempatlahir ?>"
                                                         data-tgllahirky="<?= $tgllahir ?>" data-tglmasukky="<?= $tglmasuk ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-id_karyawan="<?= $idkaryawan ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -140,6 +142,23 @@ $data = Tampil_Data('karyawan');
                 $('#status_pekerjaan_ky').val(varstatus);
                 $('#tanggal_masuk_ky').val(vartglmasuk);
                 
-            })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idkaryawan = $(this).data('id_karyawan');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=karyawan&aksi=delete&id=" + idkaryawan);
+                    }
+                });
+            });  
         })
     </script>

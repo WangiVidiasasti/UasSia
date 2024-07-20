@@ -105,7 +105,7 @@ if (isset($_POST['insert_supplier'])) {
     header("Location: " . $baseURL . "/index.php?link=data_supplier");
     exit();
 }
-if (isset($_POST['insert_harga'])) {
+if (isset($_POST['insert_harga_berat'])) {
     $data = array(
         'kilogram' => mysqli_real_escape_string($koneksi, $_POST['kilogram']),
         'harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
