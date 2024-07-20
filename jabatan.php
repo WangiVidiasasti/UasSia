@@ -1,6 +1,10 @@
-
-
 <?php
+
+// Debugging: Check if the file is included
+echo "jabatan.php is included<br>";
+
+// ... existing code ...
+
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
@@ -16,8 +20,10 @@ if (function_exists('Tampil_Data')) {
 
 // Panggilan ke fungsi Tampil_Data
 $data = Tampil_Data('jabatan');
-?>
 
+// Debugging: Check if the script reaches the end
+echo "End of jabatan.php<br>";
+?>
 
 <div class="main-content">
     <div class="page-content">
@@ -89,7 +95,7 @@ $data = Tampil_Data('jabatan');
                                                         data-gjlembur="<?= $gajilembur ?>" data-ptngan="<?= $potongan ?>"
                                                         >Update</button> 
                                                         <button type="button" class="btn btn-secondary" role="button"
-                                                        id="deleteConfirmation" >Hapus</button>
+                                                        id="deleteConfirmation" data-idjbtn="<?= $idjabatan ?>">Hapus</button>
                                                     </td>
                                                     
                                                 </tr>
@@ -121,27 +127,26 @@ $data = Tampil_Data('jabatan');
                 $('#gjpokok').val(vargajipokokjb);
                 $('#gjlembur').val(vargajilemburjb);
                 $('#ptngn').val(varpotonganjb);
-               
-                
-            })
-        })
-        $(document).on('click', '#deleteConfirmation', function() {
+            });
+
+            $(document).on('click', '#deleteConfirmation', function() {
                 var idjabatan = $(this).data('idjbtn');
                 Swal.fire({
                     title: "Apa anda yakin?",
-                    text: "File yang dihapus akan hilang",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
                     icon: "warning",
-                    showCancelButton: !0,
+                    showCancelButton: true,
                     confirmButtonColor: "#2ab57d",
                     cancelButtonColor: "#fd625e",
                     confirmButtonText: "Hapus",
-                    cancelButtonText: "Batalkan"
-                }).then(function(res) {
-                    if (res.isConfirmed) {
-                        Swal.fire("Terhapus!", "Data telah dihapus.", "success");
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
                         location.assign("<?= $baseURL ?>/index.php?link=jabatan&aksi=delete&id=" + idjabatan);
-                        //Bagian untuk delete\\    
                     }
-                })
-            })
-    </script>
+                });
+            });
+        });
+        
+</script>
+

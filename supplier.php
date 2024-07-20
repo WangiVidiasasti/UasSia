@@ -1,6 +1,10 @@
 
 
 <?php
+// Debugging: Check if the file is included
+echo "supplier.php is included<br>";
+
+
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
@@ -16,6 +20,8 @@ if (function_exists('Tampil_Data')) {
 
 // Panggilan ke fungsi Tampil_Data
 $data = Tampil_Data('supplier');
+// Debugging: Check if the script reaches the end
+echo "End of supplier.php<br>";
 ?>
 
 
@@ -84,11 +90,13 @@ $data = Tampil_Data('supplier');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#updatesupplierModal"
-                                                        data-idsupplier="<?= $idsupplier ?>" 
+                                                        data-idsuppler="<?= $idsupplier ?>" 
                                                         data-nmsupplier="<?=$namasupplier ?>"
                                                         data-nmtoko="<?=$namatoko ?>"
                                                         data-notelp="<?= $notelp ?>"
                                                         data-alamat="<?= $alamat ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-idsuppler="<?= $idsupplier ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -108,18 +116,35 @@ $data = Tampil_Data('supplier');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidsupplier = $(this).data('idsupplier');
+                var varidsupplier = $(this).data('idsuppler');
                 var varnamasupplier = $(this).data('nmsupplier');
                 var vartoko= $(this).data('nmtoko');
                 var varnotelp = $(this).data('notelp');
                 var varpalamat= $(this).data('alamat');
 
-                $('#id_supplier').val(varidsupplier);
+                $('#idsuppler').val(varidsupplier);
                 $('#nama_supplier').val(varnamasupplier);
                 $('#nama_toko').val(vartoko);
                 $('#no_telp').val(varnotelp);
                 $('#alamat').val(varalamat);
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idsupplier= $(this).data('idsuppler');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=data_supplier&aksi=delete&id=" + idsupplier);
+                    }
+                });
+            });
+        });
     </script>

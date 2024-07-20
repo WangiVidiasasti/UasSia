@@ -1,6 +1,6 @@
 <?php
 // definisikan koneksi ke database
-$baseURL = "http://localhost";
+$baseURL = "http://localhost/UasSia";
 $server = "localhost";
 $username = "root";
 $password = "";

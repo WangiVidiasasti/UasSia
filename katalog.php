@@ -1,6 +1,10 @@
 
 
 <?php
+// Debugging: Check if the file is included
+echo "katalog.php is included<br>";
+
+
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
@@ -16,6 +20,8 @@ if (function_exists('Tampil_Data')) {
 
 // Panggilan ke fungsi Tampil_Data
 $data = Tampil_Data('katalog');
+// Debugging: Check if the script reaches the end
+echo "End of katalog.php<br>";
 ?>
 
 
@@ -75,8 +81,10 @@ $data = Tampil_Data('katalog');
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modalkatalogupdate"
-                                                        data-idkatalog="<?= $idkatalog ?>" 
+                                                        data-idktlg="<?= $idkatalog ?>" 
                                                         data-namakatalog="<?= $namakatalog ?>">Update</button>
+                                                        <button type="button" class="btn btn-secondary" role="button"
+                                                        id="deleteConfirmation" data-idktlg="<?= $idkatalog ?>">Hapus</button>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -96,12 +104,29 @@ $data = Tampil_Data('katalog');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidkatalog = $(this).data('idkatalog');
+                var varidkatalog = $(this).data('idktlg');
                 var varkatalog = $(this).data('nmkatalog');
 
-                $('#id_katalog').val(varidkatalog);
+                $('#idktlg').val(varidkatalog);
                 $('#nama_katalog').val(varkatalog);
                 
-            })
-        })
+            });
+            $(document).on('click', '#deleteConfirmation', function() {
+                var idkatalog= $(this).data('idktlg');
+                Swal.fire({
+                    title: "Apa anda yakin?",
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#2ab57d",
+                    cancelButtonColor: "#fd625e",
+                    confirmButtonText: "Hapus",
+                    cancelButtonText: "Batalkan",
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        location.assign("<?= $baseURL ?>/index.php?link=data_katalog&aksi=delete&id=" + idkatalog);
+                    }
+                });
+            });
+        });
     </script>

@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                             <div class="md-3">
-                                    <input name="id_supplier" type="hidden" class="form-control" id="id_supplier" readonly>
+                                    <input name="id_supplier" type="hidden" class="form-control" id="idsuppler" readonly>
                                 </div>
                             <div class="mb-3">
                             <label for="namasupplier" class="form-label">nama_supplier</label>
