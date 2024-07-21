@@ -39,7 +39,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="status_pekerjaan" class="form-label">Status pekerjaan</label>
-                                    <input type="text" class="form-control" name="status_pekerjaan" id="status_pekerjaan_ky" required>
+                                    <select class="form-control" name="status_pekerjaan" id="status_pekerjaan" required>
+                                        <option value="" disabled selected>Pilih status pekerjaan</option>
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Non Aktif">Non Aktif</option>
+                                    </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="tanggal_masuk" class="form-label">Tanggal Masuk</label>
