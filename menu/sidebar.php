@@ -26,6 +26,18 @@
                                     <span data-key="t-dashboard">Data Customer</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=pesanan_laundry">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-dashboard">Data Pesanan Laundry</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?link=pesanan_barang">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-dashboard">Data Pesanan Barang</span>
+                                </a>
+                            </li>
                         </ul>
 
                         <ul class="metismenu list-unstyled" id="side-menu">
@@ -84,6 +96,7 @@
                                     <span data-key="t-dashboard">Akun</span>
                                 </a>
                             </li>
+
 
                         </ul>
 
