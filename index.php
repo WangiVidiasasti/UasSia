@@ -21,13 +21,19 @@ if (isset($_GET['link'])) {
         $title = "Master Katalog | ";
     } elseif (($_GET['link']) == 'data_pengiriman') {
         $title = "Master Pengiriman | ";
-    } elseif (($_GET['link']) == 'data_status') {
+    } elseif (($_GET['link']) == 'status') {
         $title = "Master Status | ";
     } elseif (($_GET['link']) == 'data_supplier') {
         $title = "Master Supplier | ";
     } elseif (($_GET['link']) == 'harga_berat') {
         $title = "Master Berat | ";
-    }
+    } elseif (($_GET['link']) == 'customer') {
+        $title = "Data Customer | ";
+    } elseif (($_GET['link']) == 'karyawan') {
+        $title = "Data Karyawan | ";
+    } elseif (($_GET['link']) == 'data_akun') {
+        $title = "Master Akun | ";
+    } 
 
 }
 
@@ -39,7 +45,7 @@ if (isset($_GET['link'])) {
 <head>
     <meta charset="utf-8" />
     <title>
-        <?= $title; ?>Sistem Informasi Desa Kucur
+        <?= $title; ?>Sistem Informasi Laundry
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose admin & Dashboard Template" name="description" />
