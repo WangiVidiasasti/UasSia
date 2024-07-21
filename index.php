@@ -1,14 +1,11 @@
 <?php
 ob_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+session_start();
 include "webservices/config.php";
 include "lib/function.php";
-
-
 ?>
+
+
 
 <?php
 if (isset($_GET['link'])) {
@@ -105,7 +102,15 @@ if (isset($_GET['link'])) {
 
 <body>
     <?php
-    // $link=($_GET['link'])
+    if (isset($_GET['link']) && $_GET['link'] == 'login') {
+    include 'login.php';
+    exit();
+}
+
+if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSION['accounting'])) {
+    header("Location: index.php?link=login");
+    exit();
+}
     include 'menu/sidebar.php';
     include 'menu/header.php';
     
@@ -378,18 +383,16 @@ if (isset($_GET['link'])) {
 } else {
    include "akun.php";
 }
-   // ... existing code ...
 
-} 
-    // Menampilkan halaman data surat masuk
-  elseif (($_GET['link']) == 'laporan') {
+}  elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
         }  
         
-    } elseif(!isset($_GET['link'])) {
-        header("Location: " . $baseURL . "/index.php?link=dashboard");
-        exit;
+    } else {
+    
+        include 'login.php';
+        header("Location: " . $baseURL . "/index.php?link=login");
     }
     
     ob_end_flush();

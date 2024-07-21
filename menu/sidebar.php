@@ -22,55 +22,39 @@
                             </li>
                             <li>
                                 <a href="index.php?link=customer">
-                                    <i data-feather="grid"></i>
+                                    <i data-feather="users"></i>
                                     <span data-key="t-dashboard">Data Customer</span>
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="index.php?link=laporan">
-                                    <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Laporan</span>
-                                </a>
-                            </li>
-                            
-                            
                         </ul>
 
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" data-key="t-menu">Mastering</li>
 
                             <li>
-                                <a href="index.php?link=customer">
-                                    <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Customer</span>
-                                </a>
-                            </li>
-
-                            <li>
                                 <a href="index.php?link=jabatan">
-                                    <i data-feather="home"></i>
+                                    <i data-feather="layout"></i>
                                     <span data-key="t-dashboard">Jabatan</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="index.php?link=data_barang">
-                                    <i data-feather="home"></i>
+                                    <i data-feather="gift"></i>
                                     <span data-key="t-dashboard">Barang</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="index.php?link=data_katalog">
-                                    <i data-feather="home"></i>
+                                    <i data-feather="briefcase"></i>
                                     <span data-key="t-dashboard">Katalog</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="index.php?link=data_pengiriman">
-                                    <i data-feather="home"></i>
+                                    <i data-feather="sliders"></i>
                                     <span data-key="t-dashboard">Pengiriman</span>
                                 </a>
                             </li>
@@ -96,7 +80,7 @@
                             </li>
                             <li>
                                 <a href="index.php?link=data_akun">
-                                    <i data-feather="home"></i>
+                                    <i data-feather="file-text"></i>
                                     <span data-key="t-dashboard">Akun</span>
                                 </a>
                             </li>
