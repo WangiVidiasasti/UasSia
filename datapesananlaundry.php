@@ -54,14 +54,13 @@ if ($data === null) {
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Karyawan</th>
-                                        <th>Alamat</th>
-                                        <th>No Telepon</th>
-                                        <th>Email</th>
+                                        <th>Nama Customer</th>
+                                        <th>Pengiriman</th>
+                                        <th>Katalog dipilih</th>
                                         <th>Status</th>
-                                        <th>Tempat Lahir</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Tanggal Masuk</th>
+                                        <th>Total Harga</th>
+                                        <th>No Akun D</th>
+                                        <th>No Akun K</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>

@@ -130,21 +130,31 @@ if (isset($_POST['insert_akun'])) {
     header("Location: " . $baseURL . "/index.php?link=data_akun");
     exit();
 }
-
 if (isset($_POST['insert_pesananlaundry'])) {
+    
     $data = array(
-        mysqli_real_escape_string($conn, $_POST['no_kk']),
-        mysqli_real_escape_string($conn, $_POST['nama_kk']),
+        mysqli_real_escape_string($conn, $_POST['nik']),
+        mysqli_real_escape_string($conn, $_POST['nama_lengkap']),
+        mysqli_real_escape_string($conn, $_POST['nomor_kk']),
+        mysqli_real_escape_string($conn, $_POST['jenis_kelamin']),
+        mysqli_real_escape_string($conn, $_POST['tanggal_lahir']),
         mysqli_real_escape_string($conn, $_POST['kode_dusun']),
-        mysqli_real_escape_string($conn, $_POST['kodepos']),
-        mysqli_real_escape_string($conn, $_POST['koderw']),
-        mysqli_real_escape_string($conn, $_POST['kodert']),
-        "Belum Direspon"
+        mysqli_real_escape_string($conn, $_POST['kode_rt']),
+        mysqli_real_escape_string($conn, $_POST['kode_rw']),
+        mysqli_real_escape_string($conn, $_POST['kode_agama']),
+        '' . $time . '',
+        '' . $time . '',
+
     );
 
-    Insert_Data("transaksi_pesanan_laundry", $data);
-    header("Location: " . $baseURL . "/index.php?link=kk");
-}
+        Insert_Data("transaksi_kependudukan", $data);
+        header("Location: " . $baseURL . "/index.php?link=kependudukan");
+        exit;
+    }
+
+
+
+
 
 
 ?>

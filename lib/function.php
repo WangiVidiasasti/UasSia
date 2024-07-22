@@ -17,6 +17,23 @@ function Insert_Data($table, $data) {
         die("Error: " . $sql . "<br>" . $koneksi->error);
     }
 }
+function Insert_Transaksi($table, $data) {
+    global $koneksi;
+
+    // Konversi array ke nilai SQL
+    $columns = implode(", ", array_keys($data));
+    $values = implode("', '", array_values($data));
+    $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
+
+    if ($koneksi->query($sql) === TRUE) {
+        return true;
+    } else {
+        die("Error: " . $sql . "<br>" . $koneksi->error);
+    }
+}
+
+
+
 
 function Tampil_Data($namaApi)
 {

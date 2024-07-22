@@ -61,6 +61,61 @@
                                             ?>
                                             </select>
                                     </div>
+                                    <div class="mb-3">
+                                        <label for="status" class="form-label">Status</label>
+                                        <select data-trigger class="form-select" name="nama_katalog" id="status">
+                                            <option selected disabled>Pilih Status</option>
+                                            <?php
+                                            $queryGetStatus = "SELECT * FROM master_status";
+                                            $getStatus = mysqli_query($koneksi, $queryGetStatus);
+                                            while ($status = mysqli_fetch_assoc($getStatus)) {
+                                                ?>
+                                            <option value="<?= $status['id_status'] ?>">
+                                                <?= $status['nama_status'] ?>
+                                            </option>
+                                            <?php
+                                            }
+                                            ?>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Harga</label>
+                                        <input type="number" class="form-control" name="harga" id="nama" cal>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="katalog" class="form-label">No Akun D</label>
+                                        <select data-trigger class="form-select" name="nama_akun_d" id="katalog">
+                                            <option selected disabled>Pilih Katalog</option>
+                                            <?php
+                                            $queryGetAkun = "SELECT * FROM master_akun";
+                                            $getAkun = mysqli_query($koneksi, $queryGetAkun);
+                                            while ($akun = mysqli_fetch_assoc($getAkun)) {
+                                                ?>
+                                            <option value="<?= $akun['no_akun'] ?>">
+                                                <?= $akun['nama_akun'] ?>
+                                            </option>
+                                            <?php
+                                            }
+                                            ?>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="katalog" class="form-label">No Akun K</label>
+                                        <select data-trigger class="form-select" name="nama_akun_d" id="katalog">
+                                            <option selected disabled>Pilih Katalog</option>
+                                            <?php
+                                            $queryGetAkun = "SELECT * FROM master_akun";
+                                            $getAkun = mysqli_query($koneksi, $queryGetAkun);
+                                            while ($akun = mysqli_fetch_assoc($getAkun)) {
+                                                ?>
+                                            <option value="<?= $akun['no_akun'] ?>">
+                                                <?= $akun['nama_akun'] ?>
+                                            </option>
+                                            <?php
+                                            }
+                                            ?>
+                                            </select>
+                                    </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_pesananlaundry" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>
