@@ -66,30 +66,28 @@ if ($data === null) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $data = Tampil_Data("datakaryawan");
+                                    $data = Tampil_Data("pesananlaundry");
                                     $no = 1;
                                     if ($data !== null) {
                                         foreach ($data as $j) {
-                                            $idkaryawan = $j->id_karyawan;
-                                            $namakaryawan = $j->nama_karyawan;
-                                            $alamat = $j->alamat;
-                                            $notelp = $j->no_telp;
-                                            $email = $j->email;
-                                            $status = $j->status_pekerjaan;
-                                            $tempatlahir = $j->tempat_lahir;
-                                            $tgllahir = $j->tanggal_lahir;
-                                            $tglmasuk = $j->tanggal_masuk;
+                                            $kdpesananlaundry = $j->kd_pesanan_laundry;
+                                            $namacustomer = $j->nama_customer;
+                                            $namapengirim = $j->nama_pengiriman;
+                                            $namakatalog = $j->nama_katalog;
+                                            $namastatus = $j->nama_status;
+                                            $totalharga = $j->total_harga;
+                                            $noakund = $j->no_akun_d;
+                                            $noakunk = $j->no_akun_k;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
-                                                <td><?= $namakaryawan ?></td>
-                                                <td><?= $alamat ?></td>
-                                                <td><?= $notelp ?></td>
-                                                <td><?= $email ?></td>
-                                                <td><?= $status ?></td>
-                                                <td><?= $tempatlahir ?></td>
-                                                <td><?= $tgllahir ?></td>
-                                                <td><?= $tglmasuk ?></td>
+                                                <td><?= $namacustomer ?></td>
+                                                <td><?= $namapengirim ?></td>
+                                                <td><?= $namakatalog ?></td>
+                                                <td><?= $namastatus ?></td>
+                                                <td><?= $totalharga ?></td>
+                                                <td><?= $noakund ?></td>
+                                                <td><?= $noakunk ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" id="updateModal"
                                                     data-bs-toggle="modal" data-bs-target="#modalkaryawanupdate"

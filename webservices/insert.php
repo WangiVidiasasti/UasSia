@@ -133,22 +133,19 @@ if (isset($_POST['insert_akun'])) {
 if (isset($_POST['insert_pesananlaundry'])) {
     
     $data = array(
-        mysqli_real_escape_string($conn, $_POST['nik']),
-        mysqli_real_escape_string($conn, $_POST['nama_lengkap']),
-        mysqli_real_escape_string($conn, $_POST['nomor_kk']),
-        mysqli_real_escape_string($conn, $_POST['jenis_kelamin']),
-        mysqli_real_escape_string($conn, $_POST['tanggal_lahir']),
-        mysqli_real_escape_string($conn, $_POST['kode_dusun']),
-        mysqli_real_escape_string($conn, $_POST['kode_rt']),
-        mysqli_real_escape_string($conn, $_POST['kode_rw']),
-        mysqli_real_escape_string($conn, $_POST['kode_agama']),
-        '' . $time . '',
-        '' . $time . '',
+        'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
+        'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
+        'id_katalog' => mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
+        'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
+        'total_harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
+        'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+       
 
     );
 
-        Insert_Data("transaksi_kependudukan", $data);
-        header("Location: " . $baseURL . "/index.php?link=kependudukan");
+        Insert_Data("transaksi_pesanan_laundry", $data);
+        header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
         exit;
     }
 

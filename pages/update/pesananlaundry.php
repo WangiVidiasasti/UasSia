@@ -62,38 +62,36 @@
                                             </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="nama" class="form-label">Harga</label>
-                                        <input type="number" class="form-control" name="harga" id="nama" value="10000" readonly>
-                                    </div>
-
-                                    <div class="mb-3" hidden>
+                                        <label for="status" class="form-label">Status</label>
                                         <select data-trigger class="form-select" name="nama_status" id="status">
+                                            <option selected disabled>Pilih Status</option>
                                             <?php
                                             $queryGetStatus = "SELECT * FROM master_status";
                                             $getStatus = mysqli_query($koneksi, $queryGetStatus);
                                             while ($status = mysqli_fetch_assoc($getStatus)) {
-                                                // Cek apakah id_status adalah 4 untuk menetapkan sebagai default terpilih
-                                                $selected = $status['id_status'] == 4 ? 'selected' : '';
                                                 ?>
-                                                <option value="<?= $status['id_status'] ?>" <?= $selected ?>>
-                                                    <?= $status['nama_status'] ?>
-                                                </option>
-                                                <?php
+                                            <option value="<?= $status['id_status'] ?>">
+                                                <?= $status['nama_status'] ?>
+                                            </option>
+                                            <?php
                                             }
                                             ?>
-                                        </select>
+                                            </select>
                                     </div>
-
-                                    <div class="mb-3" hidden>
+                                    <div class="mb-3">
+                                        <label for="nama" class="form-label">Harga</label>
+                                        <input type="number" class="form-control" name="harga" id="nama" cal>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="katalog" class="form-label">No Akun D</label>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="katalog">
-                                            <option selected disabled>Pilih No Akun</option>
+                                            <option selected disabled>Pilih Katalog</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 503 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
+                                            <option value="<?= $akun['no_akun'] ?>">
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php
@@ -101,16 +99,16 @@
                                             ?>
                                             </select>
                                     </div>
-                                    <div class="mb-3" hidden>
+                                    <div class="mb-3">
+                                        <label for="katalog" class="form-label">No Akun K</label>
                                         <select data-trigger class="form-select" name="nama_akun_k" id="katalog">
-                                            <option selected disabled>Pilih No Akun</option>
+                                            <option selected disabled>Pilih Katalog</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 503 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
+                                            <option value="<?= $akun['no_akun'] ?>">
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php
