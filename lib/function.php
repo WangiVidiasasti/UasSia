@@ -110,5 +110,21 @@ function Update_Data($table, $data, ...$custom)
         $_SESSION['warning'] = "Data gagal diupdate: " . mysqli_error($koneksi);
     }
 }
+function Cek_PK($table, $pk)
+{
+    global $koneksi;
+    $queryStruktur = "DESC $table";
+    $getStruktur = mysqli_query($koneksi, $queryStruktur);
+    $fetchStruktur = mysqli_fetch_assoc($getStruktur);
+    $primaryColumn = $fetchStruktur['Field'];
 
+    $queryDelete = "SELECT * FROM $table WHERE $primaryColumn = '$pk'";
+    $delete = mysqli_query($koneksi, $queryDelete);
+
+    if ((mysqli_num_rows($delete)) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

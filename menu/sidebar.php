@@ -27,7 +27,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="index.php?link=pesanan_laundry">
+                                <a href="index.php?link=laundry_pesanan">
                                     <i data-feather="users"></i>
                                     <span data-key="t-dashboard">Data Pesanan Laundry</span>
                                 </a>

@@ -3,6 +3,11 @@ ob_start();
 session_start();
 include "webservices/config.php";
 include "lib/function.php";
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 ?>
 
 
@@ -33,6 +38,8 @@ if (isset($_GET['link'])) {
         $title = "Data Karyawan | ";
     } elseif (($_GET['link']) == 'data_akun') {
         $title = "Master Akun | ";
+    } elseif (($_GET['link']) == 'laundry_pesanan') {
+        $title = "Data Pesanan | ";
     } 
 
 }
@@ -56,7 +63,7 @@ if (isset($_GET['link'])) {
     <!-- plugin css -->
     <link href="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet"
         type="text/css" />
-
+        
     <!-- preloader css -->
     <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
     <!-- Bootstrap Css -->
@@ -148,7 +155,29 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
         } else {
             include "datakaryawan.php";
         }
-    // ... existing code ...
+    } elseif ($_GET['link'] == 'laundry_pesanan') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') { 
+                $id = $_GET['id'];
+                if (!empty($id)) {
+                      // Debugging: Check the ID
+                echo "ID to delete: " . $id . "<br>";
+                    $query = mysqli_query($koneksi, "DELETE FROM master_karyawan WHERE id_karyawan = '$id'");
+                    if ($query) {
+                         // Debugging: Check the URL before redirecting
+                        echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=pesanan_laundry<br>";
+                        header("Location: " .$baseURL . "/index.php?link=pesanan_laundry");
+                        exit;
+                    } else {
+                        echo "Error deleting record: " . mysqli_error($koneksi);
+                    }
+                } else {
+                    echo "ID is missing.";
+                }
+            }
+        } else {
+            include "datapesananlaundry.php";
+        }
     } elseif ($_GET['link'] == 'data_barang') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') { 

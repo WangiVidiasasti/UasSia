@@ -131,4 +131,20 @@ if (isset($_POST['insert_akun'])) {
     exit();
 }
 
+if (isset($_POST['insert_pesananlaundry'])) {
+    $data = array(
+        mysqli_real_escape_string($conn, $_POST['no_kk']),
+        mysqli_real_escape_string($conn, $_POST['nama_kk']),
+        mysqli_real_escape_string($conn, $_POST['kode_dusun']),
+        mysqli_real_escape_string($conn, $_POST['kodepos']),
+        mysqli_real_escape_string($conn, $_POST['koderw']),
+        mysqli_real_escape_string($conn, $_POST['kodert']),
+        "Belum Direspon"
+    );
+
+    Insert_Data("transaksi_pesanan_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=kk");
+}
+
+
 ?>
