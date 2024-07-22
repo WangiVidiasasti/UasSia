@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pesananlaundry.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
 
 // Debugging to ensure file includes are correct
 if (function_exists('Tampil_Data')) {
@@ -10,7 +11,7 @@ if (function_exists('Tampil_Data')) {
     echo "Function Tampil_Data does not exist.";
 }
 
-$data = Tampil_Data('karyawan');
+$data = Tampil_Data('pesananlaundry');
 
 // Debugging to ensure data fetch is correct
 if ($data === null) {
@@ -76,8 +77,8 @@ if ($data === null) {
                                             $namakatalog = $j->nama_katalog;
                                             $namastatus = $j->nama_status;
                                             $totalharga = $j->total_harga;
-                                            $noakund = $j->no_akun_d;
-                                            $noakunk = $j->no_akun_k;
+                                            $noakund = $j->nama_akun;
+                                            $noakunk = $j->nama_akun;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
@@ -90,14 +91,13 @@ if ($data === null) {
                                                 <td><?= $noakunk ?></td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" id="updateModal"
-                                                    data-bs-toggle="modal" data-bs-target="#modalkaryawanupdate"
-                                                    data-idkar="<?= $idkaryawan ?>" data-nmkaryawan="<?= $namakaryawan ?>"
-                                                    data-alamatky="<?= $alamat ?>"
-                                                    data-notelpky="<?= $notelp ?>" data-emailky="<?= $email ?>"
-                                                    data-statusky="<?= $status ?>" data-tmptlahirky="<?= $tempatlahir ?>"
-                                                    data-tgllahirky="<?= $tgllahir ?>" data-tglmasukky="<?= $tglmasuk ?>">Update</button>
+                                                    data-bs-toggle="modal" data-bs-target="#updateModalPesananLaundry"
+                                                    data-idkar="<?= $namacustomer ?>" data-nmkaryawan="<?= $namapengirim ?>"
+                                                    data-alamatky="<?= $namakatalog ?>"
+                                                    data-notelpky="<?= $namastatus ?>" data-emailky="<?= $totalharga ?>"
+                                                    data-statusky="<?= $noakund ?>" data-tmptlahirky="<?= $noakunk ?>" >Update</button>
                                                     <button type="button" class="btn btn-secondary" role="button"
-                                                    id="deleteConfirmation" data-id_karyawan="<?= $idkaryawan ?>">Hapus</button>
+                                                    id="deleteConfirmation" data-id_karyawan="<?= $kd_pesanan_laundry ?>">Hapus</button>
                                                 </td>
                                             </tr>
                                             <?php

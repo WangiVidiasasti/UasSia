@@ -140,5 +140,22 @@ if (isset($_POST['update_akun'])) {
     Update_Data("master_akun", $data);
     header("Location: " . $baseURL . "/index.php?link=data_akun");
 }
+if (isset($_POST['update_pesanan_laundry'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['kd_pesanan_laundry']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_status']),
+        mysqli_real_escape_string($koneksi, $_POST['harga']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("transaksi_pesanan_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
+}
 
 ?>

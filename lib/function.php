@@ -8,9 +8,6 @@ function Insert_Data($table, $data) {
     $values = implode("', '", array_values($data));
     $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
 
-    // Convert to correct SQL string
-    $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
-
     if ($koneksi->query($sql) === TRUE) {
         return true;
     } else {
