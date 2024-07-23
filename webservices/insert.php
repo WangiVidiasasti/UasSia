@@ -174,6 +174,20 @@ if (isset($_POST['insert_pesananlaundry'])) {
 
 
     
+    if (isset($_POST['insert_data_absensi'])) {
+    
+            $data = array(
+                'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['Id_detail_karyawan']),
+                'Hari' => mysqli_real_escape_string($koneksi, $_POST['hari']),
+                'Tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+            
+            );
+        
+                Insert_Data("detail_karyawan", $data);
+                header("Location: " . $baseURL . "/index.php?link=data_absensi");
+                exit;
+            }
+    
 
 
 if (isset($_POST['insert_validasi_pesanan_laundry'])) {

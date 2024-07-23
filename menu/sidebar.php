@@ -39,14 +39,18 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="index.php?link=data_absensi">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-dashboard">Data Absensi</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="index.php?link=pengeluaran">
                                     <i data-feather="file-text"></i>
                                     <span data-key="t-dashboard">Data Pengeluaran</span>
                                 </a>
                             </li>
-
                         </ul>
-
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" data-key="t-menu">Mastering</li>
 

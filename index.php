@@ -201,6 +201,29 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
         } else {
             include "datapesananbarang.php";
         }
+    } elseif ($_GET['link'] == 'data_absensi') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') { 
+                $id = $_GET['id'];
+                if (!empty($id)) {
+                      // Debugging: Check the ID
+                echo "ID to delete: " . $id . "<br>";
+                    $query = mysqli_query($koneksi, "DELETE FROM transaksi_data_absensi WHERE id_karyawan = '$id'");
+                    if ($query) {
+                         // Debugging: Check the URL before redirecting
+                        echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=data_absensi<br>";
+                        header("Location: " .$baseURL . "/index.php?link=data_absensi");
+                        exit;
+                    } else {
+                        echo "Error deleting record: " . mysqli_error($koneksi);
+                    }
+                } else {
+                    echo "ID is missing.";
+                }
+            }
+        } else {
+            include "dataabsensi.php";
+        }
     }  elseif ($_GET['link'] == 'data_barang') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') { 
