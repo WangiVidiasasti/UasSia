@@ -11,7 +11,7 @@
                         <div class="row">
                                 <div class="col-lg-6">
                                     <div class="md-3">
-                                    <input name="kd_pesanan_laundry" type="hidden" class="form-control" id="kdpesanan" readonly>
+                                    <input name="kd_pesanan_barang" type="hidden" class="form-control" id="kdpesanan" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="customer" class="form-label">Customer</label>
@@ -48,16 +48,16 @@
                                         </select>
                                     </div>  
                                     <div class="mb-3">
-                                        <label for="katalog" class="form-label">Katalog</label>
-                                        <select data-trigger class="form-select" name="nama_katalog" id="katalog" required>
+                                        <label for="barang" class="form-label">Barang</label>
+                                        <select data-trigger class="form-select" name="nama" id="barang" required>
                                             <option selected disabled>Pilih Katalog</option>
                                             <?php
-                                            $queryGetKatalog = "SELECT * FROM master_katalog_laundry";
-                                            $getKatalog = mysqli_query($koneksi, $queryGetKatalog);
-                                            while ($katalog = mysqli_fetch_assoc($getKatalog)) {
+                                            $queryGetBarang = "SELECT * FROM master_barang";
+                                            $getBarang = mysqli_query($koneksi, $queryGetBarang);
+                                            while ($barang = mysqli_fetch_assoc($getBarang)) {
                                                 ?>
-                                            <option value="<?= $katalog['id_katalog'] ?>">
-                                                <?= $katalog['nama_katalog'] ?>
+                                            <option value="<?= $barang['id_barang'] ?>">
+                                                <?= $barang['nama'] ?>
                                             </option>
                                             <?php
                                             }
@@ -116,7 +116,7 @@
                                             </select>
                                     </div>
                                 <div class="mb-3 d-flex flex-column">
-                                    <button name="insert_pesananlaundry" type="submit" class="btn btn-primary">Simpan Data</button>
+                                    <button name="insert_pesananbarang" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>
                             </div>
                         </div>
