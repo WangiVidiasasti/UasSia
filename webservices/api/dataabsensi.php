@@ -1,8 +1,8 @@
 <?php
 include "../config.php";
 
-$hasil = mysqli_query($koneksi, "SELECT * FROM transaksi_detail_karyawan
-LEFT JOIN master_karyawan ON master_karyawan.id_karyawan = transaksi_detail_karyawan.id_karyawan");
+$hasil = mysqli_query($koneksi, "SELECT * FROM detail_karyawan
+LEFT JOIN master_karyawan ON master_karyawan.id_karyawan = detail_karyawan.id_karyawan");
 
 
 $jsonRespon = array();

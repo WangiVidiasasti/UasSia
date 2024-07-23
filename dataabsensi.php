@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/dataabsensi.php";
-// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/dataabsensi.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/dataabsensi.php";
 // require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
@@ -48,16 +48,18 @@ if ($data === null) {
                             <h4 class="card-title">Data Absensi</h4>
                         </div>
                         <div class="card-body">
-                            <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#insertModal">Tambah Data</button>
+                            <button type="button" class="btn btn-success mb-sm-2" data-bs-toggle="modal"
+                                data-bs-target="#insertModal">Absen Masuk</button>
+                            
                             
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Hari</th>
-                                        <th>Tanggal</th>
+                                        <th>Nama Karyawan</th>
+                                        <th>Jam Masuk</th>
+                                        <th>Jam Keluar</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -67,23 +69,20 @@ if ($data === null) {
                                     $no = 1;
                                     if ($data !== null) {
                                         foreach ($data as $j) {
-                                            $namakaryawan = $j->id_detail_karyawan;
-                                            $hari = $j->hari;
-                                            $tanggal = $j->tanggal;
+                                            $iddetail = $j->id_detail_karyawan;
+                                            $namakar = $j->nama_karyawan;
+                                            $jammasuk = $j->jam_masuk;
+                                            $jamkeluar = $j->jam_keluar;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
-                                                <td><?= $hari ?></td>
-                                                <td><?= $tanggal ?></td>
+                                                <td><?= $namakar ?></td>
+                                                <td><?= $jammasuk ?></td>
+                                                <td><?= $jamkeluar ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" id="updateModal"
-                                                    data-bs-toggle="modal" data-bs-target="#updateModalDataAbsensi"
-                                                    data-namakaryawan="<?= $namakaryawan ?>"
-                                                    data-hari="<?= $hari ?>" data-hari="<?= $hari ?>"
-                                                    data-tanggal="<?= $tanggal ?>" >Update</button>
-                                                   
-
-                                                    
+                                                <button type="button" class="btn btn-danger" id="updateModalabsn"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateModalDtl" data-detailkarid="<?= $iddetail ?>" >Absen Keluar</button>  
                                                 </td>
                                             </tr>
                                             <?php
@@ -103,14 +102,10 @@ if ($data === null) {
 </div>
 <script>
     $(document).ready(function () {
-        $(document).on('click', '#updateModal', function () {
-            var varidkaryawan = $(this).data('namakaryawan');
-            var varhari = $(this).data('hari');
-            var vartanggal = $(this).data('tanggal');
+        $(document).on('click', '#updateModalabsn', function () {
+            var variddtlkaryawan = $(this).data('detailkarid');
 
-            $('#namakaryawan').val(varidkaryawan);
-            $('#hari').val(varhari);
-            $('#tangga').val(vartanggal);
+            $('#iddtlkar').val(variddtlkaryawan);
         });
     });
 </script>

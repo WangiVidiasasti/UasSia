@@ -176,5 +176,19 @@ if (isset($_POST['update_pesanan_barang'])) {
         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
         exit;
     }
+if (isset($_POST['update_jam_keluar'])) {
+    $time = date('Y-m-d H:i:s'); 
+
+    $data = array(
+        'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']),
+        'jam_keluar' => $time,
+    );
+
+    // Call the Update_Data function to update data
+    Update_Data_Absen("detail_karyawan", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    exit();
+}
+
 
 ?>

@@ -2,17 +2,30 @@
 
 function Insert_Data($table, $data) {
     global $koneksi;
-
+    
+    // Buat string kolom dan nilai
     $columns = implode(", ", array_keys($data));
-    $values = implode("', '", array_values($data));
-    $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
-
-    if ($koneksi->query($sql) === TRUE) {
-        return $koneksi->insert_id; // Mengembalikan ID yang baru dimasukkan
+    $escaped_values = array_map(function($value) use ($koneksi) {
+        return "'" . mysqli_real_escape_string($koneksi, $value) . "'";
+    }, array_values($data));
+    $values = implode(", ", $escaped_values);
+    
+    // Buat query
+    $sql = "INSERT INTO `$table` ($columns) VALUES ($values)";
+    
+    // Debugging: Cetak query
+    echo $sql;
+    
+    // Eksekusi query
+    if (mysqli_query($koneksi, $sql)) {
+        return true;
     } else {
-        die("Error: " . $sql . "<br>" . $koneksi->error);
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+        return false;
     }
 }
+
+
 
 
 function Insert_Transaksi($table, $data) {
@@ -186,5 +199,38 @@ function Update_Total_Harga_Barang($kd_pesanan_barang) {
     }
 }
 
+function Update_Data_Absen($table, $data) {
+    global $koneksi;
+
+    // Pastikan ada data untuk update
+    if (empty($data)) {
+        echo "No data to update.";
+        return false;
+    }
+
+    // Ambil ID dan hapus dari array data untuk digunakan di WHERE clause
+    $id = mysqli_real_escape_string($koneksi, array_shift($data));
+    
+    // Buat string untuk bagian SET dari query
+    $set_parts = [];
+    foreach ($data as $column => $value) {
+        $set_parts[] = "`$column` = '$value'";
+    }
+    $set_string = implode(", ", $set_parts);
+
+    // Buat query UPDATE
+    $sql = "UPDATE `$table` SET $set_string WHERE id_detail_karyawan = '$id'";
+
+    // Debugging: Cetak query
+    echo $sql;
+
+    // Eksekusi query
+    if (mysqli_query($koneksi, $sql)) {
+        return true;
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+        return false;
+    }
+}
 
 ?>

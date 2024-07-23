@@ -9,43 +9,25 @@
                 <div class="modal-body">
                     <form method="POST" action="webservices/insert.php" enctype="multipart/form-data">
                         <div class="row">
-                                    <div class="mb-3">
-                                        <label for="hari" class="form-label">Hari</label>
-                                        <select data-trigger class="form-select" name="hari" id="hari" required>
-                                            <option selected disabled>Pilih Hari</option>
-                                            <option value="senin">Senin</option>
-                                            <option value="selasa">Selasa</option>
-                                            <option value="rabu">Rabu</option>
-                                            <option value="kamis">Kamis</option>
-                                            <option value="jumat">Jumat</option>
-                                            <option value="sabtu">Sabtu</option>
-                                            <option value="minggu">Minggu</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="tanggal" class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" name="nama_akun" id="nmaakun" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="nama" class="form-label">Nama</label>
-                                        <select data-trigger class="form-select" name="nama" id="nama" required>
-                                            <option selected disabled>Masukkan Nama</option>
-                                            <?php
-                                            $queryGetNama = "SELECT * FROM detail_karyawan";
-                                            $getNama = mysqli_query($koneksi, $queryGetNama);
-                                            while ($nama = mysqli_fetch_assoc($getNama)) {
-                                                ?>
-                                            <option value="<?= $nama['nama'] ?>">
-                                                <?= $nama['nama'] ?>
-                                            </option>
-                                            <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                <div class="mb-3 d-flex flex-column">
-                                    <button name="insert_dataabsensi" type="submit" class="btn btn-primary">Simpan Data</button>
-                                </div>
+                            <div class="mb-3">
+                                <label for="nama" class="form-label">Nama</label>
+                                <select data-trigger class="form-select" name="nama_karyawan" id="nama" required>
+                                    <option selected disabled>Masukkan Nama</option>
+                                    <?php
+                                    $queryGetNama = "SELECT * FROM master_karyawan";
+                                    $getNama = mysqli_query($koneksi, $queryGetNama);
+                                    while ($nama = mysqli_fetch_assoc($getNama)) {
+                                        ?>
+                                    <option value="<?= $nama['id_karyawan'] ?>">
+                                        <?= $nama['nama_karyawan'] ?>
+                                    </option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="mb-3 d-flex flex-column">
+                                <button name="insert_dataabsensi" type="submit" class="btn btn-primary">Simpan Data</button>
                             </div>
                         </div>
                     </form>

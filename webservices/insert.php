@@ -4,7 +4,9 @@ include $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 include "../lib/function.php"; // Pastikan file ini berisi definisi fungsi Insert_Data()
 
 $baseURL = "http://localhost/UasSia"; // Pastikan URL ini sesuai dengan path proyek Anda
-$time = date("Y-m-d H:i:s"); // Inisialisasi $time
+
+$time = date('Y-m-d H:i:s'); // Atau format waktu lain sesuai kebutuhan Anda
+
 
 if (isset($_POST['insert_karyawan'])) {
     $data = array(
@@ -174,19 +176,25 @@ if (isset($_POST['insert_pesananlaundry'])) {
 
 
     
-    if (isset($_POST['insert_data_absensi'])) {
+if (isset($_POST['insert_data_absensi'])) {
+    $jam_masuk = date("H:i:s"); // waktu saat ini
+    $jam_keluar = date("H:i:s", strtotime('+8 hours')); // contoh penambahan waktu 8 jam
     
-            $data = array(
-                'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['Id_detail_karyawan']),
-                'Hari' => mysqli_real_escape_string($koneksi, $_POST['hari']),
-                'Tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
-            
-            );
-        
-                Insert_Data("detail_karyawan", $data);
-                header("Location: " . $baseURL . "/index.php?link=data_absensi");
-                exit;
-            }
+    $data = array(
+        'id_karyawan' => $_POST['nama_karyawan'],
+        'hari' => $_POST['hari'],
+        'tanggal' => $_POST['tanggal'],
+        'jam_masuk' => $jam_masuk,
+        'jam_keluar' => $jam_keluar,
+    );
+    
+    // Panggil fungsi Insert_Data
+    Insert_Data("detail_karyawan", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    exit;
+}
+
+
     
 
 
@@ -207,6 +215,22 @@ if (isset($_POST['insert_validasi_pesanan_laundry'])) {
     header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
     exit;
 }
+if (isset($_POST['insert_dataabsensi'])) {
+    $time = date('Y-m-d H:i:s'); // Format waktu sesuai kebutuhan
+
+    $data = array(
+        'id_karyawan' => mysqli_real_escape_string($koneksi, $_POST['nama_karyawan']),
+        'jam_masuk' => $time,
+        // Anda bisa menambahkan kolom lain di sini jika diperlukan
+    );
+
+    // Call the Insert_Data function to insert data
+    Insert_Data("detail_karyawan", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    exit();
+}
+
+
 
 
 
