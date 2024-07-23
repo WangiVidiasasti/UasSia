@@ -201,7 +201,7 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
         } else {
             include "datapesananbarang.php";
         }
-    } elseif ($_GET['link'] == 'data_barang') {
+    }  elseif ($_GET['link'] == 'data_barang') {
         if (isset($_GET['aksi'])) {
             if ($_GET['aksi'] == 'delete') { 
                 $id = $_GET['id'];
@@ -223,6 +223,30 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
             }
         } else {
             include "barang.php";
+        }
+    // ... existing code ...
+    } elseif ($_GET['link'] == 'pengeluaran') {
+        if (isset($_GET['aksi'])) {
+            if ($_GET['aksi'] == 'delete') { 
+                $id = $_GET['id'];
+                if (!empty($id)) {
+                      // Debugging: Check the ID
+                echo "ID to delete: " . $id . "<br>";
+                    $query = mysqli_query($koneksi, "DELETE FROM transaski_pengeluaran WHERE kd_nota = '$id'");
+                    if ($query) {
+                         // Debugging: Check the URL before redirecting
+                        echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=pengeluaran<br>";
+                        header("Location: " .$baseURL . "/index.php?link=pengeluaran");
+                        exit;
+                    } else {
+                        echo "Error deleting record: " . mysqli_error($koneksi);
+                    }
+                } else {
+                    echo "ID is missing.";
+                }
+            }
+        } else {
+            include "datapengeluaran.php";
         }
     // ... existing code ...
     } elseif ($_GET['link'] == 'jabatan') {

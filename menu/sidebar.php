@@ -38,6 +38,13 @@
                                     <span data-key="t-dashboard">Data Pesanan Barang</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=pengeluaran">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-dashboard">Data Pengeluaran</span>
+                                </a>
+                            </li>
+
                         </ul>
 
                         <ul class="metismenu list-unstyled" id="side-menu">
@@ -96,7 +103,7 @@
                                     <span data-key="t-dashboard">Akun</span>
                                 </a>
                             </li>
-
+                         
 
                         </ul>
 
