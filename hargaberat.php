@@ -102,7 +102,7 @@ $data = Tampil_Data('hargaberat');
 <script>
         $(document).ready(function () {
             $(document).on('click', '#updateModal', function () {
-                var varidbert = $(this).data('idbrat');
+                var varidbert = $(this).data('idbrt');
                 var varkilogrm = $(this).data('kilgram');
                 var varharg = $(this).data('hrga');
 

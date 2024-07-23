@@ -92,18 +92,18 @@ if ($data === null) {
                                                 <td>
                                                     <button type="button" class="btn btn-primary" id="updateModal"
                                                     data-bs-toggle="modal" data-bs-target="#updateModalPesananLaundry"
-                                                    data-idkar="<?= $namacustomer ?>" data-nmkaryawan="<?= $namapengirim ?>"
-                                                    data-alamatky="<?= $namakatalog ?>"
-                                                    data-notelpky="<?= $namastatus ?>" data-emailky="<?= $totalharga ?>"
-                                                    data-statusky="<?= $noakund ?>" data-tmptlahirky="<?= $noakunk ?>" >Update</button>
+                                                    data-kdpsn="<?= $kdpesananlaundry ?>"
+                                                    data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
+                                                    data-katalog="<?= $namakatalog ?>"
+                                                    data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
+                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
                                                     <button type="button" class="btn btn-secondary" role="button"
-                                                    id="deleteConfirmation" data-id_karyawan="<?= $kd_pesanan_laundry ?>">Hapus</button>
+                                                    id="deleteConfirmation" data-kdpsn="<?= $kdpesananlaundry ?>">Hapus</button>
                                                 </td>
                                             </tr>
                                             <?php
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='10'>No data available</td></tr>";
+                                   
                                     }
                                     ?>
                                 </tbody>
@@ -119,29 +119,27 @@ if ($data === null) {
 <script>
     $(document).ready(function () {
         $(document).on('click', '#updateModal', function () {
-            var varidkaryawan = $(this).data('idkar');
-            var varkaryawan = $(this).data('nmkaryawan');
-            var varalamat = $(this).data('alamatky');
-            var varnotelp = $(this).data('notelpky');
-            var varemail = $(this).data('emailky');
-            var varstatus = $(this).data('statusky');
-            var vartmptlahir = $(this).data('tmptlahirky');
-            var vartgllahir = $(this).data('tgllahirky');
-            var vartglmasuk = $(this).data('tglmasukky');
+            var varkdpesnan = $(this).data('kdpsn');
+            var varcustmr = $(this).data('custmer');
+            var varpngrm = $(this).data('nmpengirim');
+            var varktlg = $(this).data('katalog');
+            var varsts = $(this).data('status');
+            var vartothrg = $(this).data('totharga');
+            var varaknd = $(this).data('akund');
+            var varaknk = $(this).data('akunk');
 
-            $('#id_karyawan').val(varidkaryawan);
-            $('#nama_karyawan_ky').val(varkaryawan);
-            $('#alamat_ky').val(varalamat);
-            $('#no_telp').val(varnotelp);
-            $('#email_ky').val(varemail);
-            $('#tempat_lahir_ky').val(vartmptlahir);
-            $('#tanggal_lahir_ky').val(vartgllahir);
-            $('#status_pekerjaan_ky').val(varstatus);
-            $('#tanggal_masuk_ky').val(vartglmasuk);
+            $('#kdpsn').val(varkdpesnan);
+            $('#customer').val(varcustmr);
+            $('#pengiriman').val(varpngrm);
+            $('#katalog').val(varktlg);
+            $('#status').val(varsts);
+            $('#harga').val(vartothrg);
+            $('#akunD').val(varaknd);
+            $('#akunK').val(varaknk);
         });
 
         $(document).on('click', '#deleteConfirmation', function() {
-            var idkaryawan = $(this).data('id_karyawan');
+            var kdpesnan = $(this).data('kdpsn');
             Swal.fire({
                 title: "Apa anda yakin?",
                 text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -153,7 +151,7 @@ if ($data === null) {
                 cancelButtonText: "Batalkan",
             }).then(function(result) {
                 if (result.isConfirmed) {
-                    location.assign("<?= $baseURL ?>/index.php?link=karyawan&aksi=delete&id=" + idkaryawan);
+                    location.assign("<?= $baseURL ?>/index.php?link=laundry_pesanan&aksi=delete&id=" + kdpesnan);
                 }
             });
         });

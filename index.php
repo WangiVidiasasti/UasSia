@@ -162,11 +162,11 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
                 if (!empty($id)) {
                       // Debugging: Check the ID
                 echo "ID to delete: " . $id . "<br>";
-                    $query = mysqli_query($koneksi, "DELETE FROM master_karyawan WHERE id_karyawan = '$id'");
+                    $query = mysqli_query($koneksi, "DELETE FROM transaksi_pesanan_laundry WHERE kd_pesanan_laundry = '$id'");
                     if ($query) {
                          // Debugging: Check the URL before redirecting
-                        echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=pesanan_laundry<br>";
-                        header("Location: " .$baseURL . "/index.php?link=pesanan_laundry");
+                        echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=laundry_pesanan<br>";
+                        header("Location: " .$baseURL . "/index.php?link=laundry_pesanan");
                         exit;
                     } else {
                         echo "Error deleting record: " . mysqli_error($koneksi);
