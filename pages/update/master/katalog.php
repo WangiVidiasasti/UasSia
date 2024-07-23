@@ -15,7 +15,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Katalog</label>
-                                    <input type="text" class="form-control" name="nama_katalog" id="nama_katalog" required>
+                                    <input type="text" class="form-control" name="nama_katalog" id="" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nama" class="form-label">Harga Katalog</label>
+                                    <input type="number" class="form-control" name="harga_katalog" id=""  required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_katalog" type="submit" class="btn btn-primary">Simpan Data</button>

@@ -63,6 +63,7 @@ echo "End of katalog.php<br>";
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Nama Katalog</th>
+                                        <th>Harga Katalog</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -74,15 +75,17 @@ echo "End of katalog.php<br>";
                                             foreach ($data as $j) {
                                                 $idkatalog = $j->id_katalog;
                                                 $namakatalog = $j->nama_katalog;
+                                                $hargakatalog = $j->harga_katalog;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $namakatalog ?></td>
+                                                     <td><?= $hargakatalog ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modalkatalogupdate"
                                                         data-idktlg="<?= $idkatalog ?>" 
-                                                        data-namakatalog="<?= $namakatalog ?>">Update</button>
+                                                        data-nmkatalog="<?= $namakatalog ?>" data-hgkatalog="<?= $hargakatalog ?>">Update</button>
                                                         <button type="button" class="btn btn-secondary" role="button"
                                                         id="deleteConfirmation" data-idktlg="<?= $idkatalog ?>">Hapus</button>
                                                     </td>
@@ -106,9 +109,11 @@ echo "End of katalog.php<br>";
             $(document).on('click', '#updateModal', function () {
                 var varidkatalog = $(this).data('idktlg');
                 var varkatalog = $(this).data('nmkatalog');
+                var varharga = $(this).data('hgkatalog');
 
                 $('#idktlg').val(varidkatalog);
                 $('#nama_katalog').val(varkatalog);
+                $('#harga_katalog').val(varharga);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

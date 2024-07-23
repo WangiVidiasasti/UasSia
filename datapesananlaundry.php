@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pesananlaundry.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
 if (function_exists('Tampil_Data')) {
@@ -97,8 +98,14 @@ if ($data === null) {
                                                     data-katalog="<?= $namakatalog ?>"
                                                     data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
                                                     data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
-                                                    <button type="button" class="btn btn-secondary" role="button"
-                                                    id="deleteConfirmation" data-kdpsn="<?= $kdpesananlaundry ?>">Hapus</button>
+                                                   
+
+                                                    <button type="button" class="btn btn-success" id="ValidasiPesananLaundry"
+                                                    data-bs-toggle="modal" data-bs-target="#modalValidasiPesananLaundry" 
+                                                    data-kdpsn="<?= $kdpesananlaundry ?>"
+                                                    data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
+                                                    data-katalog="<?= $namakatalog ?>" >Validasi</button>
+                                                    
                                                 </td>
                                             </tr>
                                             <?php
@@ -129,13 +136,24 @@ if ($data === null) {
             var varaknk = $(this).data('akunk');
 
             $('#kdpsn').val(varkdpesnan);
-            $('#customer').val(varcustmr);
+            $('#customer_up').val(varcustmr);
             $('#pengiriman').val(varpngrm);
             $('#katalog').val(varktlg);
             $('#status').val(varsts);
-            $('#harga').val(vartothrg);
+            $('#harga_ttl').val(vartothrg);
             $('#akunD').val(varaknd);
             $('#akunK').val(varaknk);
+        });
+        $(document).on('click', '#ValidasiPesananLaundry', function () {
+            var varkdpesnan = $(this).data('kdpsn');
+            var varcustmr = $(this).data('custmer');
+            var varpngrm = $(this).data('nmpengirim');
+            var varktlg = $(this).data('katalog');
+
+            $('#kdp_vl').val(varkdpesnan);
+            $('#customer_vali').val(varcustmr);
+            $('#pengiriman_vali').val(varpngrm);
+            $('#katalog_vali').val(varktlg);
         });
 
         $(document).on('click', '#deleteConfirmation', function() {

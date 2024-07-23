@@ -151,6 +151,24 @@ if (isset($_POST['insert_pesananlaundry'])) {
 
 
 
+if (isset($_POST['insert_validasi_pesanan_laundry'])) {
+    
+    $data = array(
+        'kd_pesanan_laundry' => mysqli_real_escape_string($koneksi, $_POST['kd_pesanan_laundry']),
+        'berat_baju' => mysqli_real_escape_string($koneksi, $_POST['berat_baju']),
+    );
+
+    // Insert data into detail_pesanan_laundry
+    Insert_Data("detail_pesanan_laundry", $data);
+
+    // Update total_harga
+    Update_Total_Harga($data['kd_pesanan_laundry'], $data['berat_baju']);
+
+    // Redirect to another page
+    header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
+    exit;
+}
+
 
 
 
