@@ -149,24 +149,30 @@ if (isset($_POST['insert_pesananlaundry'])) {
         exit;
     }
 
-    if (isset($_POST['insert_pesananbarang'])) {
-    
-        $data = array(
-            'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
-            'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
-            'id_barang' => mysqli_real_escape_string($koneksi, $_POST['nama']),
-            'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
-            'total_harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
-            'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-            'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-           
-    
-        );
-    
-            Insert_Data("transaksi_pesanan_barang", $data);
-            header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
-            exit;
-        }
+   if (isset($_POST['insert_pesananbarang'])) {
+    $data = array(
+        'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
+        'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
+        'id_barang' => mysqli_real_escape_string($koneksi, $_POST['nama']),
+        'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
+        'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+    );
+
+    // Asumsi Insert_Data mengembalikan ID pesanan barang yang baru dimasukkan
+    $kd_pesanan_barang = Insert_Data("transaksi_pesanan_barang", $data);
+
+    if ($kd_pesanan_barang) {
+        Update_Total_Harga_Barang($kd_pesanan_barang);
+    } else {
+        die("Error: Gagal memasukkan data pesanan barang.");
+    }
+
+    header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
+    exit;
+}
+
+
     
 
 

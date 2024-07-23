@@ -8,7 +8,7 @@ function Insert_Data($table, $data) {
     $sql = "INSERT INTO $table ($columns) VALUES ('$values')";
 
     if ($koneksi->query($sql) === TRUE) {
-        return true;
+        return $koneksi->insert_id; // Mengembalikan ID yang baru dimasukkan
     } else {
         die("Error: " . $sql . "<br>" . $koneksi->error);
     }
@@ -164,5 +164,27 @@ function Update_Total_Harga($kd_pesanan_laundry, $berat_baju) {
         die("Error: " . $koneksi->error);
     }
 }
+function Update_Total_Harga_Barang($kd_pesanan_barang) {
+    global $koneksi;
+
+    $sql = "UPDATE transaksi_pesanan_barang t
+            JOIN master_pengiriman p ON t.id_pengiriman = p.id_pengiriman
+            JOIN master_barang k ON t.id_barang = k.id_barang
+            SET t.total_harga = p.harga + k.harga
+            WHERE t.kd_pesanan_barang = ?";
+
+    if ($stmt = $koneksi->prepare($sql)) {
+        $stmt->bind_param('i', $kd_pesanan_barang); // Pastikan tipe data sesuai
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            die("Error execute: " . $stmt->error);
+        }
+        $stmt->close();
+    } else {
+        die("Error prepare: " . $koneksi->error);
+    }
+}
+
 
 ?>
