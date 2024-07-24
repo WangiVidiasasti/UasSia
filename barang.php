@@ -107,8 +107,8 @@ $data = Tampil_Data('barang');
                 var varharga = $(this).data('hargabarang');
 
                 $('#id_barang').val(varidbarang);
-                $('#nama').val(varbarang);
-                $('#harga').val(varharga);
+                $('#idbrg').val(varbarang);
+                $('#hrgbrg').val(varharga);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

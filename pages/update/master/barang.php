@@ -15,11 +15,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" name="nama" id="nama" required>
+                                    <input type="text" class="form-control" name="nama" id="idbrg" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga</label>
-                                    <input type="text" class="form-control" name="harga" id="harga" required>
+                                    <input type="text" class="form-control" name="harga" id="hrgbrg" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_barang" type="submit" class="btn btn-primary">Simpan Data</button>

@@ -11,12 +11,12 @@
                         <div class="row">
                                 <div class="col-lg-6">
                                     <div class="md-3">
-                                    <input name="kd_nota" type="hidden" class="form-control" id="kdnota" readonly>
+                                    <input name="kd_nota" type="hidden" class="form-control" id="kd_nota" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="supplier" class="form-label">Supplier</label>
                                         <select data-trigger class="form-select" name="nama_supplier" id="supplier" required>
-                                            <option selected disabled>Pilih Nama Customer</option>
+                                            <option selected disabled>Pilih Nama Supplier</option>
                                             <?php
                                             $queryGetSupplier = "SELECT * FROM master_supplier";
                                             $getSupplier = mysqli_query($koneksi, $queryGetSupplier);
@@ -32,23 +32,22 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="pengeluaran" class="form-label">Total Pengeluaran</label>
-                                        <input type="number" class="form-control" name="total_pengeluaran" id="pengl-ttl" readonly>
+                                        <input type="number" class="form-control" name="total_pengeluaran" id="pengl-ttl" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggal" class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" name="tanggal" id="tanggal" readonly>
+                                        <input type="date" class="form-control" name="tanggal" id="tanggal">
                                     </div>
 
-                                    <div class="mb-3" hidden>
+                                    <div class="mb-3" >
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 503 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
+                                            <option value="<?= $akun['no_akun'] ?>" >
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php
@@ -56,16 +55,15 @@
                                             ?>
                                             </select>
                                     </div>
-                                    <div class="mb-3" hidden>
+                                    <div class="mb-3">
                                         <select data-trigger class="form-select" name="nama_akun_k" id="akunK">
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 503 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
+                                            <option value="<?= $akun['no_akun'] ?>">
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php

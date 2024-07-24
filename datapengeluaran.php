@@ -1,8 +1,8 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pesananbarang.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananbarang.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pengeluaran.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananbarang.php";
 // require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
@@ -59,11 +59,9 @@ if ($data === null) {
                                         <th>Nama Supplier</th>
                                         <th>Total Pengeluaran</th>
                                         <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th>Total Harga</th>
                                         <th>No Akun D</th>
                                         <th>No Akun K</th>
-                                        <th>Aksi</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -86,18 +84,7 @@ if ($data === null) {
                                                 <td><?= $tanggal ?></td>
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-primary" id="updateModal"
-                                                    data-bs-toggle="modal" data-bs-target="#updateModalPesananBarang"
-                                                    data-kdpsn="<?= $kdpesananbarang ?>"
-                                                    data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
-                                                    data-barang="<?= $namabarang ?>"
-                                                    data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
-                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
-                                                   
-
-                                                    
-                                                </td>
+                                                
                                             </tr>
                                             <?php
                                         }
