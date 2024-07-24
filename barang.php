@@ -109,6 +109,9 @@ $data = Tampil_Data('barang');
                 $('#id_barang').val(varidbarang);
                 $('#idbrg').val(varbarang);
                 $('#hrgbrg').val(varharga);
+
+               
+
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {
