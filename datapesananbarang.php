@@ -50,7 +50,7 @@ if ($data === null) {
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
                                 data-bs-target="#insertModal">Tambah Data</button>
-                            
+
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
@@ -98,14 +98,14 @@ if ($data === null) {
                                                     data-barang="<?= $namabarang ?>"
                                                     data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
                                                     data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
-                                                   
 
-                                                    
+
+
                                                 </td>
                                             </tr>
                                             <?php
                                         }
-                                   
+
                                     }
                                     ?>
                                 </tbody>

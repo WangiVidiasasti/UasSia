@@ -86,7 +86,7 @@
                                         <input type="text" class="form-control" name="total_harga" id="harga_ttl" readonly>
                                     </div>
 
-                                
+
                                     <div class="mb-3">
                                         <label for="katalog" class="form-label">No Akun D</label>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">

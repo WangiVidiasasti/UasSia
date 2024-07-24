@@ -18,7 +18,7 @@ function Insert_Data($table, $data) {
     
     // Eksekusi query
     if (mysqli_query($koneksi, $sql)) {
-        return true;
+       return $koneksi->insert_id;
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
         return false;
