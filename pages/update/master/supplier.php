@@ -19,15 +19,15 @@
                         </div>
                         <div class="mb-3">
                             <label for="namatoko" class="form-label">Nama_toko</label>
-                            <input type="text" class="form-control" name="nama_toko" id="nama_toko" required>
+                            <input type="text" class="form-control" name="nama_toko" id="nmtko" required>
                         </div>
                         <div class="mb-3">
                             <label for="notelp" class="form-label">Nomor_telepon</label>
-                            <input type="number" class="form-control" name="no_telp" id="no_telp" required>
+                            <input type="number" class="form-control" name="no_telp" id="notelpsup" required>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" name="alamat" id="alamat" required>
+                            <input type="text" class="form-control" name="alamat" id="almt_suplr" required>
                         </div>
                         <div class="mb-3 d-flex flex-column">
                             <button name="update_supplier" type="submit" class="btn btn-primary">Simpan Data</button>

@@ -230,8 +230,6 @@ if (isset($_POST['insert_data_absensi'])) {
 }
 
 
-    
-
 
 if (isset($_POST['insert_validasi_pesanan_laundry'])) {
     
@@ -265,6 +263,21 @@ if (isset($_POST['insert_dataabsensi'])) {
     exit();
 }
 
+if (isset($_POST['insert_pengeluaran'])) {
+    $data = array(
+        'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+        'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
+        'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+        'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+    );
+
+        Insert_Data("transaksi_pengeluaran", $data);
+        header("Location: " . $baseURL . "/index.php?link=pengeluaran");
+        exit;
+    }
+
+    
 
 
 

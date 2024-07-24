@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Update Data Karyawan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form Update Harga </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="nama" class="form-label">Harga</label>
-                            <input type="text" class="form-control" name="harga" id="hrg" required>
+                            <input type="text" class="form-control" name="harga" id="hrg_brt" required>
                         </div>
                         <div class="mb-3 d-flex flex-column">
                             <button name="update_harga_berat" type="submit" class="btn btn-primary">Simpan Data</button>

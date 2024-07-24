@@ -112,8 +112,8 @@ echo "End of katalog.php<br>";
                 var varharga = $(this).data('hgkatalog');
 
                 $('#idktlg').val(varidkatalog);
-                $('#nama_katalog').val(varkatalog);
-                $('#harga_katalog').val(varharga);
+                $('#nmktlg').val(varkatalog);
+                $('#hrgktlg').val(varharga);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

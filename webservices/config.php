@@ -1,7 +1,7 @@
 <?php
 // definisikan koneksi ke database
 $baseURL = "http://localhost/UasSia";
-$server = "26.224.39.33";
+$server = "localhost";
 $username = "root";
 $password = "";
 $database = "uas_sia";

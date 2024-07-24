@@ -120,13 +120,13 @@ echo "End of supplier.php<br>";
                 var varnamasupplier = $(this).data('nmsupplier');
                 var vartoko= $(this).data('nmtoko');
                 var varnotelp = $(this).data('notelp');
-                var varpalamat= $(this).data('alamat');
+                var varalamat= $(this).data('alamat');
 
                 $('#idsuppler').val(varidsupplier);
                 $('#nama_supplier').val(varnamasupplier);
-                $('#nama_toko').val(vartoko);
-                $('#no_telp').val(varnotelp);
-                $('#alamat').val(varalamat);
+                $('#nmtko').val(vartoko);
+                $('#notelpsup').val(varnotelp);
+                $('#almt_suplr').val(varalamat);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

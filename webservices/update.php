@@ -189,6 +189,20 @@ if (isset($_POST['update_jam_keluar'])) {
     header("Location: " . $baseURL . "/index.php?link=data_absensi");
     exit();
 }
+if (isset($_POST['update_pengeluaran'])) {
 
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['kd_nota']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+        mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
+        mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("transaksi_pengeluaran", $data);
+    header("Location: " . $baseURL . "/index.php?link=pengeluaran");
+}
 
 ?>

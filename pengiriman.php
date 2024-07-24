@@ -112,9 +112,9 @@ $data = Tampil_Data('pangiriman');
                 var varharga = $(this).data('harga');
 
                 $('#id_pengiriman').val(varidpengiriman);
-                $('#nama_pengiriman').val(varpengiriman);
-                $('#jarak').val(varjarak);
-                $('#harga').val(varharga);
+                $('#nm_pngrm').val(varpengiriman);
+                $('#jrk_pgn').val(varjarak);
+                $('#hrg_pngrm').val(varharga);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

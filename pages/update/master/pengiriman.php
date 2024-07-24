@@ -15,15 +15,15 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama Pengiriman</label>
-                                    <input type="text" class="form-control" name="nama_pengiriman" id="nama_pengiriman" required>
+                                    <input type="text" class="form-control" name="nama_pengiriman" id="nm_pngrm" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="jarak" class="form-label">Jarak</label>
-                                    <input type="text" class="form-control" name="jarak" id="jarak" required>
+                                    <input type="text" class="form-control" name="jarak" id="jrk_pgn" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga</label>
-                                    <input type="number" class="form-control" name="harga" id="harga" required>
+                                    <input type="number" class="form-control" name="harga" id="hrg_pngrm" required>
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_pengiriman" type="submit" class="btn btn-primary">Simpan Data</button>

@@ -108,7 +108,7 @@ $data = Tampil_Data('hargaberat');
 
                 $('#idbrt').val(varidbert);
                 $('#kg').val(varkilogrm);
-                $('#hrg').val(varharg);
+                $('#hrg_brt').val(varharg);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

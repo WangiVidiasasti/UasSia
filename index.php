@@ -39,7 +39,13 @@ if (isset($_GET['link'])) {
     } elseif (($_GET['link']) == 'data_akun') {
         $title = "Master Akun | ";
     } elseif (($_GET['link']) == 'laundry_pesanan') {
-        $title = "Data Pesanan | ";
+        $title = "Data Pesanan Laundry | ";
+    } elseif (($_GET['link']) == 'pesanan_barang') {
+        $title = "Data Pesanan Barang | ";
+    } elseif (($_GET['link']) == 'data_absensi') {
+        $title = "Data Absensi | ";
+    } elseif (($_GET['link']) == 'pengeluaran') {
+        $title = "Data Pengeluaran | ";
     } 
 
 }
