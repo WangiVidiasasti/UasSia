@@ -175,22 +175,63 @@ if (isset($_POST['insert_pesananbarang'])) {
 }
 
 
-    if (isset($_POST['insert_pengeluaran'])) {
+    // if (isset($_POST['insert_pengeluaran'])) {
     
-        $data = array(
-            'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
-            'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
-            'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
-            'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-            'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+    //     $data = array(
+    //         'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+    //         'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
+    //         'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+    //         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+    //         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
            
     
-        );
+    //     );
     
-            Insert_Data("transaksi_pengeluaran", $data);
-            header("Location: " . $baseURL . "/index.php?link=pengeluaran");
-            exit;
-        }
+    //         Insert_Data("transaksi_pengeluaran", $data);
+    //         header("Location: " . $baseURL . "/index.php?link=pengeluaran");
+    //         exit;
+    //     }
+
+if (isset($_POST['insert_pengeluaran'])) {
+    $kd_supplier = mysqli_real_escape_string($koneksi, $_POST['nama_supplier']);
+    $total_pengeluaran = mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
+    $no_akun_d = mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']);
+    $no_akun_k = mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']);
+
+    $data_pengeluaran = array(
+        'kd_supplier' => $kd_supplier,
+        'total_pengeluaran' => $total_pengeluaran,
+        'tanggal' => $tanggal,
+        'no_akun_d' => $no_akun_d,
+        'no_akun_k' => $no_akun_k,
+    );
+
+    // Insert data ke transaksi_pengeluaran
+    Insert_Data("transaksi_pengeluaran", $data_pengeluaran);
+
+    // Dapatkan kode_nota dari transaksi_pengeluaran
+    $kode_nota = mysqli_insert_id($koneksi);
+
+    // Kondisi untuk memasukkan data ke transaksi_hutang
+    if ($no_akun_d == 201 && $no_akun_k == 101) {
+        $data_hutang = array(
+            'kd_nota' => $kode_nota,
+            'jumlah_hutang' => $total_pengeluaran,
+            'tanggal' => $tanggal,
+            'no_akun_d' => $no_akun_d,
+            'no_akun_k' => $no_akun_k,
+            'status' => 'Belum Lunas',
+        );
+
+        // Insert data ke transaksi_hutang
+        Insert_Data("transaksi_hutang", $data_hutang);
+    }
+
+    header("Location: " . $baseURL . "/index.php?link=pengeluaran");
+    exit;
+}
+
 
     // if (isset($_POST['insert_pesananbarang'])) {
     

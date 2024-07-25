@@ -1,8 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pengeluaran.php";
-// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananbarang.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/hutang.php";
 // require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
@@ -12,7 +11,7 @@ if (function_exists('Tampil_Data')) {
     echo "Function Tampil_Data does not exist.";
 }
 
-$data = Tampil_Data('pengeluaran');
+$data = Tampil_Data('hutang');
 
 // Debugging to ensure data fetch is correct
 if ($data === null) {
@@ -32,8 +31,8 @@ if ($data === null) {
                         <h4 class="mb-sm-0 font-size-18">Data Laundry</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Karyawan</a></li>
-                                <li class="breadcrumb-item active">Data Karyawan</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Hutang</a></li>
+                                <li class="breadcrumb-item active">Data Hutang</li>
                             </ol>
                         </div>
                     </div>
@@ -45,37 +44,37 @@ if ($data === null) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Agama</h4>
+                            <h4 class="card-title">Data Hutang</h4>
                         </div>
                         <div class="card-body">
-                            <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
-                                data-bs-target="#insertModal">Tambah Data</button>
-                            
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Supplier</th>
+                                        <th>Kode Nota</th>
                                         <th>Total Pengeluaran</th>
                                         <th>Tanggal</th>
                                         <th>No Akun D</th>
                                         <th>No Akun K</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $data = Tampil_Data("pengeluaran");
+                                    $data = Tampil_Data("hutang");
                                     $no = 1;
                                     if ($data !== null) {
                                         foreach ($data as $j) {
-                                            $kdpengeluaran = $j->kd_nota;
-                                            $namasupplier = $j->nama_supplier;
-                                            $totalpengeluaran = $j->total_pengeluaran;
+                                            $kdnota = $j->kd_hutang;
+                                            $namasupplier = $j->kd_nota;
+                                            $totalpengeluaran = $j->jumlah_hutang;
                                             $tanggal = $j->tanggal;
                                             $noakund = $j->nama_akun_d;
                                             $noakunk = $j->nama_akun_k;
+                                            $statuss = $j->status;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
@@ -84,6 +83,15 @@ if ($data === null) {
                                                 <td><?= $tanggal ?></td>
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
+                                                <td><?= $statuss ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning" id="updateModal"
+                                                        data-bs-toggle="modal" data-bs-target="#pelunasanHutang"
+                                                        data-notakd="<?= $kdnota ?>" data-nmsup="<?= $namasupplier?>"
+                                                        data-totalpengel="<?= $totalpengeluaran?>" data-tgl="<?= $tanggal?>"
+                                                        data-noakund="<?= $noakund?>" data-noakunk="<?= $noakunk?>"
+                                                        data-statust="<?= $statuss?>">Pelunasan</button>
+                                                </td>
                                                 
                                             </tr>
                                             <?php
@@ -104,23 +112,21 @@ if ($data === null) {
 <script>
     $(document).ready(function () {
         $(document).on('click', '#updateModal', function () {
-            var varkdpesnan = $(this).data('kdpsn');
-            var varcustmr = $(this).data('custmer');
-            var varpngrm = $(this).data('nmpengirim');
-            var varktlg = $(this).data('katalog');
-            var varsts = $(this).data('status');
-            var vartothrg = $(this).data('totharga');
-            var varaknd = $(this).data('akund');
-            var varaknk = $(this).data('akunk');
+            var varkdpesnan = $(this).data('notakd');
+            var varcustmr = $(this).data('nmsup');
+            var varpngrm = $(this).data('totalpengel');
+            var varktlg = $(this).data('tgl');
+            var varsts = $(this).data('noakund');
+            var vartothrg = $(this).data('noakunk');
+            var varaknd = $(this).data('statust');
 
-            $('#kdpsn').val(varkdpesnan);
-            $('#customer_up').val(varcustmr);
-            $('#pengiriman').val(varpngrm);
-            $('#katalog').val(varktlg);
-            $('#status').val(varsts);
-            $('#harga_ttl').val(vartothrg);
-            $('#akunD').val(varaknd);
-            $('#akunK').val(varaknk);
+            $('#kdhtg').val(varkdpesnan);
+            $('#kdnota').val(varcustmr);
+            $('#ttl_pengel').val(varpngrm);
+            $('#tglpnglrn').val(varktlg);
+            $('#noaknd').val(varsts);
+            $('#noaknk').val(vartothrg);
+            $('#stshtg').val(varaknd);
         });
         $(document).on('click', '#ValidasiPesananLaundry', function () {
             var varkdpesnan = $(this).data('kdpsn');

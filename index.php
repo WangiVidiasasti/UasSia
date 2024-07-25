@@ -526,6 +526,30 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
    include "akun.php";
 }
 
+}  elseif ($_GET['link'] == 'hutang') {
+        if (isset($_GET['aksi'])) {
+        if ($_GET['aksi'] == 'delete') { 
+       $id = $_GET['id'];
+       if (!empty($id)) {
+             // Debugging: Check the ID
+       echo "ID to delete: " . $id . "<br>";
+           $query = mysqli_query($koneksi, "DELETE FROM master_akun WHERE no_akun= '$id'");
+           if ($query) {
+                // Debugging: Check the URL before redirecting
+               echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=hutang<br>";
+               header("Location: " .$baseURL . "/index.php?link=hutang");
+               exit;
+           } else {
+               echo "Error deleting record: " . mysqli_error($koneksi);
+           }
+       } else {
+           echo "ID is missing.";
+       }
+   }
+} else {
+   include "hutang.php";
+}
+
 }  elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");

@@ -40,6 +40,7 @@
                                     </div>
 
                                     <div class="mb-3" >
+                                        <label for="tanggal" class="form-label">No Akun D</label>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
@@ -56,6 +57,7 @@
                                             </select>
                                     </div>
                                     <div class="mb-3" >
+                                        <label for="tanggal" class="form-label">No Akun K</label>
                                         <select data-trigger class="form-select" name="nama_akun_k" id="akunK">
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php

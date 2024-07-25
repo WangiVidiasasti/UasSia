@@ -1,9 +1,20 @@
 <?php
 include "../config.php";
 
-$hasil = mysqli_query($koneksi, "SELECT * FROM transaksi_pengeluaran
-LEFT JOIN master_supplier ON master_supplier.id_supplier =transaksi_pengeluaran.kd_supplier
-LEFT JOIN master_akun ON master_akun.no_akun = transaksi_pengeluaran.no_akun_d");
+$hasil = mysqli_query($koneksi, "SELECT 
+    tp.*, 
+    ms.nama_supplier, 
+    ma_d.nama_akun AS nama_akun_d,
+    ma_k.nama_akun AS nama_akun_k
+FROM 
+    transaksi_pengeluaran tp
+LEFT JOIN 
+    master_supplier ms ON ms.id_supplier = tp.kd_supplier
+LEFT JOIN 
+    master_akun ma_d ON ma_d.no_akun = tp.no_akun_d
+LEFT JOIN 
+    master_akun ma_k ON ma_k.no_akun = tp.no_akun_k;
+");
 
 
 $jsonRespon = array();

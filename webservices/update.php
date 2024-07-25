@@ -225,5 +225,21 @@ if (isset($_POST['update_pengeluaran'])) {
     Update_Data("transaksi_pengeluaran", $data);
     header("Location: " . $baseURL . "/index.php?link=pengeluaran");
 }
+if (isset($_POST['update_pelunasan'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['kd_hutang']),
+        mysqli_real_escape_string($koneksi, $_POST['kd_nota']),
+        mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+        mysqli_real_escape_string($koneksi, $_POST['jumlah_hutang']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+        mysqli_real_escape_string($koneksi, $_POST['status']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("transaksi_hutang", $data);
+    header("Location: " . $baseURL . "/index.php?link=hutang");
+}
 
 ?>
