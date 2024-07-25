@@ -233,19 +233,28 @@ if (isset($_POST['insert_pengeluaran'])) {
 }
 
 
-    // if (isset($_POST['insert_pesananbarang'])) {
+        if (isset($_POST['insert_penggajian'])) {
     
-    //     $data = array(
-    //         'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
-    //         'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
-    //         'id_barang' => mysqli_real_escape_string($koneksi, $_POST['nama']),
-    //         'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
-    //         'total_harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
-    //         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-    //         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-           
+            $data = array(
+                'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']),
+                'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
+                'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+                'gaji_pokok' => mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
+                'total_kerja' => mysqli_real_escape_string($koneksi, $_POST['total_kerja']),
+                'THP' => mysqli_real_escape_string($koneksi, $_POST['take_home_pay']),
+                'no_akun' => mysqli_real_escape_string($koneksi, $_POST['nama_akun']),
+               
+            );
+        
+                Insert_Data("transaksi_slip_penggajian", $data);
+                header("Location: " . $baseURL . "/index.php?link=data_penggajian");
+                exit;
+            }
+        
     
-    //     );
+        if (isset($_POST['insert_data_absensi'])) {
+         $jam_masuk = date("H:i:s"); // waktu saat ini
+        $jam_keluar = date("H:i:s", strtotime('+8 hours')); // contoh penambahan waktu 8 jam
     
     //         Insert_Data("transaksi_pesanan_barang", $data);
     //         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");

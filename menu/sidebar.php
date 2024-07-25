@@ -45,6 +45,12 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="index.php?link=data_penggajian">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-dashboard">Data Penggajian</span>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="index.php?link=pengeluaran">
                                     <i data-feather="file-text"></i>
                                     <span data-key="t-dashboard">Data Pengeluaran</span>
