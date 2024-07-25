@@ -78,7 +78,7 @@ if ($data === null) {
                                             $tanggal = $j->tanggal;
                                             $gajipokok = $j->gaji_pokok;
                                             $totalkerja = $j->total_kerja;
-                                            $THP = $j->THP;
+                                            $THP = $j->gaji_pokok;
                                             $noakun = $j->nama_akun;
                                             ?>
                                             <tr>
