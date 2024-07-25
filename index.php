@@ -52,6 +52,33 @@ if (isset($_GET['link'])) {
 
 
 ?>
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <!-- ... existing head content ... -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <!-- ... existing body content ... -->
+
+        <?php
+        if (isset($_SESSION['error_message'])) {
+            echo "<script>
+                Swal.fire({
+                    title: 'Gagal Update',
+                    text: '" . $_SESSION['error_message'] . "',
+                    icon: 'error',
+                    confirmButtonColor: '#2ab57d',
+                    confirmButtonText: 'OK'
+                });
+            </script>";
+            unset($_SESSION['error_message']); // Clear the error message
+        }
+        ?>
+
+        <!-- ... existing body content ... -->
+    </body>
+    </html>
 <!doctype html>
 <html lang="en">
 
@@ -120,7 +147,11 @@ if (isset($_GET['link'])) {
 </head>
 
 <body>
+
+        
     <?php
+
+    
     if (isset($_GET['link']) && $_GET['link'] == 'login') {
     include 'login.php';
     exit();

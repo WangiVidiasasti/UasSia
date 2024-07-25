@@ -231,6 +231,7 @@ function Update_Data_Absen($table, $data) {
         echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
         return false;
     }
+    
 }
 
 ?>

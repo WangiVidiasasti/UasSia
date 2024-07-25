@@ -176,19 +176,40 @@ if (isset($_POST['update_pesanan_barang'])) {
         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
         exit;
     }
-if (isset($_POST['update_jam_keluar'])) {
-    $time = date('Y-m-d H:i:s'); 
-
-    $data = array(
-        'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']),
-        'jam_keluar' => $time,
-    );
-
-    // Call the Update_Data function to update data
-    Update_Data_Absen("detail_karyawan", $data);
-    header("Location: " . $baseURL . "/index.php?link=data_absensi");
-    exit();
-}
+    if (isset($_POST['update_jam_keluar'])) {
+        date_default_timezone_set('Asia/Jakarta'); // Set timezone
+        $time = date('Y-m-d H:i:s'); 
+    
+        // Fetch the jam_masuk from the database
+        $id_detail_karyawan = mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']);
+        $query = "SELECT jam_masuk FROM detail_karyawan WHERE id_detail_karyawan = '$id_detail_karyawan'";
+        $result = mysqli_query($koneksi, $query);
+        $row = mysqli_fetch_assoc($result);
+        $jam_masuk = $row['jam_masuk'];
+    
+        // Calculate the difference in hours
+        $datetime1 = new DateTime($jam_masuk);
+        $datetime2 = new DateTime($time);
+        $interval = $datetime1->diff($datetime2);
+        $hours = $interval->h + ($interval->days * 24);
+    
+        if ($hours >= 8) {
+            $data = array(
+                'id_detail_karyawan' => $id_detail_karyawan,
+                'jam_keluar' => $time,
+            );
+    
+            // Call the Update_Data function to update data
+            Update_Data_Absen("detail_karyawan", $data);
+            header("Location: " . $baseURL . "/index.php?link=data_absensi");
+            exit();
+        } else {
+           // Set a session variable to indicate the error
+           $_SESSION['error_message'] = 'Jam keluar hanya dapat diupdate setelah lebih dari 8 jam.';
+           header("Location: " . $baseURL . "/index.php?link=data_absensi");
+           exit();
+        }
+    }
 if (isset($_POST['update_pengeluaran'])) {
 
     $data = array(

@@ -106,6 +106,7 @@ if ($data === null) {
             var variddtlkaryawan = $(this).data('detailkarid');
 
             $('#iddtlkar').val(variddtlkaryawan);
+            
         });
     });
 </script>

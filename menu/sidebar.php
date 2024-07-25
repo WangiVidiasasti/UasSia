@@ -50,6 +50,12 @@
                                     <span data-key="t-dashboard">Data Pengeluaran</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=data_piutang">
+                                    <i data-feather="file-text"></i>
+                                    <span data-key="t-dashboard">Data Piutang</span>
+                                </a>
+                            </li>
                         </ul>
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title" data-key="t-menu">Mastering</li>

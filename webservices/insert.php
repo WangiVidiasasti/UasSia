@@ -212,6 +212,7 @@ if (isset($_POST['insert_pesananbarang'])) {
     //     }
     
 if (isset($_POST['insert_data_absensi'])) {
+    date_default_timezone_set('Asia/Jakarta');
     $jam_masuk = date("H:i:s"); // waktu saat ini
     $jam_keluar = date("H:i:s", strtotime('+8 hours')); // contoh penambahan waktu 8 jam
     
