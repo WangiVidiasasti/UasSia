@@ -259,7 +259,7 @@ if (isset($_POST['insert_pengeluaran'])) {
     //         Insert_Data("transaksi_pesanan_barang", $data);
     //         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
     //         exit;
-    //     }
+         }
     
 if (isset($_POST['insert_data_absensi'])) {
     date_default_timezone_set('Asia/Jakarta');
@@ -327,12 +327,4 @@ if (isset($_POST['insert_pengeluaran'])) {
         header("Location: " . $baseURL . "/index.php?link=pengeluaran");
         exit;
     }
-
-    
-
-
-
-
-
-
 ?>

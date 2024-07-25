@@ -122,8 +122,7 @@
                                             }
                                             ?>
                                             </select>
-                                    </div>
-                                    
+                                    </div> 
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_penggajian" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>
