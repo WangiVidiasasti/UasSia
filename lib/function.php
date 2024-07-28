@@ -254,4 +254,82 @@ function Update_Data_Absen($table, $data) {
     
 }
 
+function Total_Penggajian($periode) {
+    global $koneksi;
+
+    $sql = "
+        INSERT INTO transaksi_slip_penggajian (id_karyawan, tanggal, gaji_pokok, gaji_per_jam, total_kerja, THP, no_akun_d, no_akun_k)
+SELECT 
+    k.id_karyawan,
+    ? AS tanggal,
+    j.gaji_pokok,
+    j.gaji_pokok / (30 * 8) AS gaji_per_jam,
+    COALESCE(SUM(a.daily_hours), 0) AS total_kerja,
+    COALESCE((j.gaji_pokok / (30 * 8)) * SUM(a.daily_hours), 0) AS THP,
+    501 AS no_akun_d,
+    101 AS no_akun_k
+FROM 
+    master_karyawan k
+JOIN 
+    master_jabatan j ON k.id_jabatan = j.id_jabatan
+LEFT JOIN (
+    SELECT 
+        id_karyawan,
+        LEAST(8, TIMESTAMPDIFF(HOUR, jam_masuk, jam_keluar)) AS daily_hours
+    FROM 
+        detail_karyawan
+    WHERE 
+        DATE_FORMAT(jam_masuk, '%Y-%m') = ?
+    GROUP BY 
+        id_karyawan, DATE(jam_masuk)
+    HAVING 
+        SUM(TIMESTAMPDIFF(HOUR, jam_masuk, jam_keluar)) >= 8
+) a ON k.id_karyawan = a.id_karyawan
+GROUP BY 
+    k.id_karyawan, j.gaji_pokok";
+
+    $stmt = $koneksi->prepare($sql);
+    if ($stmt === false) {
+        trigger_error($koneksi->error, E_USER_ERROR);
+        return false;
+    }
+
+    $stmt->bind_param('ss', $periode, $periode);
+
+    if ($stmt->execute()) {
+        return true;
+    } else {
+        echo "Error: " . $stmt->error;
+        return false;
+    }
+
+    $stmt->close();
+}
+
+function Update_Data_Jamkel($table, $data, $id) {
+    global $koneksi;
+
+    // Buat string SET untuk kolom dan nilai yang akan diperbarui
+    $set_values = [];
+    foreach ($data as $column => $value) {
+        $escaped_value = mysqli_real_escape_string($koneksi, $value);
+        $set_values[] = "$column = '$escaped_value'";
+    }
+    $set_string = implode(", ", $set_values);
+
+    // Buat query
+    $sql = "UPDATE `$table` SET $set_string WHERE id_detail_karyawan = " . intval($id);
+
+    // Debugging: Cetak query
+    // echo $sql;
+
+    // Eksekusi query
+    if (mysqli_query($koneksi, $sql)) {
+        return true;
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($koneksi);
+        return false;
+    }
+}
+
 ?>

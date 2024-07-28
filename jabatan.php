@@ -64,8 +64,6 @@ echo "End of jabatan.php<br>";
                                         <th>Nomor</th>
                                         <th>Nama Karyawan</th>
                                         <th>Gaji Pokok</th>
-                                        <th>Gaji Lembur</th>
-                                        <th>Potongan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -78,21 +76,16 @@ echo "End of jabatan.php<br>";
                                                 $idjabatan = $j->id_jabatan;
                                                 $namajabatan = $j->nama_jabatan;
                                                 $gajipokok = $j->gaji_pokok;
-                                                $gajilembur = $j->gaji_lembur;
-                                                $potongan = $j->potongan;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $namajabatan ?></td>
                                                     <td><?= $gajipokok ?></td>
-                                                    <td><?= $gajilembur ?></td>
-                                                    <td><?= $potongan ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modaljabatanupdate"
                                                         data-idjbtn="<?= $idjabatan ?>" data-nmjabatan="<?= $namajabatan ?>"
                                                         data-gjpokok="<?= $gajipokok ?>"
-                                                        data-gjlembur="<?= $gajilembur ?>" data-ptngan="<?= $potongan ?>"
                                                         >Update</button> 
                                                         <button type="button" class="btn btn-secondary" role="button"
                                                         id="deleteConfirmation" data-idjbtn="<?= $idjabatan ?>">Hapus</button>
@@ -119,14 +112,10 @@ echo "End of jabatan.php<br>";
         var varidjabatan = $(this).data('idjbtn');
         var varjabatan = $(this).data('nmjabatan');
         var vargajipokokjb = $(this).data('gjpokok');
-        var vargajilemburjb = $(this).data('gjlembur');
-        var varpotonganjb = $(this).data('ptngan');
 
                 $('#idjbtn').val(varidjabatan);
                 $('#nmjbtn').val(varjabatan);
                 $('#gjpokok').val(vargajipokokjb);
-                $('#gjlembur').val(vargajilemburjb);
-                $('#ptngn').val(varpotonganjb);
             });
 
             $(document).on('click', '#deleteConfirmation', function() {

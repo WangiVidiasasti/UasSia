@@ -2,9 +2,13 @@
 include "../config.php";
 
 $hasil = mysqli_query($koneksi, "SELECT * FROM transaksi_slip_penggajian
-LEFT JOIN detail_karyawan ON detail_karyawan.id_detail_karyawan = transaksi_slip_penggajian.id_detail_karyawan
-LEFT JOIN master_jabatan ON master_jabatan.id_jabatan = transaksi_slip_penggajian.id_jabatan
-LEFT JOIN master_akun ON master_akun.no_akun = transaksi_slip_penggajian.no_akun");
+LEFT JOIN 
+    master_karyawan ON master_karyawan.id_karyawan = transaksi_slip_penggajian.id_karyawan
+LEFT JOIN 
+    master_akun ON master_akun.no_akun = transaksi_slip_penggajian.no_akun_d AND transaksi_slip_penggajian.no_akun_k
+LEFT JOIN 
+    master_jabatan ON master_jabatan.id_jabatan = master_karyawan.id_jabatan
+");
 
 
 $jsonRespon = array();

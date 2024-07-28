@@ -14,11 +14,9 @@ if (isset($_POST['update_karyawan'])) {
         mysqli_real_escape_string($koneksi, $_POST['nama_karyawan']),
         mysqli_real_escape_string($koneksi, $_POST['alamat']),
         mysqli_real_escape_string($koneksi, $_POST['no_telp']),
-        mysqli_real_escape_string($koneksi, $_POST['email']),
-        mysqli_real_escape_string($koneksi, $_POST['status_pekerjaan']),
         mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']),
         mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']),
-        mysqli_real_escape_string($koneksi, $_POST['tanggal_masuk']),
+        'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
     );
 
     // Call the Insert_Data function to insert data
@@ -57,8 +55,6 @@ if (isset($_POST['update_jabatan'])) {
         mysqli_real_escape_string($koneksi, $_POST['id_jabatan']),
         mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
         mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
-        mysqli_real_escape_string($koneksi, $_POST['gaji_lembur']),
-        mysqli_real_escape_string($koneksi, $_POST['potongan']),
     );
 
     // Call the Insert_Data function to insert data
@@ -176,40 +172,54 @@ if (isset($_POST['update_pesanan_barang'])) {
         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
         exit;
     }
+    // if (isset($_POST['update_jam_keluar'])) {
+    //     date_default_timezone_set('Asia/Jakarta'); // Set timezone
+    //     $time = date('Y-m-d H:i:s'); 
+    
+    //     // Fetch the jam_masuk from the database
+    //     $id_detail_karyawan = mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']);
+    //     $query = "SELECT jam_masuk FROM detail_karyawan WHERE id_detail_karyawan = '$id_detail_karyawan'";
+    //     $result = mysqli_query($koneksi, $query);
+    //     $row = mysqli_fetch_assoc($result);
+    //     $jam_masuk = $row['jam_masuk'];
+    
+    //     // Calculate the difference in hours
+    //     $datetime1 = new DateTime($jam_masuk);
+    //     $datetime2 = new DateTime($time);
+    //     $interval = $datetime1->diff($datetime2);
+    //     $hours = $interval->h + ($interval->days * 24);
+    
+    //     if ($hours >= 8) {
+    //         $data = array(
+    //             'id_detail_karyawan' => $id_detail_karyawan,
+    //             'jam_keluar' => $time,
+    //         );
+    
+    //         // Call the Update_Data function to update data
+    //         Update_Data_Absen("detail_karyawan", $data);
+    //         header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    //         exit();
+    //     } else {
+    //        // Set a session variable to indicate the error
+    //        $_SESSION['error_message'] = 'Jam keluar hanya dapat diupdate setelah lebih dari 8 jam.';
+    //        header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    //        exit();
+    //     }
+    // }
     if (isset($_POST['update_jam_keluar'])) {
-        date_default_timezone_set('Asia/Jakarta'); // Set timezone
-        $time = date('Y-m-d H:i:s'); 
-    
-        // Fetch the jam_masuk from the database
-        $id_detail_karyawan = mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']);
-        $query = "SELECT jam_masuk FROM detail_karyawan WHERE id_detail_karyawan = '$id_detail_karyawan'";
-        $result = mysqli_query($koneksi, $query);
-        $row = mysqli_fetch_assoc($result);
-        $jam_masuk = $row['jam_masuk'];
-    
-        // Calculate the difference in hours
-        $datetime1 = new DateTime($jam_masuk);
-        $datetime2 = new DateTime($time);
-        $interval = $datetime1->diff($datetime2);
-        $hours = $interval->h + ($interval->days * 24);
-    
-        if ($hours >= 8) {
-            $data = array(
-                'id_detail_karyawan' => $id_detail_karyawan,
-                'jam_keluar' => $time,
-            );
-    
-            // Call the Update_Data function to update data
-            Update_Data_Absen("detail_karyawan", $data);
-            header("Location: " . $baseURL . "/index.php?link=data_absensi");
-            exit();
-        } else {
-           // Set a session variable to indicate the error
-           $_SESSION['error_message'] = 'Jam keluar hanya dapat diupdate setelah lebih dari 8 jam.';
-           header("Location: " . $baseURL . "/index.php?link=data_absensi");
-           exit();
-        }
-    }
+    // Ambil nilai `id_detail_karyawan` dan `time` dari input form
+    $id_detail_karyawan = mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']);
+    $time = date('Y-m-d H:i:s'); // Format waktu sesuai kebutuhan
+
+    $data = array(
+        'jam_keluar' => $time,
+    );
+
+    // Call the Update_Data function to update data
+    Update_Data_Jamkel("detail_karyawan", $data, $id_detail_karyawan);
+    header("Location: " . $baseURL . "/index.php?link=data_absensi");
+    exit();
+}
 if (isset($_POST['update_pengeluaran'])) {
 
     $data = array(

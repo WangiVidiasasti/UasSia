@@ -23,10 +23,6 @@
                                     <input type="number" class="form-control" name="no_telp" id="notelp" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" name="email" id="email" required>
-                                </div>
-                                <div class="mb-3">
                                     <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
                                     <input type="text" class="form-control" name="tempat_lahir" id="tempat_lahir" required>
                                 </div>
@@ -35,17 +31,22 @@
                                     <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="status_pekerjaan" class="form-label">Status pekerjaan</label>
-                                    <select class="form-control" name="status_pekerjaan" id="status_pekerjaan" required>
-                                        <option value="" disabled selected>Pilih status pekerjaan</option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Non Aktif">Non Aktif</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="tanggal_masuk" class="form-label">Tanggal Masuk</label>
-                                    <input type="date" class="form-control" name="tanggal_masuk" id="tanggal_masuk" required>
-                                </div>
+                                        <label for="katalog" class="form-label">Jabatan</label>
+                                        <select data-trigger class="form-select" name="nama_jabatan" id="nm_jbtn" required>
+                                            <option selected disabled>Pilih Jabatan</option>
+                                            <?php
+                                            $queryGetKatalog = "SELECT * FROM master_jabatan";
+                                            $getKatalog = mysqli_query($koneksi, $queryGetKatalog);
+                                            while ($katalog = mysqli_fetch_assoc($getKatalog)) {
+                                                ?>
+                                            <option value="<?= $katalog['id_jabatan'] ?>">
+                                                <?= $katalog['nama_jabatan'] ?>
+                                            </option>
+                                            <?php
+                                            }
+                                            ?>
+                                            </select>
+                                    </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_karyawan" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>

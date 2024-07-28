@@ -3,7 +3,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/penggajian.php";
 // require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/penggajian.php";
-// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
 if (function_exists('Tampil_Data')) {
@@ -73,12 +72,12 @@ if ($data === null) {
                                     if ($data !== null) {
                                         foreach ($data as $j) {
                                             $kdslipgaji = $j->kd_slip_gaji;
-                                            $namakaryawan = $j->id_detail_karyawan;
+                                            $namakaryawan = $j->nama_karyawan;
                                             $namajabatan = $j->nama_jabatan;
                                             $tanggal = $j->tanggal;
                                             $gajipokok = $j->gaji_pokok;
                                             $totalkerja = $j->total_kerja;
-                                            $THP = $j->gaji_pokok;
+                                            $THP = $j->THP;
                                             $noakun = $j->nama_akun;
                                             ?>
                                             <tr>

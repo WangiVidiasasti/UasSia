@@ -21,14 +21,6 @@
                                     <label for="gaji_pokok" class="form-label">Gaji Pokok</label>
                                     <input type="number" class="form-control" name="gaji_pokok" id="gjpokok" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="notelp" class="form-label">Gaji Lembur</label>
-                                    <input type="number" class="form-control" name="gaji_lembur" id="gjlembur" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Potongan</label>
-                                    <input type="number" class="form-control" name="potongan" id="ptngn" required>
-                                </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="update_jabatan" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>

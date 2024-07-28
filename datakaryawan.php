@@ -45,7 +45,7 @@ $data = Tampil_Data('karyawan');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Agama</h4>
+                            <h4 class="card-title">Data Karyawan</h4>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
@@ -59,11 +59,9 @@ $data = Tampil_Data('karyawan');
                                         <th>Nama Karyawan</th>
                                         <th>Alamat</th>
                                         <th>No Telepon</th>
-                                        <th>Email</th>
-                                        <th>Status Pekerjaan</th>
                                         <th>Tempat Lahir</th>
                                         <th>Tanggal Lahir</th>
-                                        <th>Tanggal Masuk</th>
+                                        <th>Jabatan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -77,30 +75,25 @@ $data = Tampil_Data('karyawan');
                                                 $namakaryawan = $j->nama_karyawan;
                                                 $alamat = $j->alamat;
                                                 $notelp = $j->no_telp;
-                                                $email = $j->email;
-                                                $status = $j->status_pekerjaan;
                                                 $tempatlahir = $j->tempat_lahir;
                                                 $tgllahir = $j->tanggal_lahir;
-                                                $tglmasuk = $j->tanggal_masuk;
+                                                $namajabatan = $j->nama_jabatan;
                                                 ?>
                                                 <tr>
                                                     <td><?= $no++ ?></td>
                                                     <td><?= $namakaryawan ?></td>
                                                     <td><?= $alamat ?></td>
                                                     <td><?= $notelp ?></td>
-                                                    <td><?= $email ?></td>
-                                                    <td><?= $status ?></td>
                                                     <td><?= $tempatlahir ?></td>
                                                     <td><?= $tgllahir ?></td>
-                                                    <td><?= $tglmasuk ?></td>
+                                                    <td><?= $namajabatan ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" id="updateModal"
                                                         data-bs-toggle="modal" data-bs-target="#modalkaryawanupdate"
                                                         data-idkar="<?= $idkaryawan ?>" data-nmkaryawan="<?= $namakaryawan ?>"
                                                         data-alamatky="<?= $alamat ?>"
-                                                        data-notelpky="<?= $notelp ?>" data-emailky="<?= $email ?>"
-                                                        data-statusky="<?= $status ?>" data-tmptlahirky="<?= $tempatlahir ?>"
-                                                        data-tgllahirky="<?= $tgllahir ?>" data-tglmasukky="<?= $tglmasuk ?>">Update</button>
+                                                        data-notelpky="<?= $notelp ?>" data-tmptlahirky="<?= $tempatlahir ?>"
+                                                        data-tgllahirky="<?= $tgllahir ?>" data-nmjbtn="<?= $namajabatan ?>">Update</button>
                                                         <button type="button" class="btn btn-secondary" role="button"
                                                         id="deleteConfirmation" data-id_karyawan="<?= $idkaryawan ?>">Hapus</button>
                                                     </td>
@@ -126,21 +119,17 @@ $data = Tampil_Data('karyawan');
                 var varkaryawan = $(this).data('nmkaryawan');
                 var varalamat = $(this).data('alamatky');
                 var varnotelp = $(this).data('notelpky');
-                var varemail = $(this).data('emailky');
-                var varstatus = $(this).data('statusky');
                 var vartmptlahir = $(this).data('tmptlahirky');
                 var vartgllahir = $(this).data('tgllahirky');
-                var vartglmasuk = $(this).data('tglmasukky');
+                var varnmjbtn = $(this).data('nmjbtn');
 
                 $('#id_karyawan').val(varidkaryawan);
-                $('#nama_karyawan_ky').val(varkaryawan);
-                $('#alamat_ky').val(varalamat);
-                $('#no_telp').val(varnotelp);
-                $('#email_ky').val(varemail);
-                $('#tempat_lahir_ky').val(vartmptlahir);
-                $('#tanggal_lahir_ky').val(vartgllahir);
-                $('#status_pekerjaan_ky').val(varstatus);
-                $('#tanggal_masuk_ky').val(vartglmasuk);
+                $('#nm_kar').val(varkaryawan);
+                $('#alamat_kar').val(varalamat);
+                $('#no_telp_kar').val(varnotelp);
+                $('#tempat_lahir_kar').val(vartmptlahir);
+                $('#tanggal_lahir_kar').val(vartgllahir);
+                $('#nm_jbtn').val(varnmjbtn);
                 
             });
             $(document).on('click', '#deleteConfirmation', function() {

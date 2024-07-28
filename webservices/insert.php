@@ -13,11 +13,9 @@ if (isset($_POST['insert_karyawan'])) {
         'nama_karyawan' => mysqli_real_escape_string($koneksi, $_POST['nama_karyawan']),
         'alamat' => mysqli_real_escape_string($koneksi, $_POST['alamat']),
         'no_telp' => mysqli_real_escape_string($koneksi, $_POST['no_telp']),
-        'email' => mysqli_real_escape_string($koneksi, $_POST['email']),
-        'status_pekerjaan' => mysqli_real_escape_string($koneksi, $_POST['status_pekerjaan']),
         'tempat_lahir' => mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']),
         'tanggal_lahir' => mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']),
-        'tanggal_masuk' => mysqli_real_escape_string($koneksi, $_POST['tanggal_masuk']),
+        'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
     );
 
     // Call the Insert_Data function to insert data
@@ -42,8 +40,6 @@ if (isset($_POST['insert_jabatan'])) {
     $data = array(
         'nama_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
         'gaji_pokok' => mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
-        'Gaji_lembur' => mysqli_real_escape_string($koneksi, $_POST['Gaji_lembur']),
-        'potongan' => mysqli_real_escape_string($koneksi, $_POST['potongan']),
     );
 
     // Call the Insert_Data function to insert data
@@ -175,23 +171,6 @@ if (isset($_POST['insert_pesananbarang'])) {
 }
 
 
-    // if (isset($_POST['insert_pengeluaran'])) {
-    
-    //     $data = array(
-    //         'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
-    //         'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
-    //         'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
-    //         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-    //         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
-           
-    
-    //     );
-    
-    //         Insert_Data("transaksi_pengeluaran", $data);
-    //         header("Location: " . $baseURL . "/index.php?link=pengeluaran");
-    //         exit;
-    //     }
-
 if (isset($_POST['insert_pengeluaran'])) {
     $kd_supplier = mysqli_real_escape_string($koneksi, $_POST['nama_supplier']);
     $total_pengeluaran = mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']);
@@ -233,33 +212,29 @@ if (isset($_POST['insert_pengeluaran'])) {
 }
 
 
-        if (isset($_POST['insert_penggajian'])) {
+        // if (isset($_POST['insert_penggajian'])) {
     
-            $data = array(
-                'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']),
-                'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
-                'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
-                'gaji_pokok' => mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
-                'total_kerja' => mysqli_real_escape_string($koneksi, $_POST['total_kerja']),
-                'THP' => mysqli_real_escape_string($koneksi, $_POST['take_home_pay']),
-                'no_akun' => mysqli_real_escape_string($koneksi, $_POST['nama_akun']),
+        //     $data = array(
+        //         'id_detail_karyawan' => mysqli_real_escape_string($koneksi, $_POST['id_detail_karyawan']),
+        //         'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
+        //         'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+        //         'gaji_pokok' => mysqli_real_escape_string($koneksi, $_POST['gaji_pokok']),
+        //         'total_kerja' => mysqli_real_escape_string($koneksi, $_POST['total_kerja']),
+        //         'THP' => mysqli_real_escape_string($koneksi, $_POST['take_home_pay']),
+        //         'no_akun' => mysqli_real_escape_string($koneksi, $_POST['nama_akun']),
                
-            );
+        //     );
         
-                Insert_Data("transaksi_slip_penggajian", $data);
-                header("Location: " . $baseURL . "/index.php?link=data_penggajian");
-                exit;
-            }
+        //         Insert_Data("transaksi_slip_penggajian", $data);
+        //         header("Location: " . $baseURL . "/index.php?link=data_penggajian");
+        //         exit;
+        //     }
         
     
-        if (isset($_POST['insert_data_absensi'])) {
-         $jam_masuk = date("H:i:s"); // waktu saat ini
-        $jam_keluar = date("H:i:s", strtotime('+8 hours')); // contoh penambahan waktu 8 jam
-    
-    //         Insert_Data("transaksi_pesanan_barang", $data);
-    //         header("Location: " . $baseURL . "/index.php?link=pesanan_barang");
-    //         exit;
-         }
+        // if (isset($_POST['insert_data_absensi'])) {
+        //  $jam_masuk = date("H:i:s"); 
+        // $jam_keluar = date("H:i:s", strtotime('+8 hours')); 
+        //  }
     
 if (isset($_POST['insert_data_absensi'])) {
     date_default_timezone_set('Asia/Jakarta');
@@ -327,4 +302,20 @@ if (isset($_POST['insert_pengeluaran'])) {
         header("Location: " . $baseURL . "/index.php?link=pengeluaran");
         exit;
     }
+
+if (isset($_POST['insert_penggajian'])) {
+    $periode = mysqli_real_escape_string($koneksi, $_POST['periode']);
+
+    // Memanggil fungsi Total_Penggajian untuk memasukkan data ke tabel gaji
+    $result = Total_Penggajian($periode);
+
+    if ($result) {
+        header("Location: " . $baseURL . "/index.php?link=data_penggajian&status=success");
+    } else {
+        header("Location: " . $baseURL . "/index.php?link=data_penggajian&status=error");
+    }
+    exit;
+}
+
+
 ?>

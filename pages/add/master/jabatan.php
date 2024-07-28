@@ -11,20 +11,12 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="mb-3">
-                                    <label for="nama" class="form-label">Nama</label>
+                                    <label for="nama" class="form-label">Nama Jabatan</label>
                                     <input type="text" class="form-control" name="nama_jabatan" id="nama">
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Gaji Pokok</label>
                                     <input type="number" class="form-control" name="gaji_pokok" id="nama">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="notelp" class="form-label">Gaji Lembur</label>
-                                    <input type="number" class="form-control" name="Gaji_lembur" id="notelp">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nama" class="form-label">Potongan</label>
-                                    <input type="number" class="form-control" name="potongan" id="nama">
                                 </div>
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_jabatan" type="submit" class="btn btn-primary">Simpan Data</button>
