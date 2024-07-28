@@ -571,9 +571,33 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
    }
 } else {
    include "hutang.php";
-}
+} 
 
-}  elseif (($_GET['link']) == 'laporan') {
+}  elseif ($_GET['link'] == 'data_piutang') {
+        if (isset($_GET['aksi'])) {
+        if ($_GET['aksi'] == 'delete') { 
+       $id = $_GET['id'];
+       if (!empty($id)) {
+             // Debugging: Check the ID
+       echo "ID to delete: " . $id . "<br>";
+           $query = mysqli_query($koneksi, "DELETE FROM master_akun WHERE no_akun= '$id'");
+           if ($query) {
+                // Debugging: Check the URL before redirecting
+               echo "Record deleted successfully. Redirecting to: " .$baseURL . "/index.php?link=data_piutang<br>";
+               header("Location: " .$baseURL . "/index.php?link=hutdata_piutangang");
+               exit;
+           } else {
+               echo "Error deleting record: " . mysqli_error($koneksi);
+           }
+       } else {
+           echo "ID is missing.";
+       }
+   }
+} else {
+   include "piutang.php";
+} 
+
+} elseif (($_GET['link']) == 'laporan') {
             include "laporan.php";
             header("Location: " . $baseURL . "/index.php?link=laporan");
         }  

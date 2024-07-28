@@ -61,6 +61,8 @@ if ($data === null) {
                                         <th>Katalog dipilih</th>
                                         <th>Status</th>
                                         <th>Total Harga</th>
+                                        <th>Status Pembayaran</th>
+                                         <th>Tanggal Pemesanan</th>
                                         <th>No Akun D</th>
                                         <th>No Akun K</th>
                                         <th>Aksi</th>
@@ -78,6 +80,8 @@ if ($data === null) {
                                             $namakatalog = $j->nama_katalog;
                                             $namastatus = $j->nama_status;
                                             $totalharga = $j->total_harga;
+                                            $status_pesanan = $j->status_pembayaran;
+                                            $tanggalpesanan = $j->tanggal;
                                             $noakund = $j->nama_akun;
                                             $noakunk = $j->nama_akun;
                                             ?>
@@ -88,6 +92,8 @@ if ($data === null) {
                                                 <td><?= $namakatalog ?></td>
                                                 <td><?= $namastatus ?></td>
                                                 <td><?= $totalharga ?></td>
+                                                <td><?= $status_pesanan ?></td>
+                                                <td><?= $tanggalpesanan ?></td>
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
                                                 <td>
@@ -97,6 +103,7 @@ if ($data === null) {
                                                     data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
                                                     data-katalog="<?= $namakatalog ?>"
                                                     data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
+                                                    data-statuspes="<?= $status_pesanan ?>" data-tanggalpes="<?= $tanggalpesanan ?>"
                                                     data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
                                                    
 
@@ -132,6 +139,8 @@ if ($data === null) {
             var varktlg = $(this).data('katalog');
             var varsts = $(this).data('status');
             var vartothrg = $(this).data('totharga');
+            var varstspsn = $(this).data('statuspes');
+            var vartglpesanan = $(this).data('tanggalpes');
             var varaknd = $(this).data('akund');
             var varaknk = $(this).data('akunk');
 
@@ -141,6 +150,8 @@ if ($data === null) {
             $('#katalog').val(varktlg);
             $('#status').val(varsts);
             $('#harga_ttl').val(vartothrg);
+            $('#sts_pembayaran').val(varstspsn);
+            $('#date_pem').val(vartglpesanan);
             $('#akunD').val(varaknd);
             $('#akunK').val(varaknk);
         });

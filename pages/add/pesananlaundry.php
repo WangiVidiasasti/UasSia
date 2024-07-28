@@ -80,7 +80,14 @@
                                             ?>
                                         </select>
                                     </div>
-
+                                    <div class="mb-3" hidden>
+                                        <label for="katalog" class="form-label">Status</label>
+                                        <select data-trigger class="form-select" name="status_pembayaran" id="sts_pembayaran">
+                                            <option value="" selected disabled>Pilih Katalog</option>
+                                            <option value="lunas">Lunas</option>
+                                            <option value="belum di bayar">Belum di Bayar</option>
+                                            </select>
+                                    </div>
                                     <div class="mb-3" hidden>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">
                                             <option selected disabled>Pilih No Akun</option>

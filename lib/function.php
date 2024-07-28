@@ -331,5 +331,24 @@ function Update_Data_Jamkel($table, $data, $id) {
         return false;
     }
 }
+function Update_Data_Pesanan($table, $data) {
+    global $koneksi;
 
+    $columns = array_keys($data);
+    $values = array_values($data);
+
+    $sql = "UPDATE `$table` SET ";
+    foreach ($columns as $key => $column) {
+        $sql .= "$column = '" . $values[$key] . "', ";
+    }
+    $sql = rtrim($sql, ', ');
+
+    $sql .= " WHERE kd_pesanan_laundry = '" . $data['kd_pesanan_laundry'] . "'";
+
+    if (mysqli_query($koneksi, $sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

@@ -85,8 +85,18 @@
                                         <label for="customer" class="form-label">Harga</label>
                                         <input type="text" class="form-control" name="total_harga" id="harga_ttl" readonly>
                                     </div>
-
-                                
+                                    <div class="mb-3">
+                                        <label for="katalog" class="form-label">Status Pembayaran</label>
+                                        <select data-trigger class="form-select" name="status_pembayaran" id="sts_pembayaran">
+                                            <option selected disabled>Pilih Katalog</option>
+                                            <option value="lunas">Lunas</option>
+                                            <option value="belum di bayar">Belum di Bayar</option>
+                                            </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="customer" class="form-label">Tanggal</label>
+                                        <input type="date" class="form-control" name="tanggal" id="date_pem" readonly>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="katalog" class="form-label">No Akun D</label>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">

@@ -139,21 +139,50 @@ if (isset($_POST['update_akun'])) {
 }
 if (isset($_POST['update_pesanan_laundry'])) {
 
+    $kd_pesanan_laundry = mysqli_real_escape_string($koneksi, $_POST['kd_pesanan_laundry']);
+    $id_customer = mysqli_real_escape_string($koneksi, $_POST['nama_customer']);
+    $id_pengiriman = mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']);
+    $id_katalog = mysqli_real_escape_string($koneksi, $_POST['nama_katalog']);
+    $id_status = mysqli_real_escape_string($koneksi, $_POST['nama_status']);
+    $total_harga = mysqli_real_escape_string($koneksi, $_POST['total_harga']);
+    $status_pembayaran = mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']);
+    $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
+    $no_akun_d = mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']);
+    $no_akun_k = mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']);
+
     $data = array(
-        mysqli_real_escape_string($koneksi, $_POST['kd_pesanan_laundry']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_status']),
-        mysqli_real_escape_string($koneksi, $_POST['total_harga']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+        'kd_pesanan_laundry' => $kd_pesanan_laundry,
+        'id_customer' => $id_customer,
+        'id_pengiriman' => $id_pengiriman,
+        'id_katalog' => $id_katalog,
+        'id_status' => $id_status,
+        'total_harga' => $total_harga,
+        'status_pembayaran' => $status_pembayaran,
+        'tanggal' => $tanggal,
+        'no_akun_d' => $no_akun_d,
+        'no_akun_k' => $no_akun_d,
     );
 
-    // Call the Insert_Data function to insert data
-    Update_Data("transaksi_pesanan_laundry", $data);
+    // Call the Update_Data function to update data
+    Update_Data_Pesanan("transaksi_pesanan_laundry", $data);
+
+    if ($status_pembayaran == 'belum di bayar') {
+        $data_piutang = array(
+            'kd_pesanan_laundry' => $kd_pesanan_laundry,
+            'tanggal' => $tanggal,
+            'total_harga' => $total_harga,
+            'status_pembayaran' => $status_pembayaran,
+            'no_akun_d' => $no_akun_d,
+            'no_akun_k' => $no_akun_k,
+        );
+
+        // Call the Insert_Data function to insert data
+        Insert_Data("transaksi_piutang_laundry", $data_piutang);
+    }
+
     header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
 }
+
 if (isset($_POST['update_pesanan_barang'])) {
     
     $data = array(
@@ -250,6 +279,23 @@ if (isset($_POST['update_pelunasan'])) {
     // Call the Insert_Data function to insert data
     Update_Data("transaksi_hutang", $data);
     header("Location: " . $baseURL . "/index.php?link=hutang");
+}
+
+if (isset($_POST['update_pelunasan_piutang'])) {
+
+    $data = array(
+        mysqli_real_escape_string($koneksi, $_POST['no_piutang']),
+        mysqli_real_escape_string($koneksi, $_POST['kd_pesanan_laundry']),
+        mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+        mysqli_real_escape_string($koneksi, $_POST['total_harga']),
+        mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+    );
+
+    // Call the Insert_Data function to insert data
+    Update_Data("transaksi_piutang_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=data_piutang");
 }
 
 ?>

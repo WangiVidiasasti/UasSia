@@ -136,8 +136,10 @@ if (isset($_POST['insert_pesananlaundry'])) {
         'id_katalog' => mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
         'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
         'total_harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
+        'status_pembayaran' => mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']),
+        'tanggal' => $time,
         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
        
 
     );
