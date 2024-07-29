@@ -50,7 +50,7 @@ if ($data === null) {
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
                                 data-bs-target="#insertModal">Tambah Data</button>
-                            
+                        <div style="overflow-x:auto;">
                             <table id="datatable-buttons"
                                     class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
                                 <thead class="table-light">
@@ -122,6 +122,7 @@ if ($data === null) {
                                     ?>
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                     <!-- end cardaa -->

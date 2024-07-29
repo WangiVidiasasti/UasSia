@@ -13,6 +13,12 @@
                                     <span data-key="t-dashboard">Dashboard</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="index.php?link=jurnal">
+                                    <i data-feather="home"></i>
+                                    <span data-key="t-dashboard">Jurnal Umum</span>
+                                </a>
+                            </li>
 
                             <li>
                                 <a href="index.php?link=karyawan">

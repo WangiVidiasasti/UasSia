@@ -351,4 +351,51 @@ function Update_Data_Pesanan($table, $data) {
         return false;
     }
 }
+
+function Update_Jurnal_Umum() {
+    global $koneksi;
+
+    // Kode SQL
+    $queries = [
+        // Entri Penggajian Karyawan
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT t.tanggal, CONCAT('Gaji untuk karyawan ID: ', t.id_karyawan), 'Beban Gaji', 'Kas', t.THP, t.kd_slip_gaji
+         FROM uas_sia.transaksi_slip_penggajian t",
+
+        // Entri Penjualan Jasa Laundry
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT CURRENT_DATE, CONCAT('Penjualan jasa laundry Kode Pesanan: ', t.kd_pesanan_laundry),
+         CASE WHEN t.status_pembayaran = 'Lunas' THEN 'Kas' ELSE 'Piutang Usaha' END, 'Pendapatan Laundry',
+         t.total_harga, t.kd_pesanan_laundry FROM uas_sia.transaksi_pesanan_laundry t",
+
+        // Entri Pembelian Barang
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT CURRENT_DATE, CONCAT('Pembelian barang Kode Pesanan: ', t.kd_pesanan_barang), 'Persediaan',
+         CASE WHEN t.id_status = 4 THEN 'Kas' ELSE 'Utang Usaha' END, t.total_harga, t.kd_pesanan_barang
+         FROM uas_sia.transaksi_pesanan_barang t",
+
+        // Entri Pengeluaran Operasional
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT t.tanggal, CONCAT('Pengeluaran ke supplier ID: ', t.kd_supplier), 'Beban Operasional', 'Kas',
+         t.total_pengeluaran, t.kd_nota FROM uas_sia.transaksi_pengeluaran t",
+
+        // Entri Pembayaran Piutang
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT t.tanggal, CONCAT('Pembayaran piutang Kode Piutang: ', t.no_piutang), 'Kas', 'Piutang Usaha',
+         t.total_harga, t.no_piutang FROM uas_sia.transaksi_piutang_laundry t WHERE t.status_pembayaran = 'Lunas'",
+
+        // Entri Pembayaran Hutang
+        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
+         SELECT t.tanggal, CONCAT('Pembayaran hutang Kode Hutang: ', t.kd_hutang), 'Utang Usaha', 'Kas',
+         t.jumlah_hutang, t.kd_hutang FROM uas_sia.transaksi_hutang t WHERE t.status = 'Lunas'"
+    ];
+
+    // Eksekusi setiap query
+    foreach ($queries as $query) {
+        if (!mysqli_query($koneksi, $query)) {
+            echo "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        }
+    }
+}
+
 ?>
