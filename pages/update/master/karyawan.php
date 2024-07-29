@@ -12,7 +12,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     
-                                    <input type="text" class="form-control" name=id_karyawan" id="id_karyawan" hidden>
+                                    <input type="text" class="form-control" name="id_karyawan" id="id_karyawan" hidden>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama_karyawan" class="form-label">Nama</label>

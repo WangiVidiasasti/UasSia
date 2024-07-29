@@ -63,7 +63,6 @@ if ($data === null) {
                                         <th>Total Harga</th>
                                         <th>No Akun D</th>
                                         <th>No Akun K</th>
-                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,8 +77,8 @@ if ($data === null) {
                                             $namabarang = $j->nama;
                                             $namastatus = $j->nama_status;
                                             $totalharga = $j->total_harga;
-                                            $noakund = $j->nama_akun;
-                                            $noakunk = $j->nama_akun;
+                                            $noakund = $j->no_akun_d;
+                                            $noakunk = $j->no_akun_k;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
@@ -90,7 +89,8 @@ if ($data === null) {
                                                 <td><?= $totalharga ?></td>
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
-                                                <td>
+                                                
+                                                <!-- <td>
                                                     <button type="button" class="btn btn-primary" id="updateModal"
                                                     data-bs-toggle="modal" data-bs-target="#updateModalPesananBarang"
                                                     data-kdpsn="<?= $kdpesananbarang ?>"
@@ -101,7 +101,7 @@ if ($data === null) {
 
 
 
-                                                </td>
+                                                </td> -->
                                             </tr>
                                             <?php
                                         }

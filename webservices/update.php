@@ -8,34 +8,31 @@ $time = date("Y-m-d H:i:s"); // Inisialisasi $time
 
 // update master agama
 if (isset($_POST['update_karyawan'])) {
+    $id_karyawan = mysqli_real_escape_string($koneksi, $_POST['id_karyawan']);
+    $nama_karyawan = mysqli_real_escape_string($koneksi, $_POST['nama_karyawan']);
+    $alamat = mysqli_real_escape_string($koneksi, $_POST['alamat']);
+    $no_telp = mysqli_real_escape_string($koneksi, $_POST['no_telp']);
+    $tempat_lahir = mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']);
+    $tanggal_lahir = mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']);
+    $id_jabatan = mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']);
 
-    $data = array(
-        mysqli_real_escape_string($koneksi, $_POST['id_karyawan']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_karyawan']),
-        mysqli_real_escape_string($koneksi, $_POST['alamat']),
-        mysqli_real_escape_string($koneksi, $_POST['no_telp']),
-        mysqli_real_escape_string($koneksi, $_POST['tempat_lahir']),
-        mysqli_real_escape_string($koneksi, $_POST['tanggal_lahir']),
-        'id_jabatan' => mysqli_real_escape_string($koneksi, $_POST['nama_jabatan']),
-    );
+    // Debugging
+    error_log("ID: $id_karyawan, Name: $nama_karyawan, Address: $alamat, Phone: $no_telp, Birthplace: $tempat_lahir, Birthdate: $tanggal_lahir, Job ID: $id_jabatan");
 
-    // Call the Insert_Data function to insert data
-    Update_Data("master_karyawan", $data);
-    header("Location: " . $baseURL . "/index.php?link=karyawan");
-}
-if (isset($_POST['update_customer'])) {
+    $query = "UPDATE master_karyawan SET 
+                nama_karyawan='$nama_karyawan', 
+                alamat='$alamat', 
+                no_telp='$no_telp', 
+                tempat_lahir='$tempat_lahir', 
+                tanggal_lahir='$tanggal_lahir', 
+                id_jabatan='$id_jabatan' 
+              WHERE id_karyawan='$id_karyawan'";
 
-    $data = array(
-        mysqli_real_escape_string($koneksi, $_POST['id_customer']),
-        mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
-        mysqli_real_escape_string($koneksi, $_POST['no_telp']),
-        mysqli_real_escape_string($koneksi, $_POST['alamat']),
-        mysqli_real_escape_string($koneksi, $_POST['password']),
-    );
-
-    // Call the Insert_Data function to insert data
-    Update_Data("master_customer", $data);
-    header("Location: " . $baseURL . "/index.php?link=customer");
+    if (mysqli_query($koneksi, $query)) {
+        header("Location: ../index.php?link=karyawan");
+    } else {
+        echo "Error: " . mysqli_error($koneksi);
+    }
 }
 if (isset($_POST['update_barang'])) {
 
