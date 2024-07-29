@@ -111,7 +111,7 @@ echo "End of katalog.php<br>";
                 var varkatalog = $(this).data('nmkatalog');
                 var varharga = $(this).data('hgkatalog');
 
-                $('#idktlg').val(varidkatalog);
+                $('#id_ktlg').val(varidkatalog);
                 $('#nmktlg').val(varkatalog);
                 $('#hrgktlg').val(varharga);
                 
