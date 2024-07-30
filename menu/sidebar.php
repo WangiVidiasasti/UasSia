@@ -20,11 +20,19 @@
                                 </a>
                                     <ul class="sub-menu" aria-expanded="false">
                                         <li>
-                                            <a href="index.php?link=bbgaji" data-key="t-login">Gaji</a>
+                                            <a href="index.php?link=bbgaji" data-key="t-login">Beban Gaji</a>
                                         </li>
                                         <li>
-                                            <a href="index.php?link=karyawan" data-key="t-register"
-                                            >Register</a>
+                                            <a href="index.php?link=bblaundry" data-key="t-register"
+                                            >Pendapatan Laundry</a>
+                                        </li>
+
+                                        
+
+
+                                        <li>
+                                            <a href="index.php?link=bbpiutang" data-key="t-register"
+                                            >Piutang</a>
                                         </li>
                                     </ul>
                             </li>

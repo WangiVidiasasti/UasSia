@@ -633,12 +633,18 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
     } else {
         include "bukubesar/bbgaji.php";
     } 
-}  elseif ($_GET['link'] == 'ada') {
+}  elseif ($_GET['link'] == 'bblaundry') {
         if (isset($_GET['aksi'])) {
     } else {
-        include "bukubesar/ada";
+        include "bukubesar/bblaundry.php";
     } 
+} elseif ($_GET['link'] == 'bbpiutang') {
+    if (isset($_GET['aksi'])) {
+} else {
+    include "bukubesar/bbpiutang.php";
 } 
+} 
+
         
     } else {
     
