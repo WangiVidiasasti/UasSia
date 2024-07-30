@@ -46,8 +46,15 @@ if (isset($_GET['link'])) {
         $title = "Data Absensi | ";
     } elseif (($_GET['link']) == 'pengeluaran') {
         $title = "Data Pengeluaran | ";
-    } 
-
+    } elseif (($_GET['link']) == 'data_piutang') {
+        $title = "Data Piutang | ";
+    } elseif (($_GET['link']) == 'hutang') {
+        $title = "Data Hutang | ";
+    } elseif (($_GET['link']) == 'jurnal') {
+        $title = "Jurnal Umum | ";
+    } elseif (($_GET['link']) == 'data_penggajian') {
+        $title = "Data Penggajian | ";
+    }
 }
 
 
