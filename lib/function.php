@@ -406,36 +406,27 @@ SELECT t.tanggal,
 FROM uas_sia.transaksi_pengeluaran t;",
 
         // Entri Pembayaran Piutang
+        
         "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
 SELECT t.tanggal, 
        CONCAT('Pembayaran piutang Kode Piutang: ', t.no_piutang), 
-       CASE 
-           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Piutang')
-           ELSE NULL
-       END AS akun_debit, 
-       CASE 
-           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
-           ELSE NULL
-       END AS akun_kredit, 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Piutang') AS akun_debit, 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas') AS akun_kredit,
        t.total_harga, 
        t.no_piutang
-FROM uas_sia.transaksi_piutang_laundry t",
+FROM uas_sia.transaksi_piutang_laundry t
+WHERE t.status_pembayaran = 'Lunas'",
 
         // Entri Pembayaran Hutang
         "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
 SELECT t.tanggal, 
        CONCAT('Pembayaran hutang Kode Hutang: ', t.kd_hutang), 
-       CASE 
-           WHEN t.status = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Hutang')
-           ELSE NULL
-       END AS akun_debit, 
-       CASE 
-           WHEN t.status = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
-           ELSE NULL
-       END AS akun_kredit, 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Hutang') AS akun_debit, 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas') AS akun_kredit, 
        t.jumlah_hutang, 
        t.kd_hutang
-FROM uas_sia.transaksi_hutang t"
+FROM uas_sia.transaksi_hutang t
+WHERE t.status = 'Lunas'"
     ];
 
     // Eksekusi setiap query

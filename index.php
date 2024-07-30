@@ -628,10 +628,17 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
    include "jurnalumum.php";
 } 
 
-} elseif (($_GET['link']) == 'laporan') {
-            include "laporan.php";
-            header("Location: " . $baseURL . "/index.php?link=laporan");
-        }  
+} elseif ($_GET['link'] == 'bbgaji') {
+        if (isset($_GET['aksi'])) {
+    } else {
+        include "bukubesar/bbgaji.php";
+    } 
+}  elseif ($_GET['link'] == 'ada') {
+        if (isset($_GET['aksi'])) {
+    } else {
+        include "bukubesar/ada";
+    } 
+} 
         
     } else {
     

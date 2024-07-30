@@ -14,12 +14,26 @@
                                 </a>
                             </li>
                             <li>
+                                <a href="javascript: void(0);" class="has-arrow">
+                                    <i data-feather="users"></i>
+                                    <span data-key="t-authentication">Buku Besar</span>
+                                </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li>
+                                            <a href="index.php?link=bbgaji" data-key="t-login">Gaji</a>
+                                        </li>
+                                        <li>
+                                            <a href="index.php?link=karyawan" data-key="t-register"
+                                            >Register</a>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <li>
                                 <a href="index.php?link=jurnal">
                                     <i data-feather="home"></i>
                                     <span data-key="t-dashboard">Jurnal Umum</span>
                                 </a>
                             </li>
-
                             <li>
                                 <a href="index.php?link=karyawan">
                                     <i data-feather="grid"></i>
