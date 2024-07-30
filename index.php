@@ -54,6 +54,16 @@ if (isset($_GET['link'])) {
         $title = "Jurnal Umum | ";
     } elseif (($_GET['link']) == 'data_penggajian') {
         $title = "Data Penggajian | ";
+    } elseif (($_GET['link']) == 'bbgaji') {
+        $title = "Buku Besar Gaji | ";
+    } elseif (($_GET['link']) == 'bblaundry') {
+        $title = "Buku Besar Pendapatan Laundry | ";
+    } elseif (($_GET['link']) == 'bbpesananbarang') {
+        $title = "Buku Besar Pendapatan Barang | ";
+    } elseif (($_GET['link']) == 'bbpiutang') {
+        $title = "Buku Besar Piutang | ";
+    } elseif (($_GET['link']) == 'bbhutang') {
+        $title = "Buku Besar Hutang | ";
     }
 }
 
@@ -643,6 +653,10 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
 } else {
     include "bukubesar/bbpiutang.php";
 } 
+} elseif ($_GET['link'] == 'bbhutang') {
+    if (isset($_GET['aksi'])) {
+} else {
+    include "bukubesar/bbhutang.php";
 } 
 
 }  elseif ($_GET['link'] == 'bbpesananbarang') {

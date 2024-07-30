@@ -26,16 +26,15 @@
                                             <a href="index.php?link=bblaundry" data-key="t-register"
                                             >Pendapatan Laundry</a>
                                         </li>
-
-                                        
-
-
+                                        <li>
+                                            <a href="index.php?link=bbpesananbarang" data-key="t-login">Pendapatan Barang</a>
+                                        </li>
                                         <li>
                                             <a href="index.php?link=bbpiutang" data-key="t-register"
                                             >Piutang</a>
                                         </li>
                                         <li>
-                                            <a href="index.php?link=bbpesananbarang" data-key="t-login">Pesanan Barang</a>
+                                            <a href="index.php?link=bbhutang" data-key="t-login">Hutang</a>
                                         </li>
                                     </ul>
                             </li>
