@@ -2,7 +2,7 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 include "../lib/function.php"; // Pastikan file ini berisi definisi fungsi Insert_Data()
-
+date_default_timezone_set('Asia/Jakarta'); 
 $baseURL = "http://localhost/UasSia"; // Pastikan URL ini sesuai dengan path proyek Anda
 $time = date("Y-m-d H:i:s"); // Inisialisasi $time
 
@@ -157,7 +157,7 @@ if (isset($_POST['update_pesanan_laundry'])) {
         'status_pembayaran' => $status_pembayaran,
         'tanggal' => $tanggal,
         'no_akun_d' => $no_akun_d,
-        'no_akun_k' => $no_akun_d,
+        'no_akun_k' => $no_akun_k,
     );
 
     // Call the Update_Data function to update data

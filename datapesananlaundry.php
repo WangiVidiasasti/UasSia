@@ -82,8 +82,8 @@ if ($data === null) {
                                             $totalharga = $j->total_harga;
                                             $status_pesanan = $j->status_pembayaran;
                                             $tanggalpesanan = $j->tanggal;
-                                            $noakund = $j->nama_akun;
-                                            $noakunk = $j->nama_akun;
+                                            $noakund = $j->nama_akun_d;
+                                            $noakunk = $j->nama_akun_k;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
