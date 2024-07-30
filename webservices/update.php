@@ -2,7 +2,7 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 include "../lib/function.php"; // Pastikan file ini berisi definisi fungsi Insert_Data()
-
+date_default_timezone_set('Asia/Jakarta'); 
 $baseURL = "http://localhost/UasSia"; // Pastikan URL ini sesuai dengan path proyek Anda
 $time = date("Y-m-d H:i:s"); // Inisialisasi $time
 
