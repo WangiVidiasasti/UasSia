@@ -157,6 +157,7 @@ if (isset($_POST['insert_pesananbarang'])) {
         'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+        'tanggal' => $time,
     );
 
     // Asumsi Insert_Data mengembalikan ID pesanan barang yang baru dimasukkan

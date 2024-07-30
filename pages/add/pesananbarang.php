@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Input Pesanan Laundry</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form Input Pesanan Barang</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -70,7 +70,7 @@
                                             $queryGetStatus = "SELECT * FROM master_status";
                                             $getStatus = mysqli_query($koneksi, $queryGetStatus);
                                             while ($status = mysqli_fetch_assoc($getStatus)) {
-                                                $selected = $status['id_status'] == 4 ? 'selected' : '';
+                                                $selected = $status['id_status'] == 8 ? 'selected' : '';
                                                 ?>
                                                 <option value="<?= $status['id_status'] ?>" <?= $selected ?>>
                                                     <?= $status['nama_status'] ?>
@@ -80,8 +80,11 @@
                                             ?>
                                         </select>
                                     </div>
+                                    <div class="md-3">
+                                    <input name="tanggal" type="date" class="form-control" id="tglpesananbrg" hidden>
+                                    </div>
 
-                                    <div class="mb-3" >
+                                    <div class="mb-3" hidden>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD" >
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
@@ -98,7 +101,7 @@
                                             ?>
                                             </select>
                                     </div>
-                                    <div class="mb-3" >
+                                    <div class="mb-3" hidden>
                                         <select data-trigger class="form-select" name="nama_akun_k" id="akunK">
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php

@@ -359,14 +359,29 @@ function Update_Jurnal_Umum() {
     $queries = [
         // Entri Penggajian Karyawan
         "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
-         SELECT t.tanggal, CONCAT('Gaji untuk karyawan ID: ', t.id_karyawan), 'Beban Gaji', 'Kas', t.THP, t.kd_slip_gaji
-         FROM uas_sia.transaksi_slip_penggajian t",
+SELECT t.tanggal, 
+       CONCAT('Gaji untuk karyawan ID: ', t.id_karyawan), 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'beban gaji') AS akun_debit, 
+       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas') AS akun_kredit, 
+       t.THP, 
+       t.kd_slip_gaji
+FROM uas_sia.transaksi_slip_penggajian t
+",
 
         // Entri Penjualan Jasa Laundry
-        "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
-         SELECT CURRENT_DATE, CONCAT('Penjualan jasa laundry Kode Pesanan: ', t.kd_pesanan_laundry),
-         CASE WHEN t.status_pembayaran = 'Lunas' THEN 'Kas' ELSE 'Piutang' END, 'Pendapatan Laundry',
-         t.total_harga, t.kd_pesanan_laundry FROM uas_sia.transaksi_pesanan_laundry t",
+        "SELECT t.tanggal, 
+       CONCAT('Penjualan jasa laundry Kode Pesanan: ', t.kd_pesanan_laundry),
+       CASE 
+           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
+           WHEN t.status_pembayaran = 'belum di bayar' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Piutang')
+       END AS akun_debit, 
+       CASE 
+           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Pendapatan Laundry')
+           WHEN t.status_pembayaran = 'belum di bayar' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
+       END AS akun_kredit,
+       t.total_harga, 
+       t.kd_pesanan_laundry
+        FROM uas_sia.transaksi_pesanan_laundry t",
 
         // Entri Penjualan Barang
         "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
