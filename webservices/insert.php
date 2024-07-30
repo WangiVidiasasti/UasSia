@@ -154,7 +154,6 @@ if (isset($_POST['insert_pesananbarang'])) {
         'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
         'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
         'id_barang' => mysqli_real_escape_string($koneksi, $_POST['nama']),
-        'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
         'tanggal' => $time,

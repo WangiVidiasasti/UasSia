@@ -64,22 +64,6 @@
                                             ?>
                                             </select>
                                     </div>
-                                     <div class="mb-3" hidden>
-                                        <select data-trigger class="form-select" name="nama_status" id="status">
-                                            <?php
-                                            $queryGetStatus = "SELECT * FROM master_status";
-                                            $getStatus = mysqli_query($koneksi, $queryGetStatus);
-                                            while ($status = mysqli_fetch_assoc($getStatus)) {
-                                                $selected = $status['id_status'] == 8 ? 'selected' : '';
-                                                ?>
-                                                <option value="<?= $status['id_status'] ?>" <?= $selected ?>>
-                                                    <?= $status['nama_status'] ?>
-                                                </option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
                                     <div class="md-3">
                                     <input name="tanggal" type="date" class="form-control" id="tglpesananbrg" hidden>
                                     </div>

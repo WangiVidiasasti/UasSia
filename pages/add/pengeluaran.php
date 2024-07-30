@@ -39,16 +39,16 @@
                                         <input type="date" class="form-control" name="tanggal" id="tanggal">
                                     </div>
 
-                                    <div class="mb-3" >
-                                        <label for="tanggal" class="form-label">No Akun D</label>
-                                        <select data-trigger class="form-select" name="nama_akun_d" id="akunD">
+                                    <div class="mb-3" hidden>
+                                        <select data-trigger class="form-select" name="nama_akun_d" id="akunD" >
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
+                                            $selected = $akun['no_akun'] == 201 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" >
+                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php
@@ -56,17 +56,16 @@
                                             ?>
                                             </select>
                                     </div>
-                                    <div class="mb-3" >
-                                        <label for="tanggal" class="form-label">No Akun K</label>
-                                        <select data-trigger class="form-select" name="nama_akun_k" id="akunK">
+                                    <div class="mb-3" hidden>
+                                        <select data-trigger class="form-select" name="nama_akun_k" id="akunK" >
                                             <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
                                             while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            
+                                            $selected = $akun['no_akun'] == 101 ? 'selected' : '';
                                                 ?>
-                                            <option value="<?= $akun['no_akun'] ?>" >
+                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
                                                 <?= $akun['nama_akun'] ?>
                                             </option>
                                             <?php
@@ -74,6 +73,7 @@
                                             ?>
                                             </select>
                                     </div>
+                                    
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_pengeluaran" type="submit" class="btn btn-primary">Simpan Data</button>
                                 </div>

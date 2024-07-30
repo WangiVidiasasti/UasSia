@@ -59,7 +59,6 @@ if ($data === null) {
                                         <th>Nama Customer</th>
                                         <th>Pengiriman</th>
                                         <th>Barang  Dipilih</th>
-                                        <th>Status</th>
                                         <th>Tanggal</th>
                                         <th>Total Harga</th>
                                         <th>No Akun D</th>
@@ -76,7 +75,6 @@ if ($data === null) {
                                             $namacustomer = $j->nama_customer;
                                             $namapengirim = $j->nama_pengiriman;
                                             $namabarang = $j->nama;
-                                            $namastatus = $j->nama_status;
                                             $tanggal = $j->tanggal;
                                             $totalharga = $j->total_harga;
                                             $noakund = $j->nama_akun_d;
@@ -87,7 +85,6 @@ if ($data === null) {
                                                 <td><?= $namacustomer ?></td>
                                                 <td><?= $namapengirim ?></td>
                                                 <td><?= $namabarang ?></td>
-                                                <td><?= $namastatus ?></td>
                                                 <td><?= $tanggal ?></td>
                                                 <td><?= $totalharga ?></td>
                                                 <td><?= $noakund ?></td>
