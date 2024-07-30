@@ -53,7 +53,7 @@ if ($data === null) {
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Kode Pesanan</th>
-                                        <th>Total Pembelian</th>
+                                        <th>Tanggal</th>
                                         <th>Total Harga</th>
                                         <th>Status Pembayaran</th>
                                         <th>No Akun D</th>
