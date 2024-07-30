@@ -34,6 +34,9 @@
                                             <a href="index.php?link=bbpiutang" data-key="t-register"
                                             >Piutang</a>
                                         </li>
+                                        <li>
+                                            <a href="index.php?link=bbpesananbarang" data-key="t-login">Pesanan Barang</a>
+                                        </li>
                                     </ul>
                             </li>
                             <li>
