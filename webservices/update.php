@@ -157,7 +157,7 @@ if (isset($_POST['update_pesanan_laundry'])) {
         'status_pembayaran' => $status_pembayaran,
         'tanggal' => $tanggal,
         'no_akun_d' => $no_akun_d,
-        'no_akun_k' => $no_akun_d,
+        'no_akun_k' => $no_akun_k,
     );
 
     // Call the Update_Data function to update data

@@ -1,12 +1,20 @@
 <?php
 include "../config.php";
 
-$hasil = mysqli_query($koneksi, "SELECT * FROM transaksi_pesanan_laundry
-LEFT JOIN master_customer ON master_customer.id_customer = transaksi_pesanan_laundry.id_customer
-LEFT JOIN master_pengiriman ON master_pengiriman.id_pengiriman = transaksi_pesanan_laundry.id_pengiriman
-LEFT JOIN master_katalog_laundry ON master_katalog_laundry.id_katalog = transaksi_pesanan_laundry.id_katalog
-LEFT JOIN master_status ON master_status.id_status = transaksi_pesanan_laundry.id_status
-LEFT JOIN master_akun ON master_akun.no_akun = transaksi_pesanan_laundry.no_akun_d");
+$hasil = mysqli_query($koneksi, "SELECT th.*, 
+       mc.*, 
+       mp.*, 
+       mk.*, 
+       ms.*, 
+       ma_d.nama_akun AS nama_akun_d, 
+       ma_k.nama_akun AS nama_akun_k 
+FROM transaksi_pesanan_laundry th 
+LEFT JOIN master_customer mc ON mc.id_customer = th.id_customer
+LEFT JOIN master_pengiriman mp ON mp.id_pengiriman = th.id_pengiriman
+LEFT JOIN master_katalog_laundry mk ON mk.id_katalog = th.id_katalog
+LEFT JOIN master_status ms ON ms.id_status = th.id_status
+LEFT JOIN master_akun ma_d ON ma_d.no_akun = th.no_akun_d 
+LEFT JOIN master_akun ma_k ON ma_k.no_akun = th.no_akun_k");
 
 
 $jsonRespon = array();

@@ -45,7 +45,7 @@ if ($data === null) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Agama</h4>
+                            <h4 class="card-title">Data Pesanan Barang</h4>
                         </div>
                         <div class="card-body">
                             <button type="button" class="btn btn-primary mb-sm-2" data-bs-toggle="modal"
@@ -77,8 +77,8 @@ if ($data === null) {
                                             $namabarang = $j->nama;
                                             $namastatus = $j->nama_status;
                                             $totalharga = $j->total_harga;
-                                            $noakund = $j->no_akun_d;
-                                            $noakunk = $j->no_akun_k;
+                                            $noakund = $j->nama_akun_d;
+                                            $noakunk = $j->nama_akun_k;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
