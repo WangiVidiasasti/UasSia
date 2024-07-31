@@ -19,6 +19,9 @@
                                     <span data-key="t-authentication">Buku Besar</span>
                                 </a>
                                     <ul class="sub-menu" aria-expanded="false">
+                                    <li>
+                                            <a href="index.php?link=bbkas" data-key="t-login">Kas</a>
+                                        </li>
                                         <li>
                                             <a href="index.php?link=bbgaji" data-key="t-login">Beban Gaji</a>
                                         </li>

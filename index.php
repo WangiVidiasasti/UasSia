@@ -664,6 +664,11 @@ if (!isset($_SESSION['admin']) && !isset($_SESSION['manager']) && !isset($_SESSI
 } else {
     include "bukubesar/bbpesananbarang.php";
 } 
+} elseif ($_GET['link'] == 'bbkas') {
+    if (isset($_GET['aksi'])) {
+} else {
+    include "bukubesar/bbkas.php";
+} 
 }
         
     } else {
