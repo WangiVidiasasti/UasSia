@@ -130,24 +130,36 @@ if (isset($_POST['insert_akun'])) {
 }
 if (isset($_POST['insert_pesananlaundry'])) {
     
+    $status_pembayaran = mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']);
+    if ($status_pembayaran == 'lunas') {
+        $no_akun_d = 101;
+        $no_akun_k = 401;
+    } else if ($status_pembayaran == 'belum di bayar') {
+        $no_akun_d = 102;
+        $no_akun_k = 101;
+    } else {
+        // Handle invalid status if necessary
+        $no_akun_d = null;
+        $no_akun_k = null;
+    }
+
     $data = array(
         'id_customer' => mysqli_real_escape_string($koneksi, $_POST['nama_customer']),
         'id_pengiriman' => mysqli_real_escape_string($koneksi, $_POST['nama_pengiriman']),
         'id_katalog' => mysqli_real_escape_string($koneksi, $_POST['nama_katalog']),
         'id_status' => mysqli_real_escape_string($koneksi, $_POST['nama_status']),
         'total_harga' => mysqli_real_escape_string($koneksi, $_POST['harga']),
-        'status_pembayaran' => mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']),
+        'status_pembayaran' => $status_pembayaran,
         'tanggal' => $time,
-        'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
-       
-
+        'no_akun_d' => $no_akun_d,
+        'no_akun_k' => $no_akun_k,
     );
 
-        Insert_Data("transaksi_pesanan_laundry", $data);
-        header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
-        exit;
-    }
+    Insert_Data("transaksi_pesanan_laundry", $data);
+    header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
+    exit;
+}
+
 
 if (isset($_POST['insert_pesananbarang'])) {
     $data = array(

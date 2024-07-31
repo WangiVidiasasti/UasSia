@@ -100,7 +100,7 @@
                                     <div class="mb-3">
                                         <label for="katalog" class="form-label">No Akun D</label>
                                         <select data-trigger class="form-select" name="nama_akun_d" id="akunD">
-                                            <option selected disabled>Pilih Katalog</option>
+                                            <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);
@@ -117,7 +117,7 @@
                                     <div class="mb-3">
                                         <label for="katalog" class="form-label">No Akun K</label>
                                         <select data-trigger class="form-select" name="nama_akun_k" id="akunK">
-                                            <option selected disabled>Pilih Katalog</option>
+                                            <option selected disabled>Pilih No Akun</option>
                                             <?php
                                             $queryGetAkun = "SELECT * FROM master_akun";
                                             $getAkun = mysqli_query($koneksi, $queryGetAkun);

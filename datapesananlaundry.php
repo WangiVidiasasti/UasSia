@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pesananlaundry.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
@@ -97,14 +97,14 @@ if ($data === null) {
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-primary" id="updateModal"
+                                                    <!-- <button type="button" class="btn btn-primary" id="updateModal"
                                                     data-bs-toggle="modal" data-bs-target="#updateModalPesananLaundry"
                                                     data-kdpsn="<?= $kdpesananlaundry ?>"
                                                     data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
                                                     data-katalog="<?= $namakatalog ?>"
                                                     data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
                                                     data-statuspes="<?= $status_pesanan ?>" data-tanggalpes="<?= $tanggalpesanan ?>"
-                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
+                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button> -->
                                                    
 
                                                     <button type="button" class="btn btn-success" id="ValidasiPesananLaundry"
