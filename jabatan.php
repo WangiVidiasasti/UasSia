@@ -62,7 +62,7 @@ echo "End of jabatan.php<br>";
                                 <thead class="table-light">
                                     <tr>
                                         <th>Nomor</th>
-                                        <th>Nama Karyawan</th>
+                                        <th>Nama Jabatan</th>
                                         <th>Gaji Pokok</th>
                                         <th>Aksi</th>
                                     </tr>
