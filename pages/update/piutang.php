@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="total_harga" class="form-label">Total Pengeluaran</label>
-                                        <input type="number"  class="form-control" name="jumlah_hutang" id="ttl_pengel" readonly>
+                                        <input type="number"  class="form-control" name="total_harga" id="ttl_pengel" readonly>
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggal" class="form-label">Tanggal</label>

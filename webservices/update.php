@@ -146,6 +146,17 @@ if (isset($_POST['update_pesanan_laundry'])) {
     $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
     $no_akun_d = mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']);
     $no_akun_k = mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']);
+    if ($status_pembayaran == 'lunas') {
+        $no_akun_d = 101;
+        $no_akun_k = 401;
+    } else if ($status_pembayaran == 'belum di bayar') {
+        $no_akun_d = 102;
+        $no_akun_k = 101;
+    } else {
+        // Handle invalid status if necessary
+        $no_akun_d = null;
+        $no_akun_k = null;
+    }
 
     $data = array(
         'kd_pesanan_laundry' => $kd_pesanan_laundry,

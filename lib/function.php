@@ -158,25 +158,51 @@ function Cek_PK($table, $pk)
 function Update_Total_Harga($kd_pesanan_laundry, $berat_baju) {
     global $koneksi;
     
-    $sql = "UPDATE transaksi_pesanan_laundry t
+    // SQL to update transaksi_pesanan_laundry
+    $sql1 = "UPDATE transaksi_pesanan_laundry t
             JOIN detail_pesanan_laundry d ON t.kd_pesanan_laundry = d.kd_pesanan_laundry
             JOIN master_pengiriman p ON t.id_pengiriman = p.id_pengiriman
             JOIN master_katalog_laundry k ON t.id_katalog = k.id_katalog
             SET t.total_harga = (p.harga + (k.harga_katalog * ?))
             WHERE t.kd_pesanan_laundry = ?";
     
-    if ($stmt = $koneksi->prepare($sql)) {
-        $stmt->bind_param('ds', $berat_baju, $kd_pesanan_laundry);
-        if ($stmt->execute()) {
-            return true;
+    if ($stmt1 = $koneksi->prepare($sql1)) {
+        $stmt1->bind_param('ds', $berat_baju, $kd_pesanan_laundry);
+        if ($stmt1->execute()) {
+            // Retrieve the updated total_harga
+            $sql2 = "SELECT t.total_harga FROM transaksi_pesanan_laundry t WHERE t.kd_pesanan_laundry = ?";
+            if ($stmt2 = $koneksi->prepare($sql2)) {
+                $stmt2->bind_param('s', $kd_pesanan_laundry);
+                $stmt2->execute();
+                $stmt2->bind_result($total_harga);
+                $stmt2->fetch();
+                $stmt2->close();
+
+                // Update the transaksi_piutang_laundry table
+                $sql3 = "UPDATE transaksi_piutang_laundry SET total_harga = ? WHERE kd_pesanan_laundry = ?";
+                if ($stmt3 = $koneksi->prepare($sql3)) {
+                    $stmt3->bind_param('ds', $total_harga, $kd_pesanan_laundry);
+                    if ($stmt3->execute()) {
+                        return true;
+                    } else {
+                        die("Error: " . $stmt3->error);
+                    }
+                    $stmt3->close();
+                } else {
+                    die("Error: " . $koneksi->error);
+                }
+            } else {
+                die("Error: " . $koneksi->error);
+            }
         } else {
-            die("Error: " . $stmt->error);
+            die("Error: " . $stmt1->error);
         }
-        $stmt->close();
+        $stmt1->close();
     } else {
         die("Error: " . $koneksi->error);
     }
 }
+
 function Update_Total_Harga_Barang($kd_pesanan_barang) {
     global $koneksi;
 

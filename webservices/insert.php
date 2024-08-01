@@ -134,9 +134,9 @@ if (isset($_POST['insert_pesananlaundry'])) {
     $namaktlg = mysqli_real_escape_string($koneksi, $_POST['nama_katalog']);
     $namastatus = mysqli_real_escape_string($koneksi, $_POST['nama_status']);
     $harga = mysqli_real_escape_string($koneksi, $_POST['harga']);
-    $status_pembayaran = 'belum di bayar';
-    $no_akun_d = '102';
-    $no_akun_k = '101';
+    // $status_pembayaran = 'belum di bayar';
+    // $no_akun_d = '102';
+    // $no_akun_k = '101';
     $time = date('Y-m-d H:i:s'); // Mendefinisikan variabel $time
 
     $data = array(
@@ -145,25 +145,25 @@ if (isset($_POST['insert_pesananlaundry'])) {
         'id_katalog' => $namaktlg,
         'id_status' => $namastatus,
         'total_harga' => $harga,
-        'status_pembayaran' => $status_pembayaran,
+        // 'status_pembayaran' => $status_pembayaran,
         'tanggal' => $time,
-        'no_akun_d' => $no_akun_d,
-        'no_akun_k' => $no_akun_k,
+        // 'no_akun_d' => $no_akun_d,
+        // 'no_akun_k' => $no_akun_k,
     );
 
     Insert_Data("transaksi_pesanan_laundry", $data);
 
-    // Dapatkan kode_nota dari transaksi_pengeluaran
-    $kd_pesanan_laundry = mysqli_insert_id($koneksi);
-    $data_piutang = array(
-        'kd_pesanan_laundry' => $kd_pesanan_laundry,
-        'tanggal' => $time,
-        'total_harga' => $harga,
-        'status_pembayaran' => $status_pembayaran,
-        'no_akun_d' => $no_akun_d,
-        'no_akun_k' => $no_akun_k,
-    );
-    Insert_Data("transaksi_piutang_laundry", $data_piutang);
+    
+    // $kd_pesanan_laundry = mysqli_insert_id($koneksi);
+    // $data_piutang = array(
+    //     'kd_pesanan_laundry' => $kd_pesanan_laundry,
+    //     'tanggal' => $time,
+    //     'total_harga' => $harga,
+    //     'status_pembayaran' => $status_pembayaran,
+    //     'no_akun_d' => $no_akun_d,
+    //     'no_akun_k' => $no_akun_k,
+    // );
+    // Insert_Data("transaksi_piutang_laundry", $data_piutang);
 
     header("Location: " . $baseURL . "/index.php?link=laundry_pesanan");
     exit;

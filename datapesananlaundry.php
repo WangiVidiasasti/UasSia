@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/add/pesananlaundry.php";
-// require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/update/pesananlaundry.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/pages/validasilaundry.php";
 
 // Debugging to ensure file includes are correct
@@ -144,14 +144,12 @@ if ($data === null) {
 
             $('#kdpsn').val(varkdpesnan);
             $('#customer_up').val(varcustmr);
-            $('#pengiriman').val(varpngrm);
-            $('#katalog').val(varktlg);
-            $('#status').val(varsts);
+            $('#pgrnm').val(varpngrm);
+            $('#ktlgpsn').val(varktlg);
+            $('#stspsn').val(varsts);
             $('#harga_ttl').val(vartothrg);
             $('#sts_pembayaran').val(varstspsn);
             $('#date_pem').val(vartglpesanan);
-            $('#akunD').val(varaknd);
-            $('#akunK').val(varaknk);
         });
         $(document).on('click', '#ValidasiPesananLaundry', function () {
             var varkdpesnan = $(this).data('kdpsn');
