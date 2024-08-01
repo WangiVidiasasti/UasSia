@@ -47,44 +47,11 @@
                                         <select data-trigger class="form-select" name="status_pembayaran" id="akunD" >
                                             <option selected disabled>Pilih Status</option>
                                             <option value="lunas">Lunas</option>
-                                            <option value="belum dibayar">Belum Dibayar</option>
+                                            <option value="belum di bayar">Belum Dibayar</option>
                                          </select>
                                     </div>
 
-                                    <div class="mb-3" hidden>
-                                        <select data-trigger class="form-select" name="nama_akun_d" id="akunD" >
-                                            <option selected disabled>Pilih No Akun</option>
-                                            <?php
-                                            $queryGetAkun = "SELECT * FROM master_akun";
-                                            $getAkun = mysqli_query($koneksi, $queryGetAkun);
-                                            while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 201 ? 'selected' : '';
-                                                ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
-                                                <?= $akun['nama_akun'] ?>
-                                            </option>
-                                            <?php
-                                            }
-                                            ?>
-                                            </select>
-                                    </div>
-                                    <div class="mb-3" hidden>
-                                        <select data-trigger class="form-select" name="nama_akun_k" id="akunK" >
-                                            <option selected disabled>Pilih No Akun</option>
-                                            <?php
-                                            $queryGetAkun = "SELECT * FROM master_akun";
-                                            $getAkun = mysqli_query($koneksi, $queryGetAkun);
-                                            while ($akun = mysqli_fetch_assoc($getAkun)) {
-                                            $selected = $akun['no_akun'] == 101 ? 'selected' : '';
-                                                ?>
-                                            <option value="<?= $akun['no_akun'] ?>" <?= $selected ?>>
-                                                <?= $akun['nama_akun'] ?>
-                                            </option>
-                                            <?php
-                                            }
-                                            ?>
-                                            </select>
-                                    </div>
+                                    
                                     
                                 <div class="mb-3 d-flex flex-column">
                                     <button name="insert_pengeluaran" type="submit" class="btn btn-primary">Simpan Data</button>

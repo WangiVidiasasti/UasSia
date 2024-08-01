@@ -31,10 +31,7 @@ if ($data === null) {
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                         <h4 class="mb-sm-0 font-size-18">Data Laundry</h4>
                         <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Karyawan</a></li>
-                                <li class="breadcrumb-item active">Data Karyawan</li>
-                            </ol>
+                        
                         </div>
                     </div>
                 </div>
@@ -97,14 +94,14 @@ if ($data === null) {
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>
                                                 <td>
-                                                    <!-- <button type="button" class="btn btn-primary" id="updateModal"
+                                                    <button type="button" class="btn btn-primary" id="updateModal"
                                                     data-bs-toggle="modal" data-bs-target="#updateModalPesananLaundry"
                                                     data-kdpsn="<?= $kdpesananlaundry ?>"
                                                     data-custmer="<?= $namacustomer ?>" data-nmpengirim="<?= $namapengirim ?>"
                                                     data-katalog="<?= $namakatalog ?>"
                                                     data-status="<?= $namastatus ?>" data-totharga="<?= $totalharga ?>"
                                                     data-statuspes="<?= $status_pesanan ?>" data-tanggalpes="<?= $tanggalpesanan ?>"
-                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button> -->
+                                                    data-akund="<?= $noakund ?>" data-akunk="<?= $noakunk ?>" >Update</button>
                                                    
 
                                                     <button type="button" class="btn btn-success" id="ValidasiPesananLaundry"

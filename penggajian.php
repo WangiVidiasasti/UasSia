@@ -78,7 +78,8 @@ if ($data === null) {
                                             $gajipokok = $j->gaji_pokok;
                                             $totalkerja = $j->total_kerja;
                                             $THP = $j->THP;
-                                            $noakun = $j->nama_akun;
+                                            $noakund = $j->nama_akun_d;
+                                            $noakunk = $j->nama_akun_k;
                                             ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
@@ -88,8 +89,8 @@ if ($data === null) {
                                                 <td><?= $gajipokok ?></td>
                                                 <td><?= $totalkerja ?></td>
                                                 <td><?= $THP ?></td>
-                                                <td><?= $noakun ?></td>
-                                                <td><?= $noakun ?></td>
+                                                <td><?= $noakund ?></td>
+                                                <td><?= $noakunk ?></td>
 
                                                 <!-- <td>
                                                     <button type="button" class="btn btn-primary" id="updateModal"

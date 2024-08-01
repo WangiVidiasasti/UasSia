@@ -32,8 +32,8 @@ if ($data === null) {
                         <h4 class="mb-sm-0 font-size-18">Data Laundry</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Karyawan</a></li>
-                                <li class="breadcrumb-item active">Data Karyawan</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Data Pengeluaran</a></li>
+                                <li class="breadcrumb-item active">Data Pengeluaran</li>
                             </ol>
                         </div>
                     </div>
@@ -57,7 +57,9 @@ if ($data === null) {
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Nama Supplier</th>
+                                        <th>Keterangan Pembelian</th>
                                         <th>Total Pengeluaran</th>
+                                        <th>Status Pembayaran</th>
                                         <th>Tanggal</th>
                                         <th>No Akun D</th>
                                         <th>No Akun K</th>
@@ -72,7 +74,9 @@ if ($data === null) {
                                         foreach ($data as $j) {
                                             $kdpengeluaran = $j->kd_nota;
                                             $namasupplier = $j->nama_supplier;
+                                            $keterangan = $j->keterangan;
                                             $totalpengeluaran = $j->total_pengeluaran;
+                                            $statuspem = $j->status_pembayaran;
                                             $tanggal = $j->tanggal;
                                             $noakund = $j->nama_akun_d;
                                             $noakunk = $j->nama_akun_k;
@@ -80,7 +84,9 @@ if ($data === null) {
                                             <tr>
                                                 <td><?= $no++ ?></td>
                                                 <td><?= $namasupplier ?></td>
+                                                <td><?= $keterangan ?></td>
                                                 <td><?= $totalpengeluaran ?></td>
+                                                <td><?= $statuspem ?></td>
                                                 <td><?= $tanggal ?></td>
                                                 <td><?= $noakund ?></td>
                                                 <td><?= $noakunk ?></td>

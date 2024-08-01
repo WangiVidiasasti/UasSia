@@ -398,9 +398,15 @@ FROM uas_sia.transaksi_pesanan_barang t",
         // Entri Pengeluaran Operasional
         "INSERT IGNORE INTO jurnal_umum (tanggal, keterangan, akun_debit, akun_kredit, jumlah, referensi)
 SELECT t.tanggal, 
-       CONCAT('Pengeluaran ke supplier ID: ', t.kd_supplier), 
-       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Hutang') AS akun_debit, 
-       (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas') AS akun_kredit, 
+       CONCAT('Pengeluaran ke supplier ID: ', t.kd_supplier),
+       CASE 
+           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Beban Lainnya')
+           WHEN t.status_pembayaran = 'belum di bayar' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Hutang')
+       END AS akun_debit, 
+       CASE 
+           WHEN t.status_pembayaran = 'Lunas' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
+           WHEN t.status_pembayaran = 'belum di bayar' THEN (SELECT no_akun FROM master_akun WHERE nama_akun = 'Kas')
+       END AS akun_kredit, 
        t.total_pengeluaran, 
        t.kd_nota
 FROM uas_sia.transaksi_pengeluaran t;",
