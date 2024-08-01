@@ -64,6 +64,10 @@ if (isset($_GET['link'])) {
         $title = "Buku Besar Piutang | ";
     } elseif (($_GET['link']) == 'bbhutang') {
         $title = "Buku Besar Hutang | ";
+    } elseif (($_GET['link']) == 'bbkas') {
+        $title = "Buku Besar Kas | ";
+    } elseif (($_GET['link']) == 'bbbebanlainnya') {
+        $title = "Buku Besar Beban Lainnya | ";
     }
 }
 
