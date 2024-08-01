@@ -26,6 +26,9 @@
                                             <a href="index.php?link=bbgaji" data-key="t-login">Beban Gaji</a>
                                         </li>
                                         <li>
+                                            <a href="index.php?link=bbbebanlainnya" data-key="t-login">Beban Lainnya</a>
+                                        </li>
+                                        <li>
                                             <a href="index.php?link=bblaundry" data-key="t-register"
                                             >Pendapatan Laundry</a>
                                         </li>
