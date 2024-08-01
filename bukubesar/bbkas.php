@@ -1,17 +1,12 @@
-
 <?php
 // Sertakan file yang mendefinisikan fungsi Tampil_Data
 require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/webservices/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini bena
-
-
+require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan path ini benar
 ?>
-
 
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
-
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
@@ -24,7 +19,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan
                                 <li class="breadcrumb-item active">Data Status</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -37,50 +31,66 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan
                             <h4 class="card-title">Data Status</h4>
                         </div>
                         <div class="card-body">
-                            
-                            
-                            <table id="datatable-buttons"
-                                        class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>Nomor</th>
-                                            <th>Tanggal</th>
-                                            <th>Keterangan</th>
-                                            <th>Akun Debit</th>
-                                            <th>Akun Kredit</th>
-                                            <th>Jumlah</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            <?php
-                                            $data = Tampil_Data("bbkas");
-                                            $no = 1;
-                                            if ($data !== null) {
-                                                foreach ($data as $j) {
-                                                    $idjurnal = $j->id_jurnal;
-                                                    $tanggal = $j->tanggal;
-                                                    $keterangan = $j->keterangan;
-                                                    $akundebit = $j->akun_debit;
-                                                    $akunkredit = $j->akun_kredit;
-                                                    $jumlah = $j->jumlah;
-                                                    ?>
-                                                    <tr>
-                                                        <td><?= $no++ ?></td>
-                                                        <td><?= $tanggal ?></td>
-                                                        <td><?= $keterangan ?></td>
-                                                        <td><?= $akundebit ?></td>
-                                                        <td><?= $akunkredit ?></td>
-                                                        <td><?= $jumlah ?></td>
-                                                    </tr>
-                                                    <?php
-                                                }
-                                            }
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100 table-striped table-hover">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Nomor</th>
+                                        <th>Tanggal</th>
+                                        <th>Keterangan</th>
+                                        <th>Akun Debit</th>
+                                        <th>Akun Kredit</th>
+                                        <th>Saldo Debit</th>
+                                        <th>Saldo Kredit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $data = Tampil_Data("bbkas");
+                                    $no = 1;
+                                    $totalSaldoDebit = 0;
+                                    $totalSaldoKredit = 0;
+                                    if ($data !== null) {
+                                        foreach ($data as $j) {
+                                            $idjurnal = $j->id_jurnal;
+                                            $tanggal = $j->tanggal;
+                                            $keterangan = $j->keterangan;
+                                            $akundebit = $j->akun_debit;
+                                            $akunkredit = $j->akun_kredit;
+                                            $jumlah = $j->jumlah;
+
+                                            // Determine the correct columns for saldo
+                                            $saldoDebit = ($akundebit == 101) ? $jumlah : 0;
+                                            $saldoKredit = ($akunkredit == 101) ? $jumlah : 0;
+
+                                            // Add to totals
+                                            $totalSaldoDebit += $saldoDebit;
+                                            $totalSaldoKredit += $saldoKredit;
                                             ?>
-                                    </tbody>
-                                </table>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $tanggal ?></td>
+                                                <td><?= $keterangan ?></td>
+                                                <td><?= $akundebit ?></td>
+                                                <td><?= $akunkredit ?></td>
+                                                <td><?= $saldoDebit ?></td>
+                                                <td><?= $saldoKredit ?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5">Total Saldo</th>
+                                        <th><?= $totalSaldoDebit ?></th>
+                                        <th><?= $totalSaldoKredit ?></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
-                    <!-- end cardaa -->
+                    <!-- end card -->
                 </div> <!-- end col -->
             </div> <!-- end row -->
         </div> <!-- container-fluid -->

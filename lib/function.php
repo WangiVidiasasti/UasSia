@@ -162,11 +162,11 @@ function Update_Total_Harga($kd_pesanan_laundry, $berat_baju) {
             JOIN detail_pesanan_laundry d ON t.kd_pesanan_laundry = d.kd_pesanan_laundry
             JOIN master_pengiriman p ON t.id_pengiriman = p.id_pengiriman
             JOIN master_katalog_laundry k ON t.id_katalog = k.id_katalog
-            SET t.total_harga = (p.harga + k.harga_katalog + ($berat_baju * 5))
+            SET t.total_harga = (p.harga + (k.harga_katalog * ?))
             WHERE t.kd_pesanan_laundry = ?";
     
     if ($stmt = $koneksi->prepare($sql)) {
-        $stmt->bind_param('s', $kd_pesanan_laundry);
+        $stmt->bind_param('ds', $berat_baju, $kd_pesanan_laundry);
         if ($stmt->execute()) {
             return true;
         } else {

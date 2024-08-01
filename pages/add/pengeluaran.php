@@ -31,12 +31,24 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
+                                        <label for="pengeluaran" class="form-label">Keterangan</label>
+                                        <input type="text" class="form-control" name="keterangan" id="keterangan" >
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="pengeluaran" class="form-label">Total Pengeluaran</label>
                                         <input type="number" class="form-control" name="total_pengeluaran" id="pengl-ttl" >
                                     </div>
                                     <div class="mb-3">
                                         <label for="tanggal" class="form-label">Tanggal</label>
                                         <input type="date" class="form-control" name="tanggal" id="tanggal">
+                                    </div>
+                                    <div class="mb-3" >
+                                    <label for="pengeluaran" class="form-label">Status Pembayaran</label>
+                                        <select data-trigger class="form-select" name="status_pembayaran" id="akunD" >
+                                            <option selected disabled>Pilih Status</option>
+                                            <option value="lunas">Lunas</option>
+                                            <option value="belum dibayar">Belum Dibayar</option>
+                                         </select>
                                     </div>
 
                                     <div class="mb-3" hidden>

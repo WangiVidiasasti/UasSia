@@ -187,14 +187,18 @@ if (isset($_POST['insert_pesananbarang'])) {
 
 if (isset($_POST['insert_pengeluaran'])) {
     $kd_supplier = mysqli_real_escape_string($koneksi, $_POST['nama_supplier']);
+    $keterangan = mysqli_real_escape_string($koneksi, $_POST['keterangan']);
     $total_pengeluaran = mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']);
+    $status_pembayaran = mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']);
     $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
     $no_akun_d = mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']);
     $no_akun_k = mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']);
 
     $data_pengeluaran = array(
         'kd_supplier' => $kd_supplier,
+        'keterangan' => $keterangan,
         'total_pengeluaran' => $total_pengeluaran,
+        'status_pembayaran' => $status_pembayaran,
         'tanggal' => $tanggal,
         'no_akun_d' => $no_akun_d,
         'no_akun_k' => $no_akun_k,
@@ -304,19 +308,21 @@ if (isset($_POST['insert_dataabsensi'])) {
     exit();
 }
 
-if (isset($_POST['insert_pengeluaran'])) {
-    $data = array(
-        'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
-        'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
-        'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
-        'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
-        'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
-    );
+// if (isset($_POST['insert_pengeluaran'])) {
+//     $data = array(
+//         'kd_supplier' => mysqli_real_escape_string($koneksi, $_POST['nama_supplier']),
+//         'ktrgn' => mysqli_real_escape_string($koneksi, $_POST['keterangan']),
+//         'total_pengeluaran' => mysqli_real_escape_string($koneksi, $_POST['total_pengeluaran']),
+//         'sts_pemb' => mysqli_real_escape_string($koneksi, $_POST['status_pembayaran']),
+//         'tanggal' => mysqli_real_escape_string($koneksi, $_POST['tanggal']),
+//         'no_akun_d' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_d']),
+//         'no_akun_k' => mysqli_real_escape_string($koneksi, $_POST['nama_akun_k']),
+//     );
 
-        Insert_Data("transaksi_pengeluaran", $data);
-        header("Location: " . $baseURL . "/index.php?link=pengeluaran");
-        exit;
-    }
+//         Insert_Data("transaksi_pengeluaran", $data);
+//         header("Location: " . $baseURL . "/index.php?link=pengeluaran");
+//         exit;
+//     }
 
 if (isset($_POST['insert_penggajian'])) {
     $periode = mysqli_real_escape_string($koneksi, $_POST['periode']);
