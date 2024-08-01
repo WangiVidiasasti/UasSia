@@ -43,7 +43,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $data = Tampil_Data("bbkas");
+                                    $data = Tampil_Data("jurnal");
                                     $no = 1;
                                     $totalSaldoDebit = 0;
                                     $totalSaldoKredit = 0;
@@ -57,8 +57,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/UasSia/lib/function.php"; // Pastikan
                                             $jumlah = $j->jumlah;
 
                                             // Determine the correct columns for saldo
-                                            $saldoDebit = ($akundebit == 101) ? $jumlah : 0;
-                                            $saldoKredit = ($akunkredit == 101) ? $jumlah : 0;
+                                            $accounts = [101, 102, 201, 401, 402, 501, 502];
+                                            $saldoDebit = in_array($akundebit, $accounts) ? $jumlah : 0;
+                                            $saldoKredit = in_array($akunkredit, $accounts) ? $jumlah : 0;
 
                                             // Add to totals
                                             $totalSaldoDebit += $saldoDebit;
